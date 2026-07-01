@@ -4,144 +4,370 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSE - Jussiê Guimarães</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: #0a0d1a;
             color: #ffffff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
         }
+
+        /* HERO */
         .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #0d1130 0%, #0a1628 50%, #0d1130 100%);
+            border-bottom: 2px solid #00e5cc;
+            position: relative;
+        }
+
+        .hero .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #00e5cc;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #00e5cc;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #aaaaaa;
+            margin-bottom: 40px;
+        }
+
+        .hero a {
+            display: inline-block;
+            padding: 16px 48px;
+            background-color: #00e5cc;
+            color: #0a0d1a;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
+        }
+
+        .hero a:hover { opacity: 0.85; }
+
+        /* PROBLEMA */
+        .problema {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #0a0d1a;
+        }
+
+        .problema h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .problema h2 span { color: #00e5cc; }
+
+        .problema p {
+            font-size: 16px;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .problema .lista {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .problema .item {
+            background-color: #0d1130;
+            border-left: 3px solid #00e5cc;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #cccccc;
+            text-align: left;
+            width: 300px;
+        }
+
+        /* SERVIÇOS */
+        .servicos {
             text-align: center;
             padding: 80px 20px;
             background-color: #0d1130;
         }
-        .hero h1 {
-            font-size: 42px;
+
+        .secao-titulo {
+            font-size: 13px;
+            font-weight: 600;
             color: #00e5cc;
-            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
-        .hero p {
-            font-size: 18px;
-            color: #aaaaaa;
-        }
-        .hero a {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background-color: #00e5cc;
-            color: #0a0d1a;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-        .servicos {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .servicos h2 {
+
+        .secao-h2 {
             font-size: 32px;
-            color: #00e5cc;
-            margin-bottom: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 48px;
         }
-        .etapas {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #0d1130;
-        }
-        .etapas h2 {
-            font-size: 32px;
-            color: #00e5cc;
-            margin-bottom: 40px;
-        }
+
         .cards {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 24px;
             flex-wrap: wrap;
         }
+
         .card {
-            background-color: #0d1130;
-            border: 1px solid #00e5cc;
+            background-color: #0a0d1a;
+            border: 1px solid #1a2040;
+            border-top: 3px solid #00e5cc;
             border-radius: 12px;
-            padding: 30px;
-            width: 220px;
+            padding: 32px 24px;
+            width: 260px;
+            text-align: left;
+            transition: border-color 0.2s;
         }
+
+        .card:hover { border-color: #00e5cc; }
+
+        .card .icone {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
         .card h3 {
-            color: #00e5cc;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
             margin-bottom: 10px;
         }
+
         .card p {
+            font-size: 14px;
             color: #aaaaaa;
+            line-height: 1.6;
         }
+
+        /* ETAPAS */
+        .etapas {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #0a0d1a;
+        }
+
+        .etapa-numero {
+            font-size: 42px;
+            font-weight: 900;
+            color: #00e5cc;
+            opacity: 0.3;
+            margin-bottom: 8px;
+        }
+
+        /* CLIENTES */
+        .clientes {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #0d1130;
+        }
+
+        .clientes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cliente-tag {
+            background-color: #0a0d1a;
+            border: 1px solid #1a2040;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #cccccc;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #0d1130 0%, #0a1628 100%);
+            border-top: 2px solid #00e5cc;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .cta h2 span { color: #00e5cc; }
+
+        .cta p {
+            font-size: 16px;
+            color: #aaaaaa;
+            margin-bottom: 40px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 18px 56px;
+            background-color: #00e5cc;
+            color: #0a0d1a;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        /* RODAPÉ */
         .rodape {
             text-align: center;
             padding: 40px 20px;
             background-color: #060810;
-            color: #aaaaaa;
-            font-size: 14px;
+            color: #666666;
+            font-size: 13px;
         }
+
         .rodape a {
             color: #00e5cc;
             text-decoration: none;
         }
+
+        .rodape p { margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
+    <!-- HERO -->
     <div class="hero">
-        <h1>Energia não é custo. É estratégia.</h1>
+        <div class="logo">JSE</div>
+        <h1>Energia não é custo.<br><span>É estratégia.</span></h1>
         <p>Jussiê Guimarães — Especialista em Energia Solar, BESS e Eletropostos</p>
-        <a href="https://wa.me/5511999483633">Falar com Jussiê no WhatsApp</a>
+        <a href="https://wa.me/5511999483633">💬 Falar com Jussiê no WhatsApp</a>
     </div>
 
+    <!-- PROBLEMA -->
+    <div class="problema">
+        <h2>A maioria das empresas toma<br><span>decisões erradas sobre energia</span></h2>
+        <p>Pagam caro sem saber por quê, investem sem estratégia e compram soluções isoladas. O resultado: dinheiro mal alocado e oportunidades perdidas.</p>
+        <div class="lista">
+            <div class="item">❌ Pagam caro e não sabem por quê</div>
+            <div class="item">❌ Investem sem estratégia</div>
+            <div class="item">❌ Compram soluções isoladas</div>
+            <div class="item">❌ Não têm clareza sobre retorno</div>
+        </div>
+    </div>
+
+    <!-- SERVIÇOS -->
     <div class="servicos">
-        <h2>O que eu faço</h2>
+        <div class="secao-titulo">Portfólio de Soluções</div>
+        <div class="secao-h2">O que eu faço</div>
         <div class="cards">
             <div class="card">
-                <h3>☀️ Energia Solar</h3>
+                <div class="icone">☀️</div>
+                <h3>Energia Solar</h3>
                 <p>Redução de custos e previsibilidade energética para empresas.</p>
             </div>
             <div class="card">
-                <h3>🔋 BESS</h3>
-                <p>Sistemas de armazenamento para gestão energética e eficiência.</p>
+                <div class="icone">🔋</div>
+                <h3>BESS</h3>
+                <p>Sistemas de armazenamento para gestão energética e eficiência operacional.</p>
             </div>
             <div class="card">
-                <h3>⚡ Eletropostos</h3>
-                <p>Infraestrutura de recarga elétrica com geração de receita.</p>
+                <div class="icone">⚡</div>
+                <h3>Eletropostos</h3>
+                <p>Infraestrutura de recarga elétrica com geração de receita e alto fluxo.</p>
             </div>
         </div>
     </div>
 
+    <!-- ETAPAS -->
     <div class="etapas">
-        <h2>Como eu atuo</h2>
+        <div class="secao-titulo">Metodologia</div>
+        <div class="secao-h2">Como eu atuo</div>
         <div class="cards">
             <div class="card">
-                <h3>1️⃣ Diagnóstico</h3>
+                <div class="etapa-numero">01</div>
+                <h3>Diagnóstico</h3>
                 <p>Mapeamento completo do cenário energético do cliente.</p>
             </div>
             <div class="card">
-                <h3>2️⃣ Estratégia</h3>
+                <div class="etapa-numero">02</div>
+                <h3>Estratégia</h3>
                 <p>Definição do melhor modelo técnico e financeiro.</p>
             </div>
             <div class="card">
-                <h3>3️⃣ Projeto</h3>
+                <div class="etapa-numero">03</div>
+                <h3>Projeto</h3>
                 <p>Especificação e detalhamento técnico da solução.</p>
             </div>
             <div class="card">
-                <h3>4️⃣ Execução</h3>
+                <div class="etapa-numero">04</div>
+                <h3>Execução</h3>
                 <p>Estruturação e condução do projeto até o lançamento.</p>
             </div>
         </div>
     </div>
 
+    <!-- CLIENTES -->
+    <div class="clientes">
+        <div class="secao-titulo">Quem já confiou</div>
+        <div class="secao-h2">Clientes</div>
+        <div class="clientes-grid">
+            <div class="cliente-tag">Eurofarma</div>
+            <div class="cliente-tag">União Química</div>
+            <div class="cliente-tag">Pfizer</div>
+            <div class="cliente-tag">AstraZeneca</div>
+            <div class="cliente-tag">Ipiranga</div>
+            <div class="cliente-tag">Raízen</div>
+            <div class="cliente-tag">Hospital Albert Einstein</div>
+            <div class="cliente-tag">Geolab</div>
+            <div class="cliente-tag">Honeywell</div>
+            <div class="cliente-tag">Câmara Municipal de Barueri</div>
+            <div class="cliente-tag">Hospital Neurocenter</div>
+            <div class="cliente-tag">Wheaton Brasil</div>
+        </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="cta">
+        <h2>Se existe energia envolvida,<br><span>existe oportunidade.</span></h2>
+        <p>Você está estruturando isso da forma certa?</p>
+        <a href="https://wa.me/5511999483633">💬 Falar com Jussiê no WhatsApp</a>
+    </div>
+
+    <!-- RODAPÉ -->
     <div class="rodape">
-        <p>📧 executivo.jussie@gmail.com</p>
+        <p>📧 <a href="mailto:executivo.jussie@gmail.com">executivo.jussie@gmail.com</a></p>
         <p>📱 (11) 99948-3633</p>
         <p><a href="https://linkedin.com/in/jussieguimaraes">LinkedIn</a></p>
-        <p>JSE — Soluções Energéticas Integradas</p>
+        <p style="margin-top: 20px;">JSE — Soluções Energéticas Integradas</p>
     </div>
 
 </body>
