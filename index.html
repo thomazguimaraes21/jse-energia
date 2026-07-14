@@ -6,6 +6,17 @@
 <title>JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)</title>
 <meta name="description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
 <link rel="icon" type="image/png" href="images/logo-jse.png">
+
+<!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)">
+<meta property="og:description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico isento, com garantia de resultado.">
+<meta property="og:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
+<meta property="og:url" content="https://thomazguimaraes21.github.io/jse-energia/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)">
+<meta name="twitter:description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz.">
+<meta name="twitter:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +32,7 @@
     --white:#FFFFFF;
     --danger:#8a3324;
   }
- 
+
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -35,15 +46,15 @@
   a{text-decoration:none;color:inherit;}
   ul{list-style:none;}
   img{max-width:100%;display:block;}
- 
+
   .container{max-width:1140px;margin:0 auto;padding:0 24px;}
- 
+
   .eyebrow{
     display:inline-block;
     font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
     color:var(--accent);margin-bottom:14px;
   }
- 
+
   /* ---------- NAVBAR ---------- */
   header.navbar{
     position:fixed;top:0;left:0;right:0;z-index:1000;
@@ -83,7 +94,7 @@
   .btn-outline-dark:hover{border-color:var(--primary);}
   .nav-cta{display:none;}
   @media(min-width:900px){.nav-cta{display:inline-flex;}}
- 
+
   /* ---------- HERO ---------- */
   .hero{
     background:
@@ -108,7 +119,7 @@
   .hero h1 span{color:var(--accent);}
   .hero p.lead{margin-top:22px;font-size:18px;color:rgba(255,255,255,.78);max-width:540px;}
   .hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
- 
+
   .exemption-seal{
     margin-top:32px;
     display:inline-flex;align-items:center;gap:10px;
@@ -125,7 +136,7 @@
     display:flex;align-items:center;justify-content:center;
     font-size:11px;font-weight:800;flex:none;
   }
- 
+
   .hero-photo{
     position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;
     background:
@@ -137,7 +148,7 @@
   .hero-photo img{width:100%;height:100%;object-fit:cover;}
   .hero-photo .placeholder-label{color:rgba(255,255,255,.5);font-size:13px;line-height:1.5;}
   .hero-photo .placeholder-label strong{display:block;color:var(--accent);font-family:'Montserrat',sans-serif;font-size:14px;margin-bottom:6px;letter-spacing:.04em;}
- 
+
   /* ---------- SECTION SHELL ---------- */
   section{padding:100px 0;}
   .section-alt{background:var(--bg-alt);}
@@ -148,7 +159,7 @@
   .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;}
   .section-dark .section-head p{color:rgba(255,255,255,.72);}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
- 
+
   /* ---------- O PROBLEMA ---------- */
   .problem-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
@@ -164,17 +175,56 @@
     background:rgba(138,51,36,.08);
     display:flex;align-items:center;justify-content:center;font-size:15px;
   }
+
+  /* Cards estilo "detalhe colorido" (referência Mitsidi) */
+  .accent-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:860px){.accent-cards{grid-template-columns:1fr;}}
+  .accent-card{
+    background:var(--white);
+    border:1px solid #e9e5dc;
+    border-top:3px solid var(--accent-c, var(--accent));
+    border-radius:10px;
+    padding:26px 24px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .accent-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,43,66,.08);}
+  .accent-card .accent-icon{
+    width:42px;height:42px;border-radius:9px;
+    background:rgba(200,164,92,.12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;margin-bottom:16px;
+  }
+  .accent-card h3{font-size:16.5px;color:var(--primary);margin-bottom:9px;font-weight:700;}
+  .accent-card p{color:var(--ink-soft);font-size:14px;}
+  .accent-card .accent-link{
+    display:block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--secondary);
+  }
+  .accent-cards.dark{
+    background:var(--primary);
+    padding:6px;
+    border-radius:14px;
+  }
+  .accent-cards.dark .accent-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-left:3px solid var(--accent-c, var(--accent));
+    border-top:none;
+  }
+  .accent-cards.dark .accent-card h3{color:var(--white);}
+  .accent-cards.dark .accent-card p{color:rgba(255,255,255,.65);}
+  .accent-cards.dark .accent-icon{background:rgba(200,164,92,.14);color:var(--accent);}
   .highlight-box{
     background:var(--primary);color:var(--white);
     border-radius:14px;padding:38px 34px;
     border:1px solid rgba(200,164,92,.25);
+    max-width:640px;margin:0 auto;text-align:center;
   }
   .highlight-box .num{
     font-family:'Montserrat',sans-serif;font-weight:800;
     font-size:clamp(30px,3.4vw,40px);color:var(--accent);line-height:1.1;
   }
   .highlight-box p{margin-top:14px;color:rgba(255,255,255,.8);font-size:15px;}
- 
+
   /* ---------- ETAPAS DEE ---------- */
   .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #e4e0d8;}
   @media(max-width:900px){.steps4{grid-template-columns:1fr 1fr;}}
@@ -184,7 +234,7 @@
   .step-num{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-bottom:16px;}
   .step h3{font-size:17px;color:var(--primary);margin-bottom:10px;font-weight:700;}
   .step p{color:var(--ink-soft);font-size:14.5px;}
- 
+
   /* ---------- MODELO DE PARCERIA ---------- */
   .price-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
   @media(max-width:760px){.price-cards{grid-template-columns:1fr;}}
@@ -222,13 +272,13 @@
     font-size:14.5px;
   }
   .exemption-strip strong{color:var(--accent);}
- 
+
   /* ---------- SEGMENTOS ---------- */
   .segments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e4e0d8;border:1px solid #e4e0d8;}
   @media(max-width:700px){.segments-grid{grid-template-columns:repeat(2,1fr);}}
   .segment{background:var(--white);padding:34px 20px;text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:var(--primary);transition:background .2s;}
   .segment:hover{background:var(--bg-alt);}
- 
+
   /* ---------- AUTORIDADE ---------- */
   .authority{background:var(--primary);color:var(--white);}
   .authority-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center;}
@@ -251,7 +301,7 @@
   .stats{margin-top:36px;display:flex;gap:44px;flex-wrap:wrap;}
   .stat-number{font-size:30px;font-weight:800;color:var(--accent);}
   .stat-label{font-size:12.5px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
- 
+
   /* ---------- FAQ ---------- */
   .faq-list{max-width:760px;}
   .faq-item{border-bottom:1px solid #e4e0d8;}
@@ -269,12 +319,12 @@
   .faq-item.open .faq-q .icon{transform:rotate(45deg);}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
   .faq-a p{padding:0 4px 24px;color:var(--ink-soft);font-size:15px;max-width:660px;}
- 
+
   /* ---------- CTA FINAL ---------- */
   .cta-final{background:linear-gradient(135deg,var(--secondary),#124f38);color:var(--white);text-align:center;}
   .cta-final h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;max-width:640px;margin:0 auto;}
   .cta-final p{margin:18px auto 34px;color:rgba(255,255,255,.85);max-width:520px;font-size:16px;}
- 
+
   /* ---------- FOOTER ---------- */
   footer{background:#081b29;color:rgba(255,255,255,.6);padding:56px 0 28px;}
   .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08);}
@@ -285,12 +335,12 @@
   .footer-links a{font-size:14px;color:rgba(255,255,255,.6);transition:color .2s;}
   .footer-links a:hover{color:var(--accent);}
   .footer-bottom{padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(255,255,255,.4);}
- 
+
   @media(max-width:640px){
     section{padding:72px 0;}
     .hero{padding:140px 0 70px;}
   }
- 
+
   /* ---------- MODAL DE PRÉ-QUALIFICAÇÃO ---------- */
   .modal-overlay{
     position:fixed;inset:0;z-index:2000;
@@ -347,11 +397,26 @@
   .form-field select:focus{
     outline:none;border-color:var(--accent);
   }
+  .form-field input.input-error,
+  .form-field select.input-error{
+    border-color:#B71C1C;
+  }
+  .field-error{
+    display:none;
+    font-size:12px;color:#B71C1C;
+    margin-top:6px;
+  }
+  .field-error.active{display:block;}
   .form-note{
     font-size:12.5px;color:var(--ink-soft);
     margin:-6px 0 20px;
   }
   .modal-submit{width:100%;justify-content:center;margin-top:4px;}
+  .modal-fallback{
+    display:block;text-align:center;margin-top:14px;
+    font-size:13px;color:var(--ink-soft);text-decoration:underline;
+  }
+  .modal-fallback:hover{color:var(--primary);}
   .qualify-warning{
     display:none;
     margin-top:16px;
@@ -362,10 +427,13 @@
     font-size:13.5px;color:var(--danger);
   }
   .qualify-warning.active{display:block;}
+  .accent-cards.cols-4{grid-template-columns:repeat(4,1fr);}
+  @media(max-width:900px){.accent-cards.cols-4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.accent-cards.cols-4{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
- 
+
 <header class="navbar">
   <div class="container">
     <a href="#top" class="logo">
@@ -380,7 +448,7 @@
     <button class="btn btn-accent nav-cta" onclick="openLeadModal()">Quero meu Diagnóstico</button>
   </div>
 </header>
- 
+
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="container hero-grid">
@@ -402,7 +470,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- O PROBLEMA -->
 <section id="problema">
   <div class="container">
@@ -411,29 +479,32 @@
       <h2>Sua empresa pode estar perdendo dinheiro sem saber</h2>
       <p>Médias empresas que gastam acima de <strong style="color:var(--primary);">R$ 5.000/mês</strong> em energia, frequentemente pagam multas e tarifas desnecessárias por falta de gestão técnica.</p>
     </div>
-    <div class="problem-grid">
-      <ul class="pain-list">
-        <li>
-          <span class="pain-icon">⚡</span>
-          <span><strong style="color:var(--primary);">Demanda contratada superdimensionada,</strong> sua empresa paga por uma capacidade de energia que não usa.</span>
-        </li>
-        <li>
-          <span class="pain-icon">📉</span>
-          <span><strong style="color:var(--primary);">Multas por baixo fator de potência,</strong> cobranças recorrentes que passam despercebidas na fatura.</span>
-        </li>
-        <li>
-          <span class="pain-icon">📄</span>
-          <span><strong style="color:var(--primary);">Enquadramento tarifário incorreto,</strong> sua empresa pode estar no grupo ou modalidade tarifária errada.</span>
-        </li>
-      </ul>
-      <div class="highlight-box">
-        <div class="num">R$ 3.000 a R$ 8.000 / mês</div>
-        <p>É o que nosso diagnóstico encontra, em média, de economia potencial por cliente. O DEE existe pra estancar esse vazamento financeiro, de forma isenta e com garantia de resultado.</p>
+
+    <div class="accent-cards dark" style="margin-bottom:32px;">
+      <div class="accent-card" style="--accent-c:#C8A45C;">
+        <div class="accent-icon">⚡</div>
+        <h3>Demanda contratada superdimensionada</h3>
+        <p>Sua empresa paga por uma capacidade de energia que não usa.</p>
       </div>
+      <div class="accent-card" style="--accent-c:#1A6B4B;">
+        <div class="accent-icon">📉</div>
+        <h3>Multas por baixo fator de potência</h3>
+        <p>Cobranças recorrentes que passam despercebidas na fatura.</p>
+      </div>
+      <div class="accent-card" style="--accent-c:#C8A45C;">
+        <div class="accent-icon">📄</div>
+        <h3>Enquadramento tarifário incorreto</h3>
+        <p>Sua empresa pode estar no grupo ou modalidade tarifária errada.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="num">R$ 3.000 a R$ 8.000 / mês</div>
+      <p>É o que nosso diagnóstico encontra, em média, de economia potencial por cliente. O DEE existe pra estancar esse vazamento financeiro, de forma isenta e com garantia de resultado.</p>
     </div>
   </div>
 </section>
- 
+
 <!-- O QUE É O DEE -->
 <section class="section-alt" id="dee">
   <div class="container">
@@ -442,31 +513,35 @@
       <h2>Diagnóstico Energético Empresarial (DEE)</h2>
       <p>Um processo consultivo em 4 etapas, baseado em dados reais da sua operação, 100% online e sem necessidade de visitas ou instalação de equipamentos.</p>
     </div>
-    <div class="steps4">
-      <div class="step">
-        <div class="step-num">Etapa 01</div>
-        <h3>Coleta</h3>
-        <p>Envio de 12 faturas, Cartão CNPJ e dados operacionais. Processo 100% online.</p>
+    <div class="accent-cards cols-4">
+      <div class="accent-card" style="--accent-c:#C8A45C;">
+        <div class="accent-icon">📋</div>
+        <h3>Etapa 01 — Coleta</h3>
+        <p>Envio de 12 faturas, Cartão CNPJ e dados operacionais.</p>
+        <span class="accent-link">→ Processo 100% online</span>
       </div>
-      <div class="step">
-        <div class="step-num">Etapa 02</div>
-        <h3>Análise técnica</h3>
-        <p>Cruzamento de dados com inteligência analítica para mapear o perfil de consumo e contratos.</p>
+      <div class="accent-card" style="--accent-c:#1A6B4B;">
+        <div class="accent-icon">🔎</div>
+        <h3>Etapa 02 — Análise técnica</h3>
+        <p>Cruzamento de dados para mapear o perfil de consumo e contratos.</p>
+        <span class="accent-link">→ Inteligência analítica aplicada</span>
       </div>
-      <div class="step">
-        <div class="step-num">Etapa 03</div>
-        <h3>Diagnóstico</h3>
-        <p>Identificação de cada vazamento financeiro, com cálculo exato de impacto.</p>
+      <div class="accent-card" style="--accent-c:#C8A45C;">
+        <div class="accent-icon">🧭</div>
+        <h3>Etapa 03 — Diagnóstico</h3>
+        <p>Identificação de cada vazamento financeiro.</p>
+        <span class="accent-link">→ Cálculo exato de impacto</span>
       </div>
-      <div class="step">
-        <div class="step-num">Etapa 04</div>
-        <h3>Plano de ação</h3>
-        <p>Entrega de relatório executivo com recomendações, ROI projetado e próximos passos.</p>
+      <div class="accent-card" style="--accent-c:#1A6B4B;">
+        <div class="accent-icon">📈</div>
+        <h3>Etapa 04 — Plano de ação</h3>
+        <p>Relatório executivo com recomendações e ROI projetado.</p>
+        <span class="accent-link">→ Próximos passos claros</span>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- MODELO DE PARCERIA -->
 <section class="section-dark" id="parceria">
   <div class="container">
@@ -475,7 +550,7 @@
       <h2>Modelo de parceria: só ganho se você economizar</h2>
       <p>Transparência total sobre valores, condições e o que acontece se o diagnóstico não encontrar economia.</p>
     </div>
- 
+
     <div class="price-cards">
       <div class="price-card">
         <span class="tag">Setup Fee</span>
@@ -490,7 +565,7 @@
         <p>Cobrança apenas quando a economia identificada aparecer de fato na sua fatura.</p>
       </div>
     </div>
- 
+
     <div class="guarantee-strip">
       <span class="icon">✓</span>
       <div>
@@ -498,13 +573,13 @@
         <p>Se o DEE não identificar economia mínima de R$ 1.000/mês, devolvemos 100% do seu investimento de setup.</p>
       </div>
     </div>
- 
+
     <div class="exemption-strip">
       <strong>Isenção consultiva:</strong> compromisso exclusivo com o diagnóstico. Não vendemos equipamentos nem contratos de energia, nossa recomendação é técnica e isenta.
     </div>
   </div>
 </section>
- 
+
 <!-- PARA QUEM É -->
 <section>
   <div class="container">
@@ -522,7 +597,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- AUTORIDADE -->
 <section class="authority" id="autoridade">
   <div class="container authority-grid">
@@ -542,7 +617,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- FAQ -->
 <section class="section-alt" id="faq">
   <div class="container">
@@ -600,7 +675,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="container">
@@ -609,7 +684,7 @@
     <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
   </div>
 </section>
- 
+
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -643,7 +718,7 @@
     </div>
   </div>
 </footer>
- 
+
 <!-- MODAL DE PRÉ-QUALIFICAÇÃO -->
 <div class="modal-overlay" id="leadModal">
   <div class="modal-box">
@@ -651,45 +726,53 @@
     <span class="eyebrow">Antes de conversarmos</span>
     <h3>Conta um pouco sobre sua empresa</h3>
     <p class="modal-sub">Assim entramos na conversa com o contexto certo, e o atendimento é mais rápido.</p>
- 
-    <form id="leadForm" onsubmit="submitLeadForm(event)">
+
+    <form id="leadForm" onsubmit="submitLeadForm(event)" novalidate>
       <div class="form-field">
         <label for="leadNome">Seu nome</label>
-        <input type="text" id="leadNome" required placeholder="Ex: Carlos Andrade">
+        <input type="text" id="leadNome" placeholder="Ex: Carlos Andrade">
+        <span class="field-error" id="errNome">Campo obrigatório (mín. 3 caracteres)</span>
       </div>
       <div class="form-field">
         <label for="leadEmpresa">Nome da empresa</label>
-        <input type="text" id="leadEmpresa" required placeholder="Ex: Metalúrgica Andrade Ltda">
+        <input type="text" id="leadEmpresa" placeholder="Ex: Metalúrgica Andrade Ltda">
+        <span class="field-error" id="errEmpresa">Campo obrigatório (mín. 4 caracteres)</span>
       </div>
       <div class="form-field">
         <label for="leadSegmento">Segmento da empresa</label>
-        <select id="leadSegmento" required>
-          <option value="" disabled selected>Selecione</option>
+        <select id="leadSegmento">
+          <option value="" selected>Selecione</option>
           <option>Indústria</option>
-          <option>Centro Logístico</option>
-          <option>Supermercado</option>
-          <option>Hotel</option>
+          <option>Hotelaria</option>
+          <option>Supermercado / Varejo</option>
+          <option>Centro Logístico / Transporte</option>
           <option>Posto de Combustíveis</option>
-          <option>Construtora</option>
+          <option>Construção Civil</option>
+          <option>Agronegócio</option>
           <option>Outro</option>
         </select>
+        <span class="field-error" id="errSegmento">Campo obrigatório</span>
       </div>
       <div class="form-field">
         <label for="leadGasto">Gasto médio mensal com energia</label>
-        <select id="leadGasto" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="5-10">Entre R$ 5.000 e R$ 10.000</option>
-          <option value="10-20">Entre R$ 10.000 e R$ 20.000</option>
-          <option value="acima">Acima de R$ 20.000</option>
+        <select id="leadGasto">
+          <option value="" selected>Selecione</option>
+          <option value="Até R$ 5.000">Até R$ 5.000</option>
+          <option value="R$ 5.000 a R$ 15.000">R$ 5.000 a R$ 15.000</option>
+          <option value="R$ 15.000 a R$ 50.000">R$ 15.000 a R$ 50.000</option>
+          <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
+          <option value="Não sei informar">Não sei informar</option>
         </select>
+        <span class="field-error" id="errGasto">Campo obrigatório</span>
       </div>
- 
+
       <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida.</p>
-      <button type="submit" class="btn btn-accent modal-submit">Continuar para o WhatsApp</button>
+      <button type="submit" class="btn btn-accent modal-submit">Falar com Especialista</button>
+      <a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="modal-fallback">Prefere ir direto? Fale pelo WhatsApp</a>
     </form>
   </div>
 </div>
- 
+
 <script>
 function openLeadModal(){
   document.getElementById('leadModal').classList.add('active');
@@ -702,45 +785,82 @@ function closeLeadModal(){
 document.getElementById('leadModal').addEventListener('click', function(e){
   if(e.target === this) closeLeadModal();
 });
- 
+
+// Tabela de variação do texto final, conforme especificação técnica
+const TEXTOS_VARIAVEIS = {
+  'Até R$ 5.000': 'gostaria de saber se o DEE faz sentido para o nosso porte.',
+  'R$ 5.000 a R$ 15.000': 'tenho interesse em entender onde estamos perdendo dinheiro.',
+  'R$ 15.000 a R$ 50.000': 'queremos otimizar nossos custos. Já desconfiamos que há espaço para economia significativa.',
+  'Acima de R$ 50.000': 'estamos avaliando um projeto estrutural de eficiência energética para reduzir custos.',
+  'Não sei informar': 'gostaria de ajuda para entender melhor nosso consumo e oportunidades.'
+};
+
+function montarMensagemWhatsApp(dados){
+  const textoVariavel = TEXTOS_VARIAVEIS[dados.gasto] || 'gostaria de saber mais sobre o Diagnóstico Energético Empresarial.';
+  return `Olá Jussiê! 👋 Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa}, segmento de ${dados.segmento}. Nosso gasto médio mensal com energia é ${dados.gasto} e ${textoVariavel}`;
+}
+
+function setFieldError(inputEl, errEl, hasError){
+  inputEl.classList.toggle('input-error', hasError);
+  errEl.classList.toggle('active', hasError);
+}
+
 function submitLeadForm(event){
   event.preventDefault();
- 
-  const nome = document.getElementById('leadNome').value.trim();
-  const empresa = document.getElementById('leadEmpresa').value.trim();
-  const segmento = document.getElementById('leadSegmento').value;
-  const gastoSelect = document.getElementById('leadGasto');
-  const gastoLabel = gastoSelect.options[gastoSelect.selectedIndex].text;
- 
-  const mensagem =
-    `Olá! Meu nome é ${nome}, da empresa ${empresa} (${segmento}).\n` +
-    `Nosso gasto médio mensal com energia é: ${gastoLabel}.\n` +
-    `Quero saber mais sobre o Diagnóstico Energético Empresarial (DEE).`;
- 
-  const url = `https://wa.me/5511999483633?text=${encodeURIComponent(mensagem)}`;
+
+  const nomeEl = document.getElementById('leadNome');
+  const empresaEl = document.getElementById('leadEmpresa');
+  const segmentoEl = document.getElementById('leadSegmento');
+  const gastoEl = document.getElementById('leadGasto');
+
+  const nome = nomeEl.value.trim();
+  const empresa = empresaEl.value.trim();
+  const segmento = segmentoEl.value;
+  const gasto = gastoEl.value;
+
+  let valido = true;
+
+  if(nome.length < 3){ setFieldError(nomeEl, document.getElementById('errNome'), true); valido = false; }
+  else setFieldError(nomeEl, document.getElementById('errNome'), false);
+
+  if(empresa.length < 4){ setFieldError(empresaEl, document.getElementById('errEmpresa'), true); valido = false; }
+  else setFieldError(empresaEl, document.getElementById('errEmpresa'), false);
+
+  if(!segmento){ setFieldError(segmentoEl, document.getElementById('errSegmento'), true); valido = false; }
+  else setFieldError(segmentoEl, document.getElementById('errSegmento'), false);
+
+  if(!gasto){ setFieldError(gastoEl, document.getElementById('errGasto'), true); valido = false; }
+  else setFieldError(gastoEl, document.getElementById('errGasto'), false);
+
+  if(!valido) return;
+
+  const mensagem = montarMensagemWhatsApp({ nome, empresa, segmento, gasto });
+  const mensagemCodificada = encodeURIComponent(mensagem);
+  const url = `https://wa.me/5511999483633?text=${mensagemCodificada}`;
+
   window.open(url, '_blank', 'noopener');
   closeLeadModal();
   document.getElementById('leadForm').reset();
 }
 </script>
- 
+
 <script>
 function toggleFaq(btn){
   const item = btn.parentElement;
   const answer = item.querySelector('.faq-a');
   const isOpen = item.classList.contains('open');
- 
+
   document.querySelectorAll('.faq-item.open').forEach(el=>{
     el.classList.remove('open');
     el.querySelector('.faq-a').style.maxHeight = 0;
   });
- 
+
   if(!isOpen){
     item.classList.add('open');
     answer.style.maxHeight = answer.scrollHeight + 'px';
   }
 }
 </script>
- 
+
 </body>
 </html>
