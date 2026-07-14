@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)</title>
 <meta name="description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
+<link rel="icon" type="image/png" href="images/logo-jse.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -52,6 +53,8 @@
   }
   .navbar .container{display:flex;align-items:center;justify-content:space-between;height:76px;}
   .logo{color:var(--white);font-weight:700;font-size:19px;letter-spacing:.02em;display:flex;align-items:center;gap:10px;}
+  .logo-img{height:38px;width:auto;display:block;}
+  .footer-brand .logo-img{height:32px;}
   .logo .mark{
     width:34px;height:34px;border-radius:8px;
     background:linear-gradient(135deg,var(--secondary),var(--accent));
@@ -157,9 +160,9 @@
   }
   .pain-list li:last-child{border-bottom:1px solid #e4e0d8;}
   .pain-list .pain-icon{
-    flex:none;width:26px;height:26px;border-radius:50%;
-    background:rgba(138,51,36,.1);color:var(--danger);
-    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+    flex:none;width:32px;height:32px;border-radius:50%;
+    background:rgba(138,51,36,.08);
+    display:flex;align-items:center;justify-content:center;font-size:15px;
   }
   .highlight-box{
     background:var(--primary);color:var(--white);
@@ -368,8 +371,7 @@
 <header class="navbar">
   <div class="container">
     <a href="#top" class="logo">
-      <span class="mark">JS</span>
-      <span>JSE Energy Advisor<small>Consultoria em energia</small></span>
+      <img src="images/logo-jse.png" alt="JSE Energy Advisor" class="logo-img">
     </a>
     <nav class="nav-links">
       <a href="#problema">O problema</a>
@@ -387,14 +389,14 @@
     <div>
       <span class="eyebrow">Diagnóstico Energético Empresarial</span>
       <h1>Descubra se sua empresa está pagando até <span>R$ 8.000/mês</span> a mais na conta de luz</h1>
-      <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro — sem venda de equipamentos ou contratos de energia.</p>
+      <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro, sem venda de equipamentos ou contratos de energia.</p>
       <div class="hero-actions">
         <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
         <a class="btn btn-outline" href="#dee">Como funciona</a>
       </div>
       <div class="exemption-seal">
         <span class="check">✓</span>
-        Consultoria isenta — sem vínculo com fornecedores ou fabricantes
+        Consultoria isenta, sem vínculo com fornecedores ou fabricantes
       </div>
     </div>
     <div class="hero-photo">
@@ -414,21 +416,21 @@
     <div class="problem-grid">
       <ul class="pain-list">
         <li>
-          <span class="pain-icon">!</span>
-          <span><strong style="color:var(--primary);">Demanda contratada superdimensionada</strong> — sua empresa paga por uma capacidade de energia que não usa.</span>
+          <span class="pain-icon">⚡</span>
+          <span><strong style="color:var(--primary);">Demanda contratada superdimensionada,</strong> sua empresa paga por uma capacidade de energia que não usa.</span>
         </li>
         <li>
-          <span class="pain-icon">!</span>
-          <span><strong style="color:var(--primary);">Multas por baixo fator de potência</strong> — cobranças recorrentes que passam despercebidas na fatura.</span>
+          <span class="pain-icon">📉</span>
+          <span><strong style="color:var(--primary);">Multas por baixo fator de potência,</strong> cobranças recorrentes que passam despercebidas na fatura.</span>
         </li>
         <li>
-          <span class="pain-icon">!</span>
-          <span><strong style="color:var(--primary);">Enquadramento tarifário incorreto</strong> — sua empresa pode estar no grupo ou modalidade tarifária errada.</span>
+          <span class="pain-icon">📄</span>
+          <span><strong style="color:var(--primary);">Enquadramento tarifário incorreto,</strong> sua empresa pode estar no grupo ou modalidade tarifária errada.</span>
         </li>
       </ul>
       <div class="highlight-box">
         <div class="num">R$ 3.000 a R$ 8.000/mês</div>
-        <p>É o que nosso diagnóstico encontra, em média, de economia potencial por cliente. O DEE existe pra estancar esse vazamento financeiro — de forma isenta e com garantia de resultado.</p>
+        <p>É o que nosso diagnóstico encontra, em média, de economia potencial por cliente. O DEE existe pra estancar esse vazamento financeiro, de forma isenta e com garantia de resultado.</p>
       </div>
     </div>
   </div>
@@ -440,7 +442,7 @@
     <div class="section-head">
       <span class="eyebrow">O processo</span>
       <h2>Diagnóstico Energético Empresarial (DEE)</h2>
-      <p>Um processo consultivo em 4 etapas, baseado em dados reais da sua operação — 100% online, sem necessidade de visitas ou instalação de equipamentos.</p>
+      <p>Um processo consultivo em 4 etapas, baseado em dados reais da sua operação, 100% online e sem necessidade de visitas ou instalação de equipamentos.</p>
     </div>
     <div class="steps4">
       <div class="step">
@@ -481,7 +483,7 @@
         <span class="tag">Setup Fee</span>
         <h3>Investimento no diagnóstico</h3>
         <div class="price-value">R$ 6.000</div>
-        <p>Parcelado em 2x — 50% no início do processo e 50% na entrega do relatório executivo.</p>
+        <p>Parcelado em 2x, 50% no início do processo e 50% na entrega do relatório executivo.</p>
       </div>
       <div class="price-card">
         <span class="tag">Success Fee</span>
@@ -500,7 +502,7 @@
     </div>
  
     <div class="exemption-strip">
-      <strong>Isenção consultiva:</strong> compromisso exclusivo com o diagnóstico. Não vendemos equipamentos nem contratos de energia — nossa recomendação é técnica e isenta.
+      <strong>Isenção consultiva:</strong> compromisso exclusivo com o diagnóstico. Não vendemos equipamentos nem contratos de energia, nossa recomendação é técnica e isenta.
     </div>
   </div>
 </section>
@@ -532,8 +534,8 @@
     <div>
       <div class="role">Energy Advisor</div>
       <h2>Jussiê Guimarães</h2>
-      <p class="bio">Engenheiro com mais de 20 anos de experiência em desenvolvimento de negócios e projetos técnico-comerciais. Minha atuação combina visão estratégica com conhecimento técnico profundo. Já liderei centenas de projetos para médias empresas — de indústrias a centros logísticos, redes de varejo e hotelaria.</p>
-      <p class="bio extra">Energy Advisor isento — meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio, sem conflitos de interesse com fornecedores.</p>
+      <p class="bio">Engenheiro com mais de 20 anos de experiência em desenvolvimento de negócios e projetos técnico-comerciais. Minha atuação combina visão estratégica com conhecimento técnico profundo. Já liderei centenas de projetos para médias empresas, de indústrias a centros logísticos, redes de varejo e hotelaria.</p>
+      <p class="bio extra">Energy Advisor isento, meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio, sem conflitos de interesse com fornecedores.</p>
       <div class="stats">
         <div><div class="stat-number">20+</div><div class="stat-label">Anos de experiência</div></div>
         <div><div class="stat-number">100+</div><div class="stat-label">Projetos liderados</div></div>
@@ -605,7 +607,7 @@
 <section class="cta-final">
   <div class="container">
     <h2>Pronto para descobrir quanto sua empresa pode economizar?</h2>
-    <p>Fale agora e agende seu Diagnóstico Energético Empresarial — risco zero, com garantia de resultado.</p>
+    <p>Fale agora e agende seu Diagnóstico Energético Empresarial, risco zero e com garantia de resultado.</p>
     <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
   </div>
 </section>
@@ -615,8 +617,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#top" class="logo">
-          <span class="mark">JS</span>
-          <span style="color:#fff;">JSE Energy Advisor</span>
+          <img src="images/logo-jse.png" alt="JSE Energy Advisor" class="logo-img">
         </a>
         <p>Diagnóstico Energético Empresarial para médias empresas.</p>
       </div>
@@ -651,7 +652,7 @@
     <button class="modal-close" onclick="closeLeadModal()" aria-label="Fechar">✕</button>
     <span class="eyebrow">Antes de conversarmos</span>
     <h3>Conta um pouco sobre sua empresa</h3>
-    <p class="modal-sub">Assim o Jussiê já entra na conversa com o contexto certo, e o atendimento é mais rápido.</p>
+    <p class="modal-sub">Assim entramos na conversa com o contexto certo, e o atendimento é mais rápido.</p>
  
     <form id="leadForm" onsubmit="submitLeadForm(event)">
       <div class="form-field">
@@ -687,7 +688,7 @@
       </div>
  
       <div class="qualify-warning" id="qualifyWarning">
-        O DEE é dimensionado para empresas com gasto energético mais alto, mas isso não te impede de falar com a gente — o diagnóstico ainda pode identificar oportunidades relevantes pro seu porte.
+        O DEE é dimensionado para empresas com gasto energético mais alto, mas isso não te impede de falar com a gente, o diagnóstico ainda pode identificar oportunidades relevantes pro seu porte.
       </div>
  
       <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida.</p>
