@@ -7,6 +7,15 @@
 <meta name="description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
 <link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
 
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EBNW40D5F9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EBNW40D5F9');
+</script>
+
 <!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)">
@@ -844,6 +853,12 @@
 function openLeadModal(){
   document.getElementById('leadModal').classList.add('active');
   document.body.style.overflow = 'hidden';
+  if(typeof gtag === 'function'){
+    gtag('event', 'cta_click', {
+      event_category: 'engagement',
+      event_label: 'Abertura do formulário de diagnóstico'
+    });
+  }
 }
 function closeLeadModal(){
   document.getElementById('leadModal').classList.remove('active');
@@ -919,6 +934,15 @@ function submitLeadForm(event){
   const mensagem = montarMensagemWhatsApp({ nome, empresa, segmento, gasto });
   const mensagemCodificada = encodeURIComponent(mensagem);
   const url = `https://wa.me/5511999483633?text=${mensagemCodificada}`;
+
+  if(typeof gtag === 'function'){
+    gtag('event', 'generate_lead', {
+      event_category: 'conversion',
+      event_label: 'Formulário de diagnóstico enviado',
+      segmento: segmento,
+      gasto: gasto
+    });
+  }
 
   window.open(url, '_blank', 'noopener');
   closeLeadModal();
