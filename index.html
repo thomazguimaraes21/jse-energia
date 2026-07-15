@@ -380,6 +380,34 @@
     .hero{padding:140px 0 70px;}
   }
 
+  /* ---------- BOTÃO FLUTUANTE DE WHATSAPP ---------- */
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;right:24px;
+    z-index:1500;
+    width:58px;height:58px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(37,211,102,.45);
+    transition:transform .2s ease, box-shadow .2s ease;
+    animation:whatsapp-pulse 2.4s infinite;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.08);
+    box-shadow:0 10px 28px rgba(37,211,102,.6);
+  }
+  .whatsapp-float svg{width:30px;height:30px;}
+  @keyframes whatsapp-pulse{
+    0%{box-shadow:0 6px 20px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,.5);}
+    70%{box-shadow:0 6px 20px rgba(37,211,102,.45), 0 0 0 14px rgba(37,211,102,0);}
+    100%{box-shadow:0 6px 20px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,0);}
+  }
+  @media(max-width:640px){
+    .whatsapp-float{bottom:18px;right:18px;width:52px;height:52px;}
+    .whatsapp-float svg{width:26px;height:26px;}
+  }
+
   /* ---------- MODAL DE PRÉ-QUALIFICAÇÃO ---------- */
   .modal-overlay{
     position:fixed;inset:0;z-index:2000;
@@ -753,7 +781,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 JSE Energy Advisor. Todos os direitos reservados.</span>
-      <span>Diagnóstico Energético Empresarial</span>
+      <span><a href="privacidade.html" style="color:rgba(255,255,255,.5);">Política de Privacidade</a> · Diagnóstico Energético Empresarial</span>
     </div>
   </div>
 </footer>
@@ -805,7 +833,7 @@
         <span class="field-error" id="errGasto">Campo obrigatório</span>
       </div>
 
-      <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida.</p>
+      <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato — veja nossa <a href="privacidade.html" target="_blank" style="color:var(--secondary);">Política de Privacidade</a>.</p>
       <button type="submit" class="btn btn-accent modal-submit">Falar com Especialista</button>
       <a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="modal-fallback">Prefere ir direto? Fale pelo WhatsApp</a>
     </form>
@@ -915,6 +943,10 @@ function toggleFaq(btn){
   }
 }
 </script>
+
+<a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.696 4.607 1.899 6.477L4 29l7.72-1.865A11.93 11.93 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm6.977 17.03c-.293.826-1.454 1.512-2.383 1.71-.634.134-1.462.24-4.248-.912-3.564-1.474-5.856-5.09-6.033-5.326-.177-.236-1.448-1.928-1.448-3.677s.914-2.61 1.24-2.966c.325-.356.71-.445.947-.445.236 0 .473.002.679.012.218.01.51-.083.797.607.293.708 1 2.44 1.088 2.617.088.177.147.384.03.62-.118.236-.177.384-.354.591-.177.207-.372.462-.531.62-.177.177-.362.368-.156.72.207.354.918 1.516 1.972 2.456 1.354 1.207 2.495 1.583 2.849 1.76.354.177.561.148.768-.09.207-.236.885-1.03 1.122-1.384.236-.354.472-.295.797-.177.325.118 2.056.97 2.41 1.147.354.177.59.265.679.413.088.148.088.856-.206 1.682z"/></svg>
+</a>
 
 </body>
 </html>
