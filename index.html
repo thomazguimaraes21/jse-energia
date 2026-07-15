@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)</title>
 <meta name="description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
-<link rel="icon" type="image/png" href="images/logo-jse.png">
+<link rel="icon" type="image/png" href="images/favicon-jse.png">
 
 <!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
 <meta property="og:type" content="website">
@@ -139,18 +139,32 @@
   .exemption-seal{
     margin-top:32px;
     display:inline-flex;align-items:center;gap:10px;
-    padding:10px 18px;
-    border:1px solid rgba(200,164,92,.4);
+    padding:11px 20px;
     border-radius:999px;
-    font-size:13px;font-weight:600;
-    color:var(--accent);
-    background:rgba(200,164,92,.06);
+    font-size:13px;font-weight:700;
+    color:var(--primary);
+    background:linear-gradient(135deg, #ddc088 0%, var(--accent) 55%, #b8934a 100%);
+    box-shadow:0 4px 14px rgba(200,164,92,.35), inset 0 1px 0 rgba(255,255,255,.35);
+    position:relative;overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+    cursor:default;
   }
+  .exemption-seal::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.55) 45%, transparent 60%);
+    transform:translateX(-120%);
+    transition:transform .6s ease;
+  }
+  .exemption-seal:hover::after{transform:translateX(120%);}
+  .exemption-seal:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(200,164,92,.5);}
+  .exemption-seal span:not(.check){position:relative;z-index:1;}
   .exemption-seal .check{
     width:18px;height:18px;border-radius:50%;
-    background:var(--accent);color:var(--primary);
+    background:var(--primary);color:var(--accent);
     display:flex;align-items:center;justify-content:center;
     font-size:11px;font-weight:800;flex:none;
+    position:relative;z-index:1;
   }
 
   .hero-photo{
@@ -201,34 +215,35 @@
     border-top:3px solid var(--accent-c, var(--accent));
     border-radius:10px;
     padding:26px 24px;
-    transition:transform .18s ease, box-shadow .18s ease;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .accent-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(13,43,66,.08);}
+  .accent-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(13,43,66,.1);}
   .accent-card .accent-icon{
     width:42px;height:42px;border-radius:9px;
     background:rgba(200,164,92,.12);
     display:flex;align-items:center;justify-content:center;
-    font-size:19px;margin-bottom:16px;
+    margin-bottom:16px;
+    transition:transform .25s ease, background .25s ease;
   }
+  .accent-card .accent-icon svg{width:21px;height:21px;color:var(--accent-c, var(--accent));transition:transform .25s ease;}
+  .accent-card:hover .accent-icon{transform:scale(1.08);}
+  .accent-card:hover .accent-icon svg{transform:rotate(-4deg);}
   .accent-card h3{font-size:16.5px;color:var(--primary);margin-bottom:9px;font-weight:700;}
   .accent-card p{color:var(--ink-soft);font-size:14px;}
   .accent-card .accent-link{
     display:block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--secondary);
   }
-  .accent-cards.dark{
-    background:var(--primary);
-    padding:6px;
-    border-radius:14px;
-  }
+  /* Variante escura: fundo da seção continua branco, só os cards ficam navy */
   .accent-cards.dark .accent-card{
-    background:rgba(255,255,255,.03);
+    background:var(--primary);
     border:1px solid rgba(255,255,255,.08);
     border-left:3px solid var(--accent-c, var(--accent));
     border-top:none;
   }
+  .accent-cards.dark .accent-card:hover{box-shadow:0 18px 36px rgba(13,43,66,.22);}
   .accent-cards.dark .accent-card h3{color:var(--white);}
   .accent-cards.dark .accent-card p{color:rgba(255,255,255,.65);}
-  .accent-cards.dark .accent-icon{background:rgba(200,164,92,.14);color:var(--accent);}
+  .accent-cards.dark .accent-icon{background:rgba(200,164,92,.14);}
   .highlight-box{
     background:var(--primary);color:var(--white);
     border-radius:14px;padding:38px 34px;
@@ -256,8 +271,15 @@
   @media(max-width:760px){.price-cards{grid-template-columns:1fr;}}
   .price-card{
     background:rgba(255,255,255,.04);
-    border:1px solid rgba(200,164,92,.25);
+    border:1px solid rgba(200,164,92,.4);
     border-radius:12px;padding:30px 28px;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+  }
+  .price-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(200,164,92,.85);
+    box-shadow:0 16px 36px rgba(200,164,92,.22);
+    background:rgba(255,255,255,.07);
   }
   .price-card .tag{
     display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;
@@ -268,24 +290,38 @@
   .price-card .price-value{font-size:24px;font-weight:800;color:var(--accent);margin:6px 0 10px;}
   .guarantee-strip{
     margin-top:24px;
-    background:rgba(26,107,75,.16);
-    border:1px solid rgba(26,107,75,.5);
+    background:linear-gradient(135deg, rgba(46,204,113,.18), rgba(26,107,75,.12));
+    border:1px solid rgba(46,204,113,.55);
     border-radius:12px;padding:26px 28px;
     display:flex;gap:18px;align-items:flex-start;
+    transition:box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .guarantee-strip:hover{
+    box-shadow:0 10px 30px rgba(46,204,113,.3);
+    border-color:rgba(46,204,113,.9);
+    transform:translateY(-3px);
   }
   .guarantee-strip .icon{
     flex:none;width:40px;height:40px;border-radius:10px;
-    background:var(--secondary);color:var(--white);
+    background:#2ECC71;color:var(--primary);
     display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;
+    box-shadow:0 0 18px rgba(46,204,113,.55);
   }
   .guarantee-strip h4{color:var(--white);font-size:16px;margin-bottom:6px;font-weight:700;}
   .guarantee-strip p{color:rgba(255,255,255,.78);font-size:14.5px;}
   .exemption-strip{
     margin-top:16px;
-    border:1px dashed rgba(200,164,92,.4);
+    border:1px solid rgba(200,164,92,.55);
     border-radius:12px;padding:22px 26px;
-    color:rgba(255,255,255,.8);
+    color:rgba(255,255,255,.85);
     font-size:14.5px;
+    background:rgba(200,164,92,.07);
+    transition:box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .exemption-strip:hover{
+    box-shadow:0 10px 30px rgba(200,164,92,.28);
+    border-color:rgba(200,164,92,.95);
+    transform:translateY(-3px);
   }
   .exemption-strip strong{color:var(--accent);}
 
@@ -478,7 +514,7 @@
       </div>
       <div class="exemption-seal">
         <span class="check">✓</span>
-        Consultoria isenta, sem vínculo com fornecedores ou fabricantes
+        <span>Consultoria isenta, sem vínculo com fornecedores ou fabricantes</span>
       </div>
     </div>
     <div class="hero-photo">
@@ -498,17 +534,17 @@
 
     <div class="accent-cards dark" style="margin-bottom:32px;">
       <div class="accent-card" style="--accent-c:#C8A45C;">
-        <div class="accent-icon">⚡</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v3"/><path d="M12 12l5-5"/><path d="M18 3l1.5 1.5"/></svg></div>
         <h3>Demanda contratada superdimensionada</h3>
         <p>Sua empresa paga por uma capacidade de energia que não usa.</p>
       </div>
       <div class="accent-card" style="--accent-c:#1A6B4B;">
-        <div class="accent-icon">📉</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
         <h3>Multas por baixo fator de potência</h3>
         <p>Cobranças recorrentes que passam despercebidas na fatura.</p>
       </div>
       <div class="accent-card" style="--accent-c:#C8A45C;">
-        <div class="accent-icon">📄</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></div>
         <h3>Enquadramento tarifário incorreto</h3>
         <p>Sua empresa pode estar no grupo ou modalidade tarifária errada.</p>
       </div>
@@ -531,25 +567,25 @@
     </div>
     <div class="accent-cards cols-4">
       <div class="accent-card" style="--accent-c:#C8A45C;">
-        <div class="accent-icon">📋</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
         <h3>Etapa 01 — Coleta</h3>
         <p>Envio de 12 faturas, Cartão CNPJ e dados operacionais.</p>
         <span class="accent-link">→ Processo 100% online</span>
       </div>
       <div class="accent-card" style="--accent-c:#1A6B4B;">
-        <div class="accent-icon">🔎</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3>Etapa 02 — Análise técnica</h3>
         <p>Cruzamento de dados para mapear o perfil de consumo e contratos.</p>
         <span class="accent-link">→ Inteligência analítica aplicada</span>
       </div>
       <div class="accent-card" style="--accent-c:#C8A45C;">
-        <div class="accent-icon">🧭</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
         <h3>Etapa 03 — Diagnóstico</h3>
         <p>Identificação de cada vazamento financeiro.</p>
         <span class="accent-link">→ Cálculo exato de impacto</span>
       </div>
       <div class="accent-card" style="--accent-c:#1A6B4B;">
-        <div class="accent-icon">📈</div>
+        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
         <h3>Etapa 04 — Plano de ação</h3>
         <p>Relatório executivo com recomendações e ROI projetado.</p>
         <span class="accent-link">→ Próximos passos claros</span>
