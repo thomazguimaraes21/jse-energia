@@ -795,9 +795,24 @@ const TEXTOS_VARIAVEIS = {
   'Não sei informar': 'gostaria de ajuda para entender melhor nosso consumo e oportunidades.'
 };
 
+// Versão do texto do gasto ajustada para encaixar no meio da frase (minúscula quando começa com palavra, não com "R$")
+const GASTO_MEIO_FRASE = {
+  'Até R$ 5.000': 'até R$ 5.000',
+  'R$ 5.000 a R$ 15.000': 'R$ 5.000 a R$ 15.000',
+  'R$ 15.000 a R$ 50.000': 'R$ 15.000 a R$ 50.000',
+  'Acima de R$ 50.000': 'acima de R$ 50.000',
+  'Não sei informar': 'não sei informar'
+};
+
 function montarMensagemWhatsApp(dados){
   const textoVariavel = TEXTOS_VARIAVEIS[dados.gasto] || 'gostaria de saber mais sobre o Diagnóstico Energético Empresarial.';
-  return `Olá Jussiê! 👋 Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa}, segmento de ${dados.segmento}. Nosso gasto médio mensal com energia é ${dados.gasto} e ${textoVariavel}`;
+  const gastoMeioFrase = GASTO_MEIO_FRASE[dados.gasto] || dados.gasto;
+
+  const fraseGasto = dados.gasto === 'Não sei informar'
+    ? 'Ainda não sei precisar nosso gasto médio mensal com energia'
+    : `Nosso gasto médio mensal com energia está na faixa de ${gastoMeioFrase}`;
+
+  return `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa}, segmento de ${dados.segmento}. ${fraseGasto} e ${textoVariavel}`;
 }
 
 function setFieldError(inputEl, errEl, hasError){
