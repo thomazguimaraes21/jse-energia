@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)</title>
-<meta name="description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
+<title>JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)</title>
+<meta name="description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
 <link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
 
 <!-- Google Analytics (GA4) -->
@@ -18,17 +18,17 @@
 
 <!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)">
-<meta property="og:description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz. Diagnóstico isento, com garantia de resultado.">
+<meta property="og:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
+<meta property="og:description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico isento, com garantia de resultado.">
 <meta property="og:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <meta property="og:url" content="https://thomazguimaraes21.github.io/jse-energia/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="JSE Energy Advisor — Diagnóstico Energético Empresarial (DEE)">
-<meta name="twitter:description" content="Descubra se sua empresa está pagando até R$ 8.000/mês a mais na conta de luz.">
+<meta name="twitter:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
+<meta name="twitter:description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades.">
 <meta name="twitter:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --primary:#0D2B42;
@@ -214,15 +214,15 @@
   }
   .accent-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(13,43,66,.1);}
   .accent-card .accent-icon{
-    width:42px;height:42px;border-radius:9px;
-    background:rgba(200,164,92,.12);
+    width:40px;height:40px;border-radius:50%;
+    background:none;
+    border:1.5px solid rgba(200,164,92,.45);
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:16px;
-    transition:transform .25s ease, background .25s ease;
+    margin-bottom:18px;
+    transition:border-color .25s ease;
   }
-  .accent-card .accent-icon svg{width:21px;height:21px;color:var(--accent-c, var(--accent));transition:transform .25s ease;}
-  .accent-card:hover .accent-icon{transform:scale(1.08);}
-  .accent-card:hover .accent-icon svg{transform:rotate(-4deg);}
+  .accent-card .accent-icon svg{width:18px;height:18px;color:var(--accent);}
+  .accent-card:hover .accent-icon{border-color:var(--accent);}
   .accent-card h3{font-size:16.5px;color:var(--primary);margin-bottom:9px;font-weight:700;}
   .accent-card p{color:var(--ink-soft);font-size:14px;}
   .accent-card .accent-link{
@@ -238,7 +238,7 @@
   .accent-cards.dark .accent-card:hover{box-shadow:0 18px 36px rgba(13,43,66,.22);}
   .accent-cards.dark .accent-card h3{color:var(--white);}
   .accent-cards.dark .accent-card p{color:rgba(255,255,255,.65);}
-  .accent-cards.dark .accent-icon{background:rgba(200,164,92,.18);}
+  .accent-cards.dark .accent-icon{border-color:rgba(200,164,92,.4);}
   .accent-cards.dark .accent-icon svg{color:#e0b96c;}
   .highlight-box{
     background:var(--primary);color:var(--white);
@@ -251,6 +251,20 @@
     font-size:clamp(30px,3.4vw,40px);color:var(--accent);line-height:1.1;
   }
   .highlight-box p{margin-top:14px;color:rgba(255,255,255,.8);font-size:15px;}
+  .highlight-box--glow{
+    position:relative;
+    border:1px solid transparent;
+    background:
+      linear-gradient(160deg, var(--primary-light), var(--primary) 70%) padding-box,
+      linear-gradient(135deg, #ddc088 0%, var(--accent) 40%, #e8c988 60%, var(--accent) 85%, #b8934a 100%) border-box;
+    box-shadow:0 0 0 1px rgba(200,164,92,.12), 0 22px 48px rgba(200,164,92,.2), 0 10px 30px rgba(0,0,0,.28);
+    transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .highlight-box--glow:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 0 1px rgba(200,164,92,.35), 0 28px 64px rgba(200,164,92,.35), 0 12px 34px rgba(0,0,0,.32);
+  }
+  .highlight-box--glow p{color:rgba(255,255,255,.94);}
 
   /* ---------- ETAPAS DEE ---------- */
   .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #e4e0d8;}
@@ -321,10 +335,72 @@
   }
   .exemption-strip strong{color:var(--accent);}
 
+  /* ---------- COMPARATIVO DE CUSTO (HEADCOUNT VS JSE) ---------- */
+  .cost-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+  @media(max-width:760px){.cost-compare{grid-template-columns:1fr;}}
+  .cost-card{border-radius:14px;padding:32px 28px;border:1px solid #e9e5dc;background:var(--white);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .cost-card .tag{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
+  .cost-card .cost-value{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.1;margin-bottom:12px;}
+  .cost-card .cost-value span{font-size:15px;font-weight:600;color:var(--ink-soft);}
+  .cost-card p{color:var(--ink-soft);font-size:14.5px;}
+  .cost-card--out{border-top:4px solid #E4483D;}
+  .cost-card--out .tag{color:#C0392B;}
+  .cost-card--out .cost-value{color:#C0392B;}
+  .cost-card--out:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(228,72,61,.28);border-color:rgba(228,72,61,.4);}
+  .cost-card--in{border-top:4px solid #2ECC71;box-shadow:0 16px 40px rgba(13,43,66,.08);}
+  .cost-card--in .tag{color:#1E9E58;}
+  .cost-card--in .cost-value{color:#1E9E58;}
+  .cost-card--in:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(46,204,113,.32);border-color:rgba(46,204,113,.4);}
+  .cost-vs{font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--ink-soft);text-align:center;}
+
+  /* ---------- PLANOS MENSAIS (estilo executivo, referência do cliente) ---------- */
+  .plans-header{text-align:center;margin-bottom:52px;}
+  .plans-kicker{display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:20px;}
+  .plans-kicker::before,.plans-kicker::after{content:"";flex:1;max-width:220px;height:1px;background:rgba(200,164,92,.5);}
+  .plans-kicker span{font-family:'Playfair Display',serif;font-weight:700;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--primary);white-space:nowrap;}
+  .plans-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.6vw,44px);color:var(--primary);line-height:1.22;}
+  .plans-subtitle{margin-top:10px;font-family:'Inter',sans-serif;font-size:16px;color:var(--ink-soft);}
+  .plans-divider{display:flex;align-items:center;gap:16px;justify-content:center;max-width:320px;margin:24px auto 0;color:var(--accent);font-size:12px;}
+  .plans-divider::before,.plans-divider::after{content:"";flex:1;height:1px;background:rgba(200,164,92,.4);}
+  .plans-divider.small{max-width:200px;font-size:10px;margin:16px auto;}
+
+  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start;padding-top:16px;}
+  @media(max-width:900px){.plans-grid{grid-template-columns:1fr;}}
+  .plan-card{position:relative;background:linear-gradient(180deg,#ffffff,#fbfaf7);border:1px solid #e9e5dc;border-radius:16px;text-align:center;transition:transform .2s ease, box-shadow .2s ease;}
+  .plan-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(13,43,66,.1);}
+  .plan-card--featured{border:2px solid var(--accent);box-shadow:0 20px 44px rgba(200,164,92,.22);}
+  .plan-card-head{background:var(--primary);padding:22px 20px;border-radius:14px 14px 0 0;}
+  .plan-card-head span{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:var(--white);}
+  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);z-index:3;background:linear-gradient(135deg,#ddc088,var(--accent) 55%,#b8934a);color:var(--primary);font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:7px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 14px rgba(200,164,92,.4);}
+  .plan-body{padding:30px 28px 34px;}
+  .plan-price{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(30px,3vw,38px);color:var(--accent);}
+  .plan-price span{font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:var(--ink-soft);margin-left:4px;}
+  .plan-desc{font-family:'Playfair Display',serif;font-weight:600;font-size:14.5px;color:var(--primary);margin:6px 0 22px;}
+  .plan-features{text-align:left;}
+  .plan-features li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-soft);}
+  .plan-check{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;margin-top:2px;}
+  .plans-footer{margin-top:44px;text-align:center;}
+  .plans-footnote{font-family:'Inter',sans-serif;font-weight:600;color:var(--accent);font-size:13.5px;max-width:760px;margin:0 auto;line-height:1.6;}
+
+  /* ---------- CASOS DE SUCESSO ---------- */
+  .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:760px){.cases-grid{grid-template-columns:1fr;}}
+  .case-card{background:var(--bg-alt);border:1px solid #e4e0d8;border-radius:14px;padding:30px 28px;}
+  .case-tag{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--primary);margin-bottom:18px;}
+  .case-stat-row{display:flex;gap:32px;margin-bottom:20px;}
+  .case-stat-num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;color:var(--accent);}
+  .case-stat-label{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+  .case-findings{margin-bottom:20px;}
+  .case-findings li{font-size:14px;color:var(--ink-soft);padding:6px 0;border-top:1px solid #e4e0d8;}
+  .case-footer{display:flex;gap:20px;font-size:13px;font-weight:700;color:var(--secondary);}
+  .case-card--placeholder{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:var(--white);border-style:dashed;}
+  .case-placeholder-text{color:var(--ink-soft);font-size:14.5px;}
+
   /* ---------- SEGMENTOS ---------- */
   .segments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e4e0d8;border:1px solid #e4e0d8;}
   @media(max-width:700px){.segments-grid{grid-template-columns:repeat(2,1fr);}}
   .segment{background:var(--white);padding:34px 20px;text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:var(--primary);transition:background .2s;}
+  .segment--wide{grid-column:1 / -1;}
   .segment:hover{background:var(--bg-alt);}
 
   /* ---------- AUTORIDADE ---------- */
@@ -503,6 +579,18 @@
     font-size:13.5px;color:var(--danger);
   }
   .qualify-warning.active{display:block;}
+  /* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
+  .clients-strip{background:var(--white);padding:30px 0;border-bottom:1px solid #e9e5dc;}
+  .clients-strip .container{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .clients-label{flex:none;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
+  .clients-track{display:flex;flex-wrap:wrap;align-items:center;gap:26px;flex:1;}
+  .clients-track img{height:32px;width:auto;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
+  .clients-track img:hover{filter:grayscale(0);opacity:1;transform:scale(1.06);}
+  @media(max-width:700px){
+    .clients-strip .container{flex-direction:column;align-items:flex-start;gap:14px;}
+    .clients-track{gap:20px;}
+  }
+
   .accent-cards.cols-4{grid-template-columns:repeat(4,1fr);}
   @media(max-width:900px){.accent-cards.cols-4{grid-template-columns:1fr 1fr;}}
   @media(max-width:560px){.accent-cards.cols-4{grid-template-columns:1fr;}}
@@ -519,6 +607,7 @@
       <a href="#problema">O problema</a>
       <a href="#dee">O que é o DEE</a>
       <a href="#parceria">Investimento</a>
+      <a href="#planos">Planos</a>
       <a href="#faq">FAQ</a>
     </nav>
     <button class="btn btn-accent nav-cta" onclick="openLeadModal()">Quero meu Diagnóstico</button>
@@ -530,8 +619,8 @@
   <div class="container hero-grid">
     <div>
       <span class="eyebrow">Diagnóstico Energético Empresarial</span>
-      <h1>Descubra se sua empresa está pagando até <span>R$ 8.000/mês</span> a mais na conta de luz</h1>
-      <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro, sem venda de equipamentos ou contratos de energia.</p>
+      <h1>Descubra se sua empresa pode estar pagando de <span>R$ 3.000 a R$ 8.000/mês</span> a mais nas contas de energia de suas unidades</h1>
+      <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro para suas unidades/plantas, sem venda de equipamentos ou contratos de energia.</p>
       <div class="hero-actions">
         <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
         <a class="btn btn-outline" href="#dee">Como funciona</a>
@@ -547,27 +636,89 @@
   </div>
 </section>
 
+<!-- CLIENTES ATENDIDOS -->
+<div class="clients-strip">
+  <div class="container">
+    <span class="clients-label">Clientes Atendidos</span>
+    <div class="clients-track">
+      <img src="images/clientes/eurofarma.png" alt="Eurofarma" loading="lazy">
+      <img src="images/clientes/uniao-quimica.png" alt="União Química" loading="lazy">
+      <img src="images/clientes/pfizer.png" alt="Pfizer" loading="lazy">
+      <img src="images/clientes/astrazeneca.png" alt="AstraZeneca" loading="lazy">
+      <img src="images/clientes/ipiranga.png" alt="Ipiranga" loading="lazy">
+      <img src="images/clientes/raizen.png" alt="Raízen" loading="lazy">
+      <img src="images/clientes/hospital-albert-einstein.png" alt="Hospital Israelita Albert Einstein" loading="lazy">
+      <img src="images/clientes/geolab.png" alt="Geolab" loading="lazy">
+      <img src="images/clientes/objetivo.png" alt="Objetivo" loading="lazy">
+      <img src="images/clientes/deca.png" alt="Deca" loading="lazy">
+      <img src="images/clientes/lenco.png" alt="Lenco" loading="lazy">
+      <img src="images/clientes/honeywell.png" alt="Honeywell" loading="lazy">
+      <img src="images/clientes/neocom-system.png" alt="Neocom System" loading="lazy">
+      <img src="images/clientes/tower-automotive.png" alt="Tower Automotive" loading="lazy">
+      <img src="images/clientes/au-placeholder.png" alt="Cliente JSE" loading="lazy">
+      <img src="images/clientes/b-circular-placeholder.png" alt="Cliente JSE" loading="lazy">
+      <img src="images/clientes/hospital-neurocenter.png" alt="Hospital Neurocenter" loading="lazy">
+      <img src="images/clientes/plasticos-jurema.png" alt="Plásticos Jurema" loading="lazy">
+      <img src="images/clientes/torque-automotive.png" alt="Torque Automotive" loading="lazy">
+      <img src="images/clientes/camara-barueri.png" alt="Câmara Municipal de Barueri" loading="lazy">
+      <img src="images/clientes/transjoi.png" alt="Trans Joi" loading="lazy">
+      <img src="images/clientes/phs.png" alt="PHS" loading="lazy">
+      <img src="images/clientes/edp.png" alt="EDP" loading="lazy">
+      <img src="images/clientes/wheaton-brasil.png" alt="Wheaton Brasil" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- O CUSTO DA INÉRCIA -->
+<section class="section-alt" id="custo-inercia">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Custo de oportunidade</span>
+      <h2>Energia sem gestão técnica é dinheiro saindo pela porta de suas unidades</h2>
+      <p>Um engenheiro de eficiência energética custa entre R$ 17 mil e R$ 20 mil por mês na sua folha de pagamento, considerando salário, encargos e benefícios. Mesmo contratado, este profissional dificilmente possui o tempo e as ferramentas necessárias para analisar todas as faturas e oportunidades com a profundidade exigida. A JSE Energy Advisor entrega esta mesma inteligência analítica por uma fração deste custo, sem encargos trabalhistas e com o respaldo de mais de 20 anos de experiência técnica.</p>
+    </div>
+
+    <div class="cost-compare">
+      <div class="cost-card cost-card--out">
+        <span class="tag">Engenheiro interno</span>
+        <div class="cost-value">R$ 17 a 20 mil<span>/mês</span></div>
+        <p>Salário, encargos e benefícios de um profissional dedicado, sem garantia de tempo disponível para análise aprofundada.</p>
+      </div>
+      <div class="cost-vs">vs</div>
+      <div class="cost-card cost-card--in">
+        <span class="tag">Inteligência JSE</span>
+        <div class="cost-value">R$ 1.500 a 4.000<span>/mês</span></div>
+        <p>Mesma profundidade técnica, sem encargos trabalhistas, com 20+ anos de experiência aplicados à sua operação.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box highlight-box--glow" style="margin-top:40px;">
+      <p>Para grupos com múltiplas unidades, o comparativo é ainda mais forte: um único gestor de energia interno cobre uma operação, enquanto o pacote JSE pode cobrir várias unidades na mesma faixa ou abaixo.</p>
+    </div>
+  </div>
+</section>
+
 <!-- O PROBLEMA -->
 <section id="problema">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">O problema</span>
       <h2>Sua empresa pode estar perdendo dinheiro sem saber</h2>
-      <p>Médias empresas que gastam acima de <strong style="color:var(--primary);">R$ 5.000/mês</strong> em energia, frequentemente pagam multas e tarifas desnecessárias por falta de gestão técnica.</p>
+      <p>Médias empresas que gastam acima de <strong style="color:var(--primary);">R$ 10.000/mês</strong> em energia, frequentemente pagam multas e tarifas desnecessárias por falta de gestão técnica.</p>
     </div>
 
     <div class="accent-cards dark" style="margin-bottom:32px;">
-      <div class="accent-card" style="--accent-c:#C8A45C;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v3"/><path d="M12 12l5-5"/><path d="M18 3l1.5 1.5"/></svg></div>
         <h3>Demanda contratada superdimensionada</h3>
         <p>Sua empresa paga por uma capacidade de energia que não usa.</p>
       </div>
-      <div class="accent-card" style="--accent-c:#1A6B4B;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
         <h3>Multas por baixo fator de potência</h3>
         <p>Cobranças recorrentes que passam despercebidas na fatura.</p>
       </div>
-      <div class="accent-card" style="--accent-c:#C8A45C;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></div>
         <h3>Enquadramento tarifário incorreto</h3>
         <p>Sua empresa pode estar no grupo ou modalidade tarifária errada.</p>
@@ -590,27 +741,27 @@
       <p>Um processo consultivo em 4 etapas, baseado em dados reais da sua operação, 100% online e sem necessidade de visitas ou instalação de equipamentos.</p>
     </div>
     <div class="accent-cards cols-4">
-      <div class="accent-card" style="--accent-c:#C8A45C;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
-        <h3>Etapa 01 — Coleta</h3>
+        <h3>Etapa 01: Coleta</h3>
         <p>Envio de 12 faturas, Cartão CNPJ e dados operacionais.</p>
         <span class="accent-link">→ Processo 100% online</span>
       </div>
-      <div class="accent-card" style="--accent-c:#1A6B4B;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-        <h3>Etapa 02 — Análise técnica</h3>
+        <h3>Etapa 02: Análise técnica</h3>
         <p>Cruzamento de dados para mapear o perfil de consumo e contratos.</p>
         <span class="accent-link">→ Inteligência analítica aplicada</span>
       </div>
-      <div class="accent-card" style="--accent-c:#C8A45C;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
-        <h3>Etapa 03 — Diagnóstico</h3>
+        <h3>Etapa 03: Diagnóstico</h3>
         <p>Identificação de cada vazamento financeiro.</p>
         <span class="accent-link">→ Cálculo exato de impacto</span>
       </div>
-      <div class="accent-card" style="--accent-c:#1A6B4B;">
+      <div class="accent-card">
         <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-        <h3>Etapa 04 — Plano de ação</h3>
+        <h3>Etapa 04: Plano de ação</h3>
         <p>Relatório executivo com recomendações e ROI projetado.</p>
         <span class="accent-link">→ Próximos passos claros</span>
       </div>
@@ -632,7 +783,7 @@
         <span class="tag">Setup Fee</span>
         <h3>Investimento no diagnóstico</h3>
         <div class="price-value">R$ 6.000</div>
-        <p>Parcelado em 2x, 50% no início do processo e 50% na entrega do relatório executivo.</p>
+        <p>À vista (valor integral), ou parcelado em até 12x no cartão de crédito com os juros da operadora.</p>
       </div>
       <div class="price-card">
         <span class="tag">Success Fee</span>
@@ -656,12 +807,116 @@
   </div>
 </section>
 
+<!-- SISTEMA OPERACIONAL DE INTELIGÊNCIA ENERGÉTICA -->
+<section class="section-alt" id="planos">
+  <div class="container">
+    <div class="plans-header">
+      <div class="plans-kicker"><span>JSE Energy Advisor</span></div>
+      <h2 class="plans-title">Depois do diagnóstico, uma operação contínua de inteligência energética</h2>
+      <p class="plans-subtitle">O DEE é o ponto de partida. A partir dele, sua empresa conta com o sistema mensal que monitora a energia de suas unidades/plantas, identifica desvios e apoia decisões estratégicas.</p>
+      <div class="plans-divider">◆</div>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-card-head"><span>Monitoramento</span></div>
+        <div class="plan-body">
+          <div class="plan-price">R$ 1.500<span>/mês</span></div>
+          <div class="plans-divider small">◆</div>
+          <p class="plan-desc">A fotografia mensal da sua energia</p>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span>Scorecard Executivo Mensal</li>
+            <li><span class="plan-check">✓</span>Coleta automatizada de dados</li>
+            <li><span class="plan-check">✓</span>Alertas de anomalia (multas e fator de potência)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card plan-card--featured">
+        <span class="plan-badge">★ Mais Escolhido</span>
+        <div class="plan-card-head"><span>Gestão</span></div>
+        <div class="plan-body">
+          <div class="plan-price">R$ 2.500<span>/mês</span></div>
+          <div class="plans-divider small">◆</div>
+          <p class="plan-desc">Curadoria e recomendações táticas</p>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span>Tudo do Monitoramento, mais:</li>
+            <li><span class="plan-check">✓</span>Insights e recomendações mensais</li>
+            <li><span class="plan-check">✓</span>Análise de conformidade regulatória</li>
+            <li><span class="plan-check">✓</span>Reunião trimestral de acompanhamento</li>
+            <li><span class="plan-check">✓</span>Suporte prioritário via WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-head"><span>Consultoria</span></div>
+        <div class="plan-body">
+          <div class="plan-price">R$ 4.000<span>/mês</span></div>
+          <div class="plans-divider small">◆</div>
+          <p class="plan-desc">Consultoria dedicada com o C-Level</p>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span>Tudo da Gestão, mais:</li>
+            <li><span class="plan-check">✓</span>Consultor dedicado: 30 minutos por mês</li>
+            <li><span class="plan-check">✓</span>Acompanhamento de implementação</li>
+            <li><span class="plan-check">✓</span>Viabilidade completa de projetos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="plans-footer">
+      <div class="plans-divider small">◆</div>
+      <p class="plans-footnote">Todos os planos incluem o Diagnóstico Energético Empresarial (DEE) como etapa de entrada: R$ 6.000 à vista ou parcelado em até 12x no cartão. Inteligência energética sênior por uma fração do custo de um engenheiro interno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS REAIS DE SUCESSO -->
+<section id="cases">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Resultados reais</span>
+      <h2>Casos reais de sucesso</h2>
+      <p>Diagnósticos que já geraram economia comprovada, com CAPEX zero e payback rápido.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <span class="case-tag">Case Bortech</span>
+        <div class="case-stat-row">
+          <div>
+            <div class="case-stat-num">R$ 333 mil</div>
+            <div class="case-stat-label">Custo anual de energia</div>
+          </div>
+          <div>
+            <div class="case-stat-num">13,7%</div>
+            <div class="case-stat-label">Economia identificada</div>
+          </div>
+        </div>
+        <ul class="case-findings">
+          <li>Multas por fator de potência: R$ 16.800/ano</li>
+          <li>Demanda contratada superdimensionada: R$ 28.800/ano</li>
+        </ul>
+        <div class="case-footer">
+          <span>CAPEX zero</span>
+          <span>Payback inferior a 6 meses</span>
+        </div>
+      </div>
+
+      <div class="case-card case-card--placeholder">
+        <span class="case-tag">Case Plásticos Jurema</span>
+        <div class="case-placeholder-text">Diagnóstico em andamento. Resultados em breve.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PARA QUEM É -->
 <section>
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">Público-alvo</span>
-      <h2>Ideal para médias empresas que gastam acima de R$ 5.000/mês em energia</h2>
+      <h2>Ideal para médias empresas, redes e grupos com múltiplas unidades que gastam acima de R$&nbsp;10.000/mês em energia</h2>
     </div>
     <div class="segments-grid">
       <div class="segment">Indústrias</div>
@@ -670,6 +925,7 @@
       <div class="segment">Hotéis</div>
       <div class="segment">Postos de Combustíveis</div>
       <div class="segment">Construtoras</div>
+      <div class="segment segment--wide">Redes e Grupos com Múltiplas Unidades</div>
     </div>
   </div>
 </section>
@@ -709,7 +965,7 @@
           <span class="icon">+</span>
         </button>
         <div class="faq-a" style="max-height:200px;">
-          <p>O investimento é de R$ 6.000, em 2 parcelas. O success fee de 30% só ocorre sobre a economia real identificada na fatura de energia.</p>
+          <p>O investimento é de R$ 6.000 à vista, ou parcelado em até 12x no cartão de crédito com os juros da operadora. O success fee de 30% só ocorre sobre a economia real identificada na fatura de energia.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -748,6 +1004,33 @@
           <p>Não. Somos consultores independentes. Nossa recomendação é técnica e isenta, sem vínculo com fornecedores ou fabricantes.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          E depois do DEE, o que acontece?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Após o diagnóstico, a empresa pode optar por um plano mensal para manter o monitoramento contínuo e suporte especializado.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Como funciona o pagamento do DEE?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Valor de R$ 6.000 à vista, ou em até 12x no cartão de crédito com os juros da operadora.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Posso contratar só o DEE?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Sim, o diagnóstico pode ser contratado de forma isolada, sendo os planos mensais uma evolução natural para a gestão contínua.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -757,7 +1040,10 @@
   <div class="container">
     <h2>Pronto para descobrir quanto sua empresa pode economizar?</h2>
     <p>Fale agora e agende seu Diagnóstico Energético Empresarial, risco zero e com garantia de resultado.</p>
-    <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
+      <a class="btn btn-outline" href="#planos">Conhecer os planos mensais</a>
+    </div>
   </div>
 </section>
 
@@ -776,6 +1062,7 @@
           <li><a href="#problema">O problema</a></li>
           <li><a href="#dee">O que é o DEE</a></li>
           <li><a href="#parceria">Investimento</a></li>
+          <li><a href="#planos">Planos</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -833,16 +1120,28 @@
         <label for="leadGasto">Gasto médio mensal com energia</label>
         <select id="leadGasto">
           <option value="" selected>Selecione</option>
-          <option value="Até R$ 5.000">Até R$ 5.000</option>
-          <option value="R$ 5.000 a R$ 15.000">R$ 5.000 a R$ 15.000</option>
-          <option value="R$ 15.000 a R$ 50.000">R$ 15.000 a R$ 50.000</option>
+          <option value="Até R$ 10.000">Até R$ 10.000</option>
+          <option value="R$ 10.000 a R$ 25.000">R$ 10.000 a R$ 25.000</option>
+          <option value="R$ 25.000 a R$ 50.000">R$ 25.000 a R$ 50.000</option>
           <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
           <option value="Não sei informar">Não sei informar</option>
         </select>
         <span class="field-error" id="errGasto">Campo obrigatório</span>
       </div>
+      <div class="form-field">
+        <label for="leadUnidades">Quantas unidades/plantas?</label>
+        <select id="leadUnidades">
+          <option value="" selected>Selecione</option>
+          <option value="1 unidade">1 unidade</option>
+          <option value="2 a 5 unidades">2 a 5 unidades</option>
+          <option value="6 a 15 unidades">6 a 15 unidades</option>
+          <option value="Acima de 15 unidades">Acima de 15 unidades</option>
+        </select>
+        <span class="field-error" id="errUnidades">Campo obrigatório</span>
+      </div>
+      <p class="form-note" style="margin-top:-10px;">Se sua empresa tem mais de uma unidade, informe o gasto consolidado do grupo ou só da unidade principal. Ajustamos a conversa a partir disso.</p>
 
-      <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato — veja nossa <a href="privacidade.html" target="_blank" style="color:var(--secondary);">Política de Privacidade</a>.</p>
+      <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato. Veja nossa <a href="privacidade.html" target="_blank" style="color:var(--secondary);">Política de Privacidade</a>.</p>
       <button type="submit" class="btn btn-accent modal-submit">Falar com Especialista</button>
       <a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="modal-fallback">Prefere ir direto? Fale pelo WhatsApp</a>
     </form>
@@ -870,18 +1169,18 @@ document.getElementById('leadModal').addEventListener('click', function(e){
 
 // Tabela de variação do texto final, conforme especificação técnica
 const TEXTOS_VARIAVEIS = {
-  'Até R$ 5.000': 'gostaria de saber se o DEE faz sentido para o nosso porte.',
-  'R$ 5.000 a R$ 15.000': 'tenho interesse em entender onde estamos perdendo dinheiro.',
-  'R$ 15.000 a R$ 50.000': 'queremos otimizar nossos custos. Já desconfiamos que há espaço para economia significativa.',
+  'Até R$ 10.000': 'gostaria de saber se o DEE faz sentido para o nosso porte.',
+  'R$ 10.000 a R$ 25.000': 'tenho interesse em entender onde estamos perdendo dinheiro.',
+  'R$ 25.000 a R$ 50.000': 'queremos otimizar nossos custos. Já desconfiamos que há espaço para economia significativa.',
   'Acima de R$ 50.000': 'estamos avaliando um projeto estrutural de eficiência energética para reduzir custos.',
   'Não sei informar': 'gostaria de ajuda para entender melhor nosso consumo e oportunidades.'
 };
 
 // Versão do texto do gasto ajustada para encaixar no meio da frase (minúscula quando começa com palavra, não com "R$")
 const GASTO_MEIO_FRASE = {
-  'Até R$ 5.000': 'até R$ 5.000',
-  'R$ 5.000 a R$ 15.000': 'R$ 5.000 a R$ 15.000',
-  'R$ 15.000 a R$ 50.000': 'R$ 15.000 a R$ 50.000',
+  'Até R$ 10.000': 'até R$ 10.000',
+  'R$ 10.000 a R$ 25.000': 'R$ 10.000 a R$ 25.000',
+  'R$ 25.000 a R$ 50.000': 'R$ 25.000 a R$ 50.000',
   'Acima de R$ 50.000': 'acima de R$ 50.000',
   'Não sei informar': 'não sei informar'
 };
@@ -894,7 +1193,7 @@ function montarMensagemWhatsApp(dados){
     ? 'Ainda não sei precisar nosso gasto médio mensal com energia'
     : `Nosso gasto médio mensal com energia está na faixa de ${gastoMeioFrase}`;
 
-  return `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa}, segmento de ${dados.segmento}. ${fraseGasto} e ${textoVariavel}`;
+  return `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa} (${dados.unidades}), segmento de ${dados.segmento}. ${fraseGasto} e ${textoVariavel}`;
 }
 
 function setFieldError(inputEl, errEl, hasError){
@@ -909,11 +1208,13 @@ function submitLeadForm(event){
   const empresaEl = document.getElementById('leadEmpresa');
   const segmentoEl = document.getElementById('leadSegmento');
   const gastoEl = document.getElementById('leadGasto');
+  const unidadesEl = document.getElementById('leadUnidades');
 
   const nome = nomeEl.value.trim();
   const empresa = empresaEl.value.trim();
   const segmento = segmentoEl.value;
   const gasto = gastoEl.value;
+  const unidades = unidadesEl.value;
 
   let valido = true;
 
@@ -929,9 +1230,12 @@ function submitLeadForm(event){
   if(!gasto){ setFieldError(gastoEl, document.getElementById('errGasto'), true); valido = false; }
   else setFieldError(gastoEl, document.getElementById('errGasto'), false);
 
+  if(!unidades){ setFieldError(unidadesEl, document.getElementById('errUnidades'), true); valido = false; }
+  else setFieldError(unidadesEl, document.getElementById('errUnidades'), false);
+
   if(!valido) return;
 
-  const mensagem = montarMensagemWhatsApp({ nome, empresa, segmento, gasto });
+  const mensagem = montarMensagemWhatsApp({ nome, empresa, segmento, gasto, unidades });
   const mensagemCodificada = encodeURIComponent(mensagem);
   const url = `https://wa.me/5511999483633?text=${mensagemCodificada}`;
 
@@ -940,7 +1244,8 @@ function submitLeadForm(event){
       event_category: 'conversion',
       event_label: 'Formulário de diagnóstico enviado',
       segmento: segmento,
-      gasto: gasto
+      gasto: gasto,
+      unidades: unidades
     });
   }
 
