@@ -581,25 +581,41 @@
   }
   .qualify-warning.active{display:block;}
   /* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
-  .clients-strip{background:var(--white);padding:32px 0;border-bottom:1px solid #e9e5dc;}
+  .clients-strip{background:var(--white);padding:36px 0;border-bottom:1px solid #e9e5dc;}
   .clients-strip .container{display:flex;align-items:center;gap:28px;}
   .clients-label{flex:none;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
+  .clients-viewport{position:relative;flex:1;min-width:0;}
   .clients-track{
-    display:flex;align-items:center;gap:40px;flex:1;min-width:0;
+    display:flex;align-items:center;gap:48px;
     overflow-x:auto;scroll-behavior:smooth;cursor:grab;
-    padding:6px 4px;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
-    mask-image:linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    padding:8px 40px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 44px, #000 calc(100% - 44px), transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 44px, #000 calc(100% - 44px), transparent);
     scrollbar-width:none;
   }
   .clients-track::-webkit-scrollbar{display:none;}
   .clients-track.dragging{cursor:grabbing;scroll-behavior:auto;}
-  .clients-track img{height:44px;width:auto;flex:none;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
+  .clients-track img{height:60px;width:auto;flex:none;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
   .clients-track img:hover{filter:grayscale(0);opacity:1;transform:scale(1.06);}
+  .clients-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:36px;height:36px;border-radius:50%;
+    background:var(--white);border:1px solid #e4e0d8;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(13,43,66,.16);
+    cursor:pointer;z-index:2;padding:0;
+    transition:box-shadow .2s ease, transform .2s ease, opacity .2s ease, border-color .2s ease;
+  }
+  .clients-arrow:hover{box-shadow:0 8px 22px rgba(200,164,92,.4);border-color:rgba(200,164,92,.5);transform:translateY(-50%) scale(1.08);}
+  .clients-arrow svg{width:16px;height:16px;color:var(--primary);}
+  .clients-arrow--left{left:-4px;}
+  .clients-arrow--right{right:-4px;}
+  .clients-arrow.is-hidden{opacity:0;pointer-events:none;}
   @media(max-width:700px){
     .clients-strip .container{flex-direction:column;align-items:flex-start;gap:14px;}
-    .clients-track{gap:28px;}
-    .clients-track img{height:36px;}
+    .clients-viewport{width:100%;}
+    .clients-track{gap:32px;padding:8px 34px;}
+    .clients-track img{height:44px;}
   }
 
   .accent-cards.cols-4{grid-template-columns:repeat(4,1fr);}
@@ -651,6 +667,13 @@
 <div class="clients-strip">
   <div class="container">
     <span class="clients-label">Clientes Atendidos</span>
+    <div class="clients-viewport">
+    <button type="button" class="clients-arrow clients-arrow--left is-hidden" aria-label="Rolar para a esquerda">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button type="button" class="clients-arrow clients-arrow--right" aria-label="Rolar para a direita">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
     <div class="clients-track">
       <img src="images/clientes/eurofarma.png" alt="Eurofarma" loading="lazy">
       <img src="images/clientes/uniao-quimica.png" alt="União Química" loading="lazy">
@@ -677,6 +700,7 @@
       <img src="images/clientes/edp.png" alt="EDP" loading="lazy">
       <img src="images/clientes/wheaton-brasil.png" alt="Wheaton Brasil" loading="lazy">
     </div>
+    </div>
   </div>
 </div>
 
@@ -684,6 +708,10 @@
 (function(){
   const track = document.querySelector('.clients-track');
   if(!track) return;
+  const viewport = track.closest('.clients-viewport');
+  const btnLeft = viewport.querySelector('.clients-arrow--left');
+  const btnRight = viewport.querySelector('.clients-arrow--right');
+
   let isDown = false, startX = 0, startScroll = 0;
   track.addEventListener('mousedown', function(e){
     isDown = true;
@@ -700,6 +728,17 @@
     e.preventDefault();
     track.scrollLeft = startScroll - (e.pageX - startX);
   });
+
+  function updateArrows(){
+    const max = track.scrollWidth - track.clientWidth;
+    btnLeft.classList.toggle('is-hidden', track.scrollLeft <= 4);
+    btnRight.classList.toggle('is-hidden', track.scrollLeft >= max - 4);
+  }
+  btnLeft.addEventListener('click', function(){ track.scrollBy({left:-340, behavior:'smooth'}); });
+  btnRight.addEventListener('click', function(){ track.scrollBy({left:340, behavior:'smooth'}); });
+  track.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+  updateArrows();
 })();
 </script>
 
