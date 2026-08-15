@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)</title>
-<meta name="description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
+<meta name="description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
 <link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
 
 <!-- Google Analytics (GA4) -->
@@ -19,12 +19,12 @@
 <!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
-<meta property="og:description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico isento, com garantia de resultado.">
+<meta property="og:description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico isento, com garantia de resultado.">
 <meta property="og:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <meta property="og:url" content="https://thomazguimaraes21.github.io/jse-energia/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
-<meta name="twitter:description" content="Descubra se sua empresa pode estar pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades.">
+<meta name="twitter:description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades.">
 <meta name="twitter:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -383,9 +383,11 @@
   .plans-footnote{font-family:'Inter',sans-serif;font-weight:600;color:var(--accent);font-size:13.5px;max-width:760px;margin:0 auto;line-height:1.6;}
 
   /* ---------- CASOS DE SUCESSO ---------- */
-  .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  /* Jurema volta a entrar quando o diagnóstico terminar; até lá, um card só, centralizado */
+  .cases-grid{display:grid;grid-template-columns:minmax(0,640px);justify-content:center;gap:24px;}
   @media(max-width:760px){.cases-grid{grid-template-columns:1fr;}}
-  .case-card{background:var(--bg-alt);border:1px solid #e4e0d8;border-radius:14px;padding:30px 28px;}
+  .case-card{background:var(--bg-alt);border:1px solid #e4e0d8;border-radius:14px;padding:30px 28px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .case-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(200,164,92,.22);border-color:rgba(200,164,92,.4);}
   .case-tag{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--primary);margin-bottom:18px;}
   .case-stat-row{display:flex;gap:32px;margin-bottom:20px;}
   .case-stat-num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;color:var(--accent);}
@@ -393,8 +395,6 @@
   .case-findings{margin-bottom:20px;}
   .case-findings li{font-size:14px;color:var(--ink-soft);padding:6px 0;border-top:1px solid #e4e0d8;}
   .case-footer{display:flex;gap:20px;font-size:13px;font-weight:700;color:var(--secondary);}
-  .case-card--placeholder{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:var(--white);border-style:dashed;}
-  .case-placeholder-text{color:var(--ink-soft);font-size:14.5px;}
 
   /* ---------- SEGMENTOS ---------- */
   .segments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e4e0d8;border:1px solid #e4e0d8;}
@@ -619,7 +619,7 @@
   <div class="container hero-grid">
     <div>
       <span class="eyebrow">Diagnóstico Energético Empresarial</span>
-      <h1>Descubra se sua empresa pode estar pagando de <span>R$ 3.000 a R$ 8.000/mês</span> a mais nas contas de energia de suas unidades</h1>
+      <h1>Descubra se sua empresa paga de <span>R$ 3.000 a R$ 8.000/mês</span> a mais nas contas de energia de suas unidades</h1>
       <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro para suas unidades/plantas, sem venda de equipamentos ou contratos de energia.</p>
       <div class="hero-actions">
         <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
@@ -901,11 +901,6 @@
           <span>CAPEX zero</span>
           <span>Payback inferior a 6 meses</span>
         </div>
-      </div>
-
-      <div class="case-card case-card--placeholder">
-        <span class="case-tag">Case Plásticos Jurema</span>
-        <div class="case-placeholder-text">Diagnóstico em andamento. Resultados em breve.</div>
       </div>
     </div>
   </div>
