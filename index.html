@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)</title>
-<meta name="description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
+<meta name="description" content="Descubra se sua empresa está pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico Energético Empresarial isento, com garantia de resultado.">
 <link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
 
 <!-- Google Analytics (GA4) -->
@@ -19,12 +19,12 @@
 <!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
-<meta property="og:description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico isento, com garantia de resultado.">
+<meta property="og:description" content="Descubra se sua empresa está pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades. Diagnóstico isento, com garantia de resultado.">
 <meta property="og:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <meta property="og:url" content="https://thomazguimaraes21.github.io/jse-energia/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JSE Energy Advisor | Diagnóstico Energético Empresarial (DEE)">
-<meta name="twitter:description" content="Descubra se sua empresa paga de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades.">
+<meta name="twitter:description" content="Descubra se sua empresa está pagando de R$ 3.000 a R$ 8.000/mês a mais nas contas de energia de suas unidades.">
 <meta name="twitter:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,9 +181,10 @@
   .section-head{max-width:660px;margin-bottom:56px;}
   .section-head h2{font-size:clamp(26px,3vw,36px);font-weight:700;color:var(--primary);letter-spacing:-.01em;}
   .section-dark .section-head h2{color:var(--white);}
-  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;text-align:justify;text-align-last:left;hyphens:auto;}
   .section-dark .section-head p{color:rgba(255,255,255,.72);}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head.center p{text-align:center;text-align-last:center;hyphens:none;}
 
   /* ---------- O PROBLEMA ---------- */
   .problem-grid{
@@ -580,15 +581,25 @@
   }
   .qualify-warning.active{display:block;}
   /* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
-  .clients-strip{background:var(--white);padding:30px 0;border-bottom:1px solid #e9e5dc;}
-  .clients-strip .container{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .clients-strip{background:var(--white);padding:32px 0;border-bottom:1px solid #e9e5dc;}
+  .clients-strip .container{display:flex;align-items:center;gap:28px;}
   .clients-label{flex:none;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
-  .clients-track{display:flex;flex-wrap:wrap;align-items:center;gap:26px;flex:1;}
-  .clients-track img{height:32px;width:auto;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
+  .clients-track{
+    display:flex;align-items:center;gap:40px;flex:1;min-width:0;
+    overflow-x:auto;scroll-behavior:smooth;cursor:grab;
+    padding:6px 4px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    scrollbar-width:none;
+  }
+  .clients-track::-webkit-scrollbar{display:none;}
+  .clients-track.dragging{cursor:grabbing;scroll-behavior:auto;}
+  .clients-track img{height:44px;width:auto;flex:none;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
   .clients-track img:hover{filter:grayscale(0);opacity:1;transform:scale(1.06);}
   @media(max-width:700px){
     .clients-strip .container{flex-direction:column;align-items:flex-start;gap:14px;}
-    .clients-track{gap:20px;}
+    .clients-track{gap:28px;}
+    .clients-track img{height:36px;}
   }
 
   .accent-cards.cols-4{grid-template-columns:repeat(4,1fr);}
@@ -619,7 +630,7 @@
   <div class="container hero-grid">
     <div>
       <span class="eyebrow">Diagnóstico Energético Empresarial</span>
-      <h1>Descubra se sua empresa paga de <span>R$ 3.000 a R$ 8.000/mês</span> a mais nas contas de energia de suas unidades</h1>
+      <h1>Descubra se sua empresa está pagando de <span>R$ 3.000 a R$ 8.000/mês</span> a mais nas contas de energia de suas unidades</h1>
       <p class="lead">O DEE é uma análise isenta que identifica vazamentos financeiros, oportunidades de redução e um plano de ação claro para suas unidades/plantas, sem venda de equipamentos ou contratos de energia.</p>
       <div class="hero-actions">
         <button class="btn btn-accent" onclick="openLeadModal()">Quero meu Diagnóstico</button>
@@ -668,6 +679,29 @@
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  const track = document.querySelector('.clients-track');
+  if(!track) return;
+  let isDown = false, startX = 0, startScroll = 0;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX;
+    startScroll = track.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    track.scrollLeft = startScroll - (e.pageX - startX);
+  });
+})();
+</script>
 
 <!-- O CUSTO DA INÉRCIA -->
 <section class="section-alt" id="custo-inercia">
