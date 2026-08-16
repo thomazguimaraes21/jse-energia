@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://thomazguimaraes21.github.io/jse-energia/images/preview-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --primary:#0D2B42;
@@ -185,6 +185,8 @@
   .section-dark .section-head p{color:rgba(255,255,255,.72);}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
   .section-head.center p{text-align:center;text-align-last:center;hyphens:none;}
+  .section-head--compact{max-width:860px;}
+  .section-head--compact h2{font-size:clamp(20px,2.2vw,27px);font-weight:700;}
 
   /* ---------- O PROBLEMA ---------- */
   .problem-grid{
@@ -344,22 +346,22 @@
   .cost-card .cost-value{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.1;margin-bottom:12px;}
   .cost-card .cost-value span{font-size:15px;font-weight:600;color:var(--ink-soft);}
   .cost-card p{color:var(--ink-soft);font-size:14.5px;}
-  .cost-card--out{border-top:4px solid #E4483D;}
-  .cost-card--out .tag{color:#C0392B;}
-  .cost-card--out .cost-value{color:#C0392B;}
-  .cost-card--out:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(228,72,61,.28);border-color:rgba(228,72,61,.4);}
-  .cost-card--in{border-top:4px solid #2ECC71;box-shadow:0 16px 40px rgba(13,43,66,.08);}
+  .cost-card--out{border-top:4px solid #0E8FA3;}
+  .cost-card--out .tag{color:#0B7A8C;}
+  .cost-card--out .cost-value{color:#0B7A8C;}
+  .cost-card--out:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(14,143,163,.24);border-color:rgba(14,143,163,.4);}
+  .cost-card--in{border-top:5px solid #2ECC71;box-shadow:0 16px 40px rgba(46,204,113,.15);}
   .cost-card--in .tag{color:#1E9E58;}
   .cost-card--in .cost-value{color:#1E9E58;}
-  .cost-card--in:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(46,204,113,.32);border-color:rgba(46,204,113,.4);}
+  .cost-card--in:hover{transform:translateY(-5px);box-shadow:0 20px 46px rgba(46,204,113,.34);border-color:rgba(46,204,113,.4);}
   .cost-vs{font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--ink-soft);text-align:center;}
 
   /* ---------- PLANOS MENSAIS (estilo executivo, referência do cliente) ---------- */
   .plans-header{text-align:center;margin-bottom:52px;}
   .plans-kicker{display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:20px;}
   .plans-kicker::before,.plans-kicker::after{content:"";flex:1;max-width:220px;height:1px;background:rgba(200,164,92,.5);}
-  .plans-kicker span{font-family:'Playfair Display',serif;font-weight:700;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--primary);white-space:nowrap;}
-  .plans-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.6vw,44px);color:var(--primary);line-height:1.22;}
+  .plans-kicker span{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);white-space:nowrap;}
+  .plans-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(26px,3vw,36px);color:var(--primary);line-height:1.22;letter-spacing:-.01em;}
   .plans-subtitle{margin-top:10px;font-family:'Inter',sans-serif;font-size:16px;color:var(--ink-soft);}
   .plans-divider{display:flex;align-items:center;gap:16px;justify-content:center;max-width:320px;margin:24px auto 0;color:var(--accent);font-size:12px;}
   .plans-divider::before,.plans-divider::after{content:"";flex:1;height:1px;background:rgba(200,164,92,.4);}
@@ -371,17 +373,17 @@
   .plan-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(13,43,66,.1);}
   .plan-card--featured{border:2px solid var(--accent);box-shadow:0 20px 44px rgba(200,164,92,.22);}
   .plan-card-head{background:var(--primary);padding:22px 20px;border-radius:14px 14px 0 0;}
-  .plan-card-head span{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:var(--white);}
+  .plan-card-head span{font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--white);}
   .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);z-index:3;background:linear-gradient(135deg,#ddc088,var(--accent) 55%,#b8934a);color:var(--primary);font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:7px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 14px rgba(200,164,92,.4);}
   .plan-body{padding:30px 28px 34px;}
-  .plan-price{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(30px,3vw,38px);color:var(--accent);}
+  .plan-price{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(28px,2.8vw,34px);color:var(--accent);}
   .plan-price span{font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:var(--ink-soft);margin-left:4px;}
-  .plan-desc{font-family:'Playfair Display',serif;font-weight:600;font-size:14.5px;color:var(--primary);margin:6px 0 22px;}
+  .plan-desc{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--primary);margin:6px 0 22px;}
   .plan-features{text-align:left;}
   .plan-features li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-soft);}
   .plan-check{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;margin-top:2px;}
   .plans-footer{margin-top:44px;text-align:center;}
-  .plans-footnote{font-family:'Inter',sans-serif;font-weight:600;color:var(--accent);font-size:13.5px;max-width:760px;margin:0 auto;line-height:1.6;}
+  .plans-footnote{font-family:'Inter',sans-serif;font-weight:600;color:var(--ink-soft);font-size:13.5px;max-width:760px;margin:0 auto;line-height:1.6;}
 
   /* ---------- CASOS DE SUCESSO ---------- */
   /* Jurema volta a entrar quando o diagnóstico terminar; até lá, um card só, centralizado */
@@ -581,41 +583,56 @@
   }
   .qualify-warning.active{display:block;}
   /* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
-  .clients-strip{background:var(--white);padding:36px 0;border-bottom:1px solid #e9e5dc;}
+  .clients-strip{background:var(--bg-alt);padding:40px 0;border-bottom:1px solid #e9e5dc;}
   .clients-strip .container{display:flex;align-items:center;gap:28px;}
   .clients-label{flex:none;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;}
   .clients-viewport{position:relative;flex:1;min-width:0;}
   .clients-track{
-    display:flex;align-items:center;gap:48px;
+    display:flex;align-items:center;gap:20px;
     overflow-x:auto;scroll-behavior:smooth;cursor:grab;
-    padding:8px 40px;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 44px, #000 calc(100% - 44px), transparent);
-    mask-image:linear-gradient(90deg, transparent, #000 44px, #000 calc(100% - 44px), transparent);
+    padding:6px 52px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 56px, #000 calc(100% - 56px), transparent);
     scrollbar-width:none;
   }
   .clients-track::-webkit-scrollbar{display:none;}
   .clients-track.dragging{cursor:grabbing;scroll-behavior:auto;}
-  .clients-track img{height:60px;width:auto;flex:none;filter:grayscale(1);opacity:.55;transition:filter .2s ease, opacity .2s ease, transform .2s ease;}
-  .clients-track img:hover{filter:grayscale(0);opacity:1;transform:scale(1.06);}
+  .client-chip{
+    flex:none;display:flex;align-items:center;justify-content:center;
+    background:var(--white);border:1px solid #e9e5dc;border-radius:12px;
+    padding:16px 26px;
+    box-shadow:0 4px 14px rgba(13,43,66,.06);
+    transition:box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .client-chip:hover{
+    box-shadow:0 14px 30px rgba(200,164,92,.24);
+    border-color:rgba(200,164,92,.45);
+    transform:translateY(-4px);
+  }
+  .clients-track img{height:64px;width:auto;flex:none;filter:grayscale(1);opacity:.6;transition:filter .2s ease, opacity .2s ease;}
+  .client-chip:hover img{filter:grayscale(0);opacity:1;}
   .clients-arrow{
     position:absolute;top:50%;transform:translateY(-50%);
-    width:36px;height:36px;border-radius:50%;
+    width:46px;height:46px;border-radius:50%;
     background:var(--white);border:1px solid #e4e0d8;
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 6px 18px rgba(13,43,66,.16);
+    box-shadow:0 8px 22px rgba(13,43,66,.18);
     cursor:pointer;z-index:2;padding:0;
     transition:box-shadow .2s ease, transform .2s ease, opacity .2s ease, border-color .2s ease;
   }
-  .clients-arrow:hover{box-shadow:0 8px 22px rgba(200,164,92,.4);border-color:rgba(200,164,92,.5);transform:translateY(-50%) scale(1.08);}
-  .clients-arrow svg{width:16px;height:16px;color:var(--primary);}
-  .clients-arrow--left{left:-4px;}
-  .clients-arrow--right{right:-4px;}
+  .clients-arrow:hover{box-shadow:0 10px 26px rgba(200,164,92,.45);border-color:rgba(200,164,92,.55);transform:translateY(-50%) scale(1.08);}
+  .clients-arrow svg{width:20px;height:20px;color:var(--primary);}
+  .clients-arrow--left{left:0;}
+  .clients-arrow--right{right:0;}
   .clients-arrow.is-hidden{opacity:0;pointer-events:none;}
   @media(max-width:700px){
     .clients-strip .container{flex-direction:column;align-items:flex-start;gap:14px;}
     .clients-viewport{width:100%;}
-    .clients-track{gap:32px;padding:8px 34px;}
+    .clients-track{gap:14px;padding:6px 44px;}
+    .client-chip{padding:12px 18px;}
     .clients-track img{height:44px;}
+    .clients-arrow{width:38px;height:38px;}
+    .clients-arrow svg{width:16px;height:16px;}
   }
 
   .accent-cards.cols-4{grid-template-columns:repeat(4,1fr);}
@@ -675,30 +692,30 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
     </button>
     <div class="clients-track">
-      <img src="images/clientes/eurofarma.png" alt="Eurofarma" loading="lazy">
-      <img src="images/clientes/uniao-quimica.png" alt="União Química" loading="lazy">
-      <img src="images/clientes/pfizer.png" alt="Pfizer" loading="lazy">
-      <img src="images/clientes/astrazeneca.png" alt="AstraZeneca" loading="lazy">
-      <img src="images/clientes/ipiranga.png" alt="Ipiranga" loading="lazy">
-      <img src="images/clientes/raizen.png" alt="Raízen" loading="lazy">
-      <img src="images/clientes/hospital-albert-einstein.png" alt="Hospital Israelita Albert Einstein" loading="lazy">
-      <img src="images/clientes/geolab.png" alt="Geolab" loading="lazy">
-      <img src="images/clientes/objetivo.png" alt="Objetivo" loading="lazy">
-      <img src="images/clientes/deca.png" alt="Deca" loading="lazy">
-      <img src="images/clientes/lenco.png" alt="Lenco" loading="lazy">
-      <img src="images/clientes/honeywell.png" alt="Honeywell" loading="lazy">
-      <img src="images/clientes/neocom-system.png" alt="Neocom System" loading="lazy">
-      <img src="images/clientes/tower-automotive.png" alt="Tower Automotive" loading="lazy">
-      <img src="images/clientes/au-placeholder.png" alt="Cliente JSE" loading="lazy">
-      <img src="images/clientes/b-circular-placeholder.png" alt="Cliente JSE" loading="lazy">
-      <img src="images/clientes/hospital-neurocenter.png" alt="Hospital Neurocenter" loading="lazy">
-      <img src="images/clientes/plasticos-jurema.png" alt="Plásticos Jurema" loading="lazy">
-      <img src="images/clientes/torque-automotive.png" alt="Torque Automotive" loading="lazy">
-      <img src="images/clientes/camara-barueri.png" alt="Câmara Municipal de Barueri" loading="lazy">
-      <img src="images/clientes/transjoi.png" alt="Trans Joi" loading="lazy">
-      <img src="images/clientes/phs.png" alt="PHS" loading="lazy">
-      <img src="images/clientes/edp.png" alt="EDP" loading="lazy">
-      <img src="images/clientes/wheaton-brasil.png" alt="Wheaton Brasil" loading="lazy">
+      <div class="client-chip"><img src="images/clientes/eurofarma.png" alt="Eurofarma" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/uniao-quimica.png" alt="União Química" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/pfizer.png" alt="Pfizer" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/astrazeneca.png" alt="AstraZeneca" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/ipiranga.png" alt="Ipiranga" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/raizen.png" alt="Raízen" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/hospital-albert-einstein.png" alt="Hospital Israelita Albert Einstein" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/geolab.png" alt="Geolab" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/objetivo.png" alt="Objetivo" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/deca.png" alt="Deca" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/lenco.png" alt="Lenco" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/honeywell.png" alt="Honeywell" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/neocom-system.png" alt="Neocom System" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/tower-automotive.png" alt="Tower Automotive" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/au-placeholder.png" alt="Cliente JSE" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/b-circular-placeholder.png" alt="Cliente JSE" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/hospital-neurocenter.png" alt="Hospital Neurocenter" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/plasticos-jurema.png" alt="Plásticos Jurema" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/torque-automotive.png" alt="Torque Automotive" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/camara-barueri.png" alt="Câmara Municipal de Barueri" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/transjoi.png" alt="Trans Joi" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/phs.png" alt="PHS" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/edp.png" alt="EDP" loading="lazy"></div>
+      <div class="client-chip"><img src="images/clientes/wheaton-brasil.png" alt="Wheaton Brasil" loading="lazy"></div>
     </div>
     </div>
   </div>
@@ -982,7 +999,7 @@
 <!-- PARA QUEM É -->
 <section>
   <div class="container">
-    <div class="section-head center">
+    <div class="section-head center section-head--compact">
       <span class="eyebrow">Público-alvo</span>
       <h2>Ideal para médias empresas, redes e grupos com múltiplas unidades que gastam acima de R$&nbsp;10.000/mês em energia</h2>
     </div>
