@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -237,13 +237,13 @@
       </div>
     </div>
 
-    <div class="plans-bridge">
-      <p>O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? <a href="servicos-complementares">Conheça nossos serviços complementares.</a></p>
-    </div>
-
     <div class="plans-footer">
       <div class="plans-divider small">◆</div>
       <p class="plans-footnote">Todos os planos começam pelo Diagnóstico Energético Empresarial, a etapa de entrada que identifica onde está a economia.</p>
+    </div>
+
+    <div class="plans-bridge">
+      <p>O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? <a href="servicos-complementares" target="_blank" rel="noopener">Conheça nossos serviços complementares.</a></p>
     </div>
   </div>
 </section>
@@ -294,14 +294,14 @@
     <div class="price-cards">
       <div class="price-card">
         <span class="tag">Essencial</span>
-        <h3>Escopo contratado</h3>
         <div class="price-value">R$ 10.800</div>
+        <h3>Escopo contratado</h3>
         <p>Diagnóstico + planejamento, com entregáveis principais.</p>
       </div>
       <div class="price-card">
         <span class="tag">Completo</span>
-        <h3>Escopo contratado</h3>
         <div class="price-value">R$ 13.500</div>
+        <h3>Escopo contratado</h3>
         <p>Diagnóstico + plano de ação + 3 meses de acompanhamento + Scorecard + relatório final.</p>
       </div>
     </div>
@@ -323,12 +323,12 @@
 </section>
 
 <!-- FAIXA DE CONEXÃO: DEE > COMPLEMENTARES > MONITORAMENTO -->
-<a class="bridge-strip" href="servicos-complementares">
+<div class="bridge-strip">
   <div class="container">
-    <p>O <em>DEE encontra</em>. Os <em>serviços complementares capturam</em>. O <em>monitoramento mantém</em>.</p>
-    <span class="bridge-link">Conhecer os serviços complementares →</span>
+    <p>O DEE encontra. Os serviços complementares capturam. O monitoramento mantém.</p>
+    <a class="bridge-link" href="servicos-complementares" target="_blank" rel="noopener">Conhecer os serviços complementares →</a>
   </div>
-</a>
+</div>
 
 <!-- O SCORECARD ENERGÉTICO -->
 <section id="scorecard">
@@ -545,7 +545,7 @@
           <li><a href="#planos">Planos</a></li>
           <li><a href="#dee">O que é o DEE</a></li>
           <li><a href="#parceria">Investimento</a></li>
-          <li><a href="servicos-complementares">Serviços Complementares</a></li>
+          <li><a href="servicos-complementares" target="_blank" rel="noopener">Serviços Complementares</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
