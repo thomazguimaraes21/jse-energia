@@ -1826,6 +1826,11 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
 
     .clients-strip .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+  
+    /* Logo da JSE (imagem com fundo transparente) */
+    .brand-logo .logo-img { height: 46px; width: auto; display: block; }
+    .brand-logo .logo-img--footer { height: 42px; }
+    @media (max-width: 640px) { .brand-logo .logo-img { height: 34px; } }
   </style>
 </head>
 <body>
@@ -1834,11 +1839,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   <header class="site-nav">
     <div class="nav-container">
       <a href="#inicio" class="brand-logo" aria-label="JSE Energy Advisor Início">
-        <div class="brand-mark">JSE</div>
-        <div class="brand-title">
-          JSE Energy Advisor
-          <span>Inteligência Energética</span>
-        </div>
+        <img src="images/logo-jse-transparente.png" alt="JSE Energy Advisor" class="logo-img">
       </a>
 
       <nav class="nav-menu" aria-label="Navegação principal">
@@ -2968,11 +2969,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     <div class="container-boxed footer-grid">
       <div>
         <div class="brand-logo" style="margin-bottom: 1rem;">
-          <div class="brand-mark">JSE</div>
-          <div class="brand-title">
-            JSE Energy Advisor
-            <span>Inteligência Energética</span>
-          </div>
+          <img src="images/logo-jse-transparente.png" alt="JSE Energy Advisor" class="logo-img logo-img--footer">
         </div>
         <p style="font-size: 0.88rem; line-height: 1.6; color: #879cb5;">
           Inteligência energética contínua para médias empresas e grupos com múltiplas unidades. Começa pelo diagnóstico isento e se mantém com monitoramento mensal.
