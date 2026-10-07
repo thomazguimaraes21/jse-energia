@@ -6,6 +6,9 @@
   <title>JSE Energy Advisor — Inteligência Energética Contínua</title>
   <meta name="description" content="Inteligência energética contínua para médias empresas e grupos multiplanta. Diagnóstico isento e monitoramento mensal para manter cada real economizado.">
 
+  <!-- Google Analytics GA4 -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EBNW40D5F9');</script>
+
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 
@@ -149,6 +152,12 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       color: var(--text-dark);
       background-color: var(--navy-950);
+    }
+
+    /* Scroll Margin Offset for Fixed Navigation */
+    section[id],
+    [id] {
+      scroll-margin-top: 85px;
     }
 
     body {
@@ -1385,27 +1394,195 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       color: #768ca6;
     }
 
+    .form-input.is-invalid, .form-select.is-invalid {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+    }
+
+    .field-error-msg {
+      display: none;
+      font-size: 0.78rem;
+      color: #fca5a5;
+      margin-top: 0.35rem;
+    }
+
+    .field-error-msg.visible {
+      display: block;
+    }
+
+    .form-privacy-note {
+      font-size: 0.8rem;
+      color: #9cb1cb;
+      line-height: 1.5;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .privacy-link-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--gold-primary);
+      font-size: inherit;
+      font-family: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline;
+    }
+
+    .privacy-link-btn:hover {
+      color: #ffffff;
+    }
+
     .form-success-box {
       display: none;
       background: rgba(212, 175, 55, 0.12);
       border: 1px solid var(--gold-primary);
       border-radius: 6px;
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
       color: #ffffff;
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
 
     .form-success-box h4 {
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 0.6rem 0;
       color: var(--gold-primary);
       font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
     }
 
     .form-success-box p {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.95rem;
+      color: #e2ecf9;
+      line-height: 1.6;
+    }
+
+    .form-success-box a.wa-fallback-link {
+      color: var(--gold-primary);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .form-success-box a.wa-fallback-link:hover {
+      color: #ffffff;
+    }
+
+    /* PRIVACY MODAL */
+    .privacy-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 13, 25, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .privacy-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .privacy-modal-card {
+      background: #ffffff;
+      color: var(--text-dark);
+      width: 100%;
+      max-width: 640px;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      transform: translateY(15px);
+      transition: transform 0.25s ease;
+    }
+
+    .privacy-modal-overlay.active .privacy-modal-card {
+      transform: translateY(0);
+    }
+
+    .privacy-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border-light);
+      background: #ffffff;
+    }
+
+    .privacy-modal-header h3 {
       margin: 0;
-      font-size: 0.92rem;
-      color: #dbe5f2;
+      color: var(--navy-900);
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+    }
+
+    .privacy-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.75rem;
+      line-height: 1;
+      color: var(--text-dark-muted);
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .privacy-modal-close:hover {
+      color: var(--navy-900);
+      background: #f1f5f9;
+    }
+
+    .privacy-modal-body {
+      padding: 1.5rem 1.75rem;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .privacy-modal-body h4 {
+      color: var(--navy-900);
+      font-size: 1.02rem;
+      margin: 1.25rem 0 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+    }
+
+    .privacy-modal-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .privacy-modal-body p {
+      margin: 0 0 0.75rem 0;
+    }
+
+    .privacy-modal-updated {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: #64748b;
+      font-style: italic;
     }
 
     /* FOOTER */
@@ -1656,7 +1833,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   <!-- FIXED HEADER / NAVIGATION -->
   <header class="site-nav">
     <div class="nav-container">
-      <a href="#" class="brand-logo" aria-label="JSE Energy Advisor Início">
+      <a href="#inicio" class="brand-logo" aria-label="JSE Energy Advisor Início">
         <div class="brand-mark">JSE</div>
         <div class="brand-title">
           JSE Energy Advisor
@@ -1666,12 +1843,13 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
       <nav class="nav-menu" aria-label="Navegação principal">
         <ul class="nav-links">
+          <li><a href="#inicio" class="nav-link">Início</a></li>
           <li><a href="#oferta" class="nav-link">A oferta</a></li>
-          <li><a href="#como-comecar" class="nav-link">Como começar</a></li>
-          <li><a href="#scorecard" class="nav-link">Scorecard</a></li>
+          <li><a href="#dee" class="nav-link">Como começar</a></li>
+          <li><a href="#scorecard" class="nav-link">Scorecard Energético</a></li>
           <li><a href="#resultados" class="nav-link">Resultados</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#faq" class="nav-link">Perguntas Frequentes</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
           <li class="nav-cta-item">
             <a href="#contato" class="btn-gold">Começar pelo diagnóstico</a>
@@ -1682,7 +1860,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   </header>
 
   <!-- SEÇÃO 1: HERO -->
-  <section class="hero-section" id="hero">
+  <section class="hero-section" id="inicio">
     <div class="container-boxed hero-grid">
       <div class="hero-content">
         <div class="badge-sub">Consultoria de Inteligência Energética</div>
@@ -2001,7 +2179,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   </section>
 
   <!-- SEÇÃO 4: COMO COMEÇAR / DEE -->
-  <section class="section-wrap theme-light" id="como-comecar">
+  <section class="section-wrap theme-light" id="dee">
     <div class="container-boxed">
       <div class="section-head">
         <div class="badge-sub">Porta de Entrada Estruturada</div>
@@ -2114,6 +2292,18 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <p class="section-subtitle">
           O Scorecard Energético é o entregável que transforma dados em decisão. Todo mês, sua operação recebe um painel executivo com os indicadores que importam: custo total de energia, preço médio efetivo (R$/MWh), multas e desvios evitáveis e custo evitado de geração própria. Com alertas de anomalia e comparação com a linha de base definida no diagnóstico.
         </p>
+
+        <div style="margin-top: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+          <a href="https://jseenergia.com/scorecard" target="_blank" rel="noopener" class="btn-gold" style="display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.8rem 1.75rem; font-size: 0.95rem;">
+            <span>Ver um Scorecard real</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <span style="font-size: 0.82rem; color: var(--text-dark-muted);">Exemplo real, anonimizado — veja como o painel mensal chega ao cliente.</span>
+        </div>
       </div>
 
       <!-- 4 INDICADORES EM CARDS PEQUENOS -->
@@ -2700,60 +2890,73 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             Preencha os dados básicos da sua empresa para avaliar a elegibilidade e agendar a conversa inicial.
           </p>
 
-          <form id="leadForm">
+          <form id="leadForm" novalidate>
             <!-- CAMPO 1: NOME COMPLETO -->
             <div class="form-group">
               <label for="nomeCompleto" class="form-label">Nome completo</label>
-              <input type="text" id="nomeCompleto" class="form-input" placeholder="Ex: Roberto Silva" required>
+              <input type="text" id="nomeCompleto" class="form-input" placeholder="Ex: Roberto Silva">
+              <span class="field-error-msg" id="err-nomeCompleto">Por favor, preencha o seu nome completo.</span>
             </div>
 
             <!-- CAMPO 2: EMPRESA -->
             <div class="form-group">
               <label for="empresa" class="form-label">Empresa</label>
-              <input type="text" id="empresa" class="form-input" placeholder="Ex: Grupo Industrial Alpha" required>
+              <input type="text" id="empresa" class="form-input" placeholder="Ex: Grupo Industrial Alpha">
+              <span class="field-error-msg" id="err-empresa">Por favor, informe o nome da sua empresa.</span>
             </div>
 
             <!-- CAMPO 3: SEGMENTO DE ATUAÇÃO -->
             <div class="form-group">
               <label for="segmento" class="form-label">Segmento de atuação</label>
-              <select id="segmento" class="form-select" required>
+              <select id="segmento" class="form-select">
                 <option value="" disabled selected>Selecione seu segmento...</option>
-                <option value="Industria">Indústria de Manufatura / Transformação</option>
-                <option value="Logistica">Centro Logístico / Transportes</option>
-                <option value="Varejo">Rede de Supermercados / Varejo</option>
-                <option value="Hotelaria">Hotelaria / Hospitalidade</option>
-                <option value="Postos">Rede de Postos de Combustíveis</option>
-                <option value="Construcao">Construção Civil</option>
-                <option value="Multiplanta">Outro Grupo com Múltiplas Unidades</option>
+                <option value="Indústria de Manufatura / Transformação">Indústria de Manufatura / Transformação</option>
+                <option value="Centro Logístico / Transportes">Centro Logístico / Transportes</option>
+                <option value="Rede de Supermercados / Varejo">Rede de Supermercados / Varejo</option>
+                <option value="Hotelaria / Hospitalidade">Hotelaria / Hospitalidade</option>
+                <option value="Rede de Postos de Combustíveis">Rede de Postos de Combustíveis</option>
+                <option value="Construção Civil">Construção Civil</option>
+                <option value="Grupo com Múltiplas Unidades">Outro Grupo com Múltiplas Unidades</option>
               </select>
+              <span class="field-error-msg" id="err-segmento">Por favor, selecione o segmento de atuação.</span>
             </div>
 
             <!-- CAMPO 4: GASTO FINANCEIRO MENSAL EM ENERGIA ELÉTRICA -->
             <div class="form-group">
               <label for="gastoMensal" class="form-label">Gasto financeiro mensal em energia elétrica</label>
-              <select id="gastoMensal" class="form-select" required>
+              <select id="gastoMensal" class="form-select">
                 <option value="" disabled selected>Selecione a faixa aproximada...</option>
-                <option value="10k-25k">Entre R$ 10.000 e R$ 25.000/mês</option>
-                <option value="25k-50k">Entre R$ 25.000 e R$ 50.000/mês</option>
-                <option value="50k-100k">Entre R$ 50.000 e R$ 100.000/mês</option>
-                <option value="100k+">Acima de R$ 100.000/mês</option>
+                <option value="Entre R$ 10.000 e R$ 25.000/mês">Entre R$ 10.000 e R$ 25.000/mês</option>
+                <option value="Entre R$ 25.000 e R$ 50.000/mês">Entre R$ 25.000 e R$ 50.000/mês</option>
+                <option value="Entre R$ 50.000 e R$ 100.000/mês">Entre R$ 50.000 e R$ 100.000/mês</option>
+                <option value="Acima de R$ 100.000/mês">Acima de R$ 100.000/mês</option>
               </select>
+              <span class="field-error-msg" id="err-gastoMensal">Por favor, selecione a faixa de gasto mensal.</span>
             </div>
 
             <!-- CAMPO 5: NÚMERO TOTAL DE UNIDADES ATIVAS -->
             <div class="form-group">
               <label for="unidades" class="form-label">Número total de unidades ativas</label>
-              <input type="number" id="unidades" min="1" class="form-input" placeholder="Ex: 1 unidade, 5 filiais..." required>
+              <input type="number" id="unidades" min="1" class="form-input" placeholder="Ex: 1 unidade, 5 filiais...">
+              <span class="field-error-msg" id="err-unidades">Por favor, informe o número de unidades ativas.</span>
             </div>
 
             <button type="submit" class="btn-gold" style="width: 100%; margin-top: 0.5rem; padding: 0.85rem;">
               Solicitar diagnóstico
             </button>
+
+            <p class="form-privacy-note">
+              Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato.
+              <button type="button" class="privacy-link-btn" id="openPrivacyFormBtn">Política de Privacidade</button>
+            </p>
           </form>
 
           <div class="form-success-box" id="formSuccess">
-            <h4>Diagnóstico Solicitado com Sucesso!</h4>
-            <p>Recebemos suas informações. Em breve, nossa equipe entrará em contato para agendar a conversa inicial.</p>
+            <h4>Quase lá! Abrimos o WhatsApp para você</h4>
+            <p>Sua mensagem com os dados preenchidos já foi direcionada ao nosso canal no WhatsApp.</p>
+            <p style="font-size: 0.88rem; color: #cbd7e6;">
+              Se a aba não abriu automaticamente ou se você a fechou, <a href="#" id="waFallbackLink" class="wa-fallback-link" target="_blank" rel="noopener noreferrer">clique aqui</a> para continuar a conversa.
+            </p>
           </div>
         </div>
       </div>
@@ -2779,20 +2982,21 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       <div>
         <div class="footer-heading">Navegação</div>
         <ul class="footer-links">
-          <li><a href="#hero">Início</a></li>
+          <li><a href="#inicio">Início</a></li>
           <li><a href="#oferta">A oferta</a></li>
-          <li><a href="#como-comecar">Como começar</a></li>
+          <li><a href="#dee">Como começar</a></li>
           <li><a href="#scorecard">Scorecard Energético</a></li>
           <li><a href="#resultados">Resultados</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
 
       <div>
         <div class="footer-heading">Serviços</div>
         <ul class="footer-links">
-          <li><a href="#como-comecar">Diagnóstico Energético (DEE)</a></li>
+          <li><a href="#dee">Diagnóstico Energético (DEE)</a></li>
           <li><a href="#oferta">Sistema de Monitoramento</a></li>
           <li><a href="#complementares">Serviços Complementares</a></li>
           <li><a href="#scorecard">Auditoria e Scorecard</a></li>
@@ -2812,14 +3016,91 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       </div>
     </div>
 
-    <div class="container-boxed footer-bottom">
-      &copy; 2026 JSE Energy Advisor. Todos os direitos reservados.
+    <div class="container-boxed footer-bottom" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem;">
+      <div>&copy; 2026 JSE Energy Advisor. Todos os direitos reservados.</div>
+      <div>
+        <button type="button" class="privacy-link-btn" id="openPrivacyFooterBtn" style="font-size: 0.8rem; color: #879cb5;">
+          Política de Privacidade
+        </button>
+      </div>
     </div>
   </footer>
+
+  <!-- MODAL POLÍTICA DE PRIVACIDADE (LGPD) -->
+  <div class="privacy-modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="privacy-modal-card">
+      <div class="privacy-modal-header">
+        <h3 id="privacyModalTitle">Política de Privacidade</h3>
+        <button type="button" class="privacy-modal-close" id="closePrivacyBtn" aria-label="Fechar Política de Privacidade">&times;</button>
+      </div>
+      <div class="privacy-modal-body">
+        <h4>Quais dados coletamos</h4>
+        <p>Apenas os informados no formulário: nome, empresa, segmento, faixa de gasto mensal com energia e número de unidades.</p>
+
+        <h4>Como usamos</h4>
+        <p>Exclusivamente para entrar em contato sobre o Diagnóstico Energético Empresarial, por meio do WhatsApp. Ao enviar, você é direcionado ao WhatsApp com sua mensagem já preenchida.</p>
+
+        <h4>O que NÃO fazemos</h4>
+        <p>Não armazenamos seus dados em nossos sistemas por meio deste site, não os compartilhamos com terceiros e não usamos para marketing sem seu consentimento.</p>
+
+        <h4>Cookies e análise</h4>
+        <p>O site utiliza o Google Analytics de forma anônima para medir visitas e melhorar a experiência.</p>
+
+        <h4>Seus direitos (LGPD)</h4>
+        <p>Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento pelo WhatsApp (11) 99948-3633.</p>
+
+        <div class="privacy-modal-updated">Última atualização: outubro de 2026.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- INTERACTIVE LOGIC -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Anchor scroll handling (including external navigation with hash)
+      const scrollToHash = (hash) => {
+        if (!hash || hash === '#') return;
+        try {
+          const targetEl = document.querySelector(hash);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } catch (err) {
+          // Silent fallback if hash is not a valid selector
+        }
+      };
+
+      // Check URL hash on page load (external link support)
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToHash(window.location.hash);
+        }, 200);
+      }
+
+      // Smooth scroll on internal anchor clicks
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (href && href.length > 1) {
+          try {
+            const targetEl = document.querySelector(href);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.pushState(null, '', href);
+            }
+          } catch (err) {
+            // Fallback for non-standard selector
+          }
+        }
+      });
+
+      // Handle hash change events dynamically
+      window.addEventListener('hashchange', () => {
+        scrollToHash(window.location.hash);
+      });
+
       // FAQ Accordion
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
@@ -2851,45 +3132,126 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         });
       });
 
-      // Form Handling
+      // Privacy Modal Handling
+      const privacyModal = document.getElementById('privacyModal');
+      const openPrivacyFormBtn = document.getElementById('openPrivacyFormBtn');
+      const openPrivacyFooterBtn = document.getElementById('openPrivacyFooterBtn');
+      const closePrivacyBtn = document.getElementById('closePrivacyBtn');
+
+      const openPrivacyModal = () => {
+        if (privacyModal) {
+          privacyModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      const closePrivacyModal = () => {
+        if (privacyModal) {
+          privacyModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      };
+
+      if (openPrivacyFormBtn) openPrivacyFormBtn.addEventListener('click', openPrivacyModal);
+      if (openPrivacyFooterBtn) openPrivacyFooterBtn.addEventListener('click', openPrivacyModal);
+      if (closePrivacyBtn) closePrivacyBtn.addEventListener('click', closePrivacyModal);
+
+      if (privacyModal) {
+        privacyModal.addEventListener('click', (e) => {
+          if (e.target === privacyModal) {
+            closePrivacyModal();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && privacyModal && privacyModal.classList.contains('active')) {
+          closePrivacyModal();
+        }
+      });
+
+      // Form Handling (WhatsApp Direct & LGPD compliant)
       const leadForm = document.getElementById('leadForm');
       const formSuccess = document.getElementById('formSuccess');
+      const waFallbackLink = document.getElementById('waFallbackLink');
 
       if (leadForm && formSuccess) {
+        const fields = [
+          { id: 'nomeCompleto', errId: 'err-nomeCompleto' },
+          { id: 'empresa', errId: 'err-empresa' },
+          { id: 'segmento', errId: 'err-segmento' },
+          { id: 'gastoMensal', errId: 'err-gastoMensal' },
+          { id: 'unidades', errId: 'err-unidades' }
+        ];
+
+        // Clear error styling on input
+        fields.forEach(f => {
+          const el = document.getElementById(f.id);
+          const errEl = document.getElementById(f.errId);
+          if (el) {
+            const clearError = () => {
+              el.classList.remove('is-invalid');
+              if (errEl) errEl.classList.remove('visible');
+            };
+            el.addEventListener('input', clearError);
+            el.addEventListener('change', clearError);
+          }
+        });
+
         leadForm.addEventListener('submit', (e) => {
           e.preventDefault();
 
-          // Basic validation check
-          const nome = document.getElementById('nomeCompleto').value.trim();
-          const empresa = document.getElementById('empresa').value.trim();
-          const segmento = document.getElementById('segmento').value;
-          const gasto = document.getElementById('gastoMensal').value;
-          const unidades = document.getElementById('unidades').value;
+          let hasErrors = false;
+          const values = {};
 
-          if (!nome || !empresa || !segmento || !gasto || !unidades) {
-            alert('Por favor, preencha todos os campos do formulário.');
+          fields.forEach(f => {
+            const el = document.getElementById(f.id);
+            const errEl = document.getElementById(f.errId);
+            const val = el ? el.value.trim() : '';
+
+            if (!val) {
+              hasErrors = true;
+              if (el) el.classList.add('is-invalid');
+              if (errEl) errEl.classList.add('visible');
+            } else {
+              if (el) el.classList.remove('is-invalid');
+              if (errEl) errEl.classList.remove('visible');
+            }
+          });
+
+          if (hasErrors) {
+            // Focus on first invalid element
+            const firstInvalid = leadForm.querySelector('.is-invalid');
+            if (firstInvalid) firstInvalid.focus();
             return;
           }
 
-          // Simulation of submission and local storage saving
-          const leadData = {
-            nome,
-            empresa,
-            segmento,
-            gasto,
-            unidades,
-            data: new Date().toISOString()
-          };
+          const nome = document.getElementById('nomeCompleto').value.trim();
+          const empresa = document.getElementById('empresa').value.trim();
+          const segmentoEl = document.getElementById('segmento');
+          const segmentoText = segmentoEl.options[segmentoEl.selectedIndex].text;
+          const gastoEl = document.getElementById('gastoMensal');
+          const faixaText = gastoEl.options[gastoEl.selectedIndex].text;
+          const unidades = document.getElementById('unidades').value.trim();
 
+          // Construct formatted message
+          const rawMessage = `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${nome}, sou da ${empresa} (${unidades} unidades), segmento: ${segmentoText}. Nosso gasto médio mensal com energia está na faixa de ${faixaText} e gostaria de saber mais sobre o diagnóstico energético.`;
+          const encodedMessage = encodeURIComponent(rawMessage);
+          const waUrl = `https://wa.me/5511999483633?text=${encodedMessage}`;
+
+          // Open WhatsApp in new tab with popup fallback
+          let opened = null;
           try {
-            const existingLeads = JSON.parse(localStorage.getItem('jse_leads') || '[]');
-            existingLeads.push(leadData);
-            localStorage.setItem('jse_leads', JSON.stringify(existingLeads));
+            opened = window.open(waUrl, '_blank', 'noopener,noreferrer');
           } catch (err) {
-            console.error('Storage error', err);
+            opened = null;
           }
 
-          // Show confirmation UI
+          if (waFallbackLink) {
+            waFallbackLink.href = waUrl;
+          }
+
+          // Replace form with confirmation
           leadForm.style.display = 'none';
           formSuccess.style.display = 'block';
         });

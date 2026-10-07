@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scorecard Energético — Exemplo Real Anonimizado | JSE Energy Advisor</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700&display=swap">
+  
+  <!-- Basecoat CSS & System Shell -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+
+  <!-- Google Analytics GA4 -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EBNW40D5F9');</script>
+
+  <style>
+    :root {
+      --accent: #C5A059;
+      --accent-hover: #b38e47;
+      --accent-dark: #82621b; /* High contrast gold for light bg text */
+      --accent-light: #f7f2e7;
+      --navy-950: #060B14;
+      --navy-900: #0A1221;
+      --navy-850: #0E182C;
+      --navy-800: #14223E;
+      --navy-700: #1E3156;
+      --navy-border: rgba(197, 160, 89, 0.22);
+      --gray-light: #F8FAFC;
+      --gray-surface: #F1F5F9;
+      --gray-border: #E2E8F0;
+      --text-dark: #0F172A;
+      --text-muted-dark: #475569;
+      --text-light: #F8FAFC;
+      --text-muted-light: #94A3B8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--gray-light);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top fixed navigation */
+    .jse-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 18, 33, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 0.85rem 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .jse-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .jse-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .jse-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .jse-brand-mark {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 2px;
+      background: rgba(197, 160, 89, 0.08);
+    }
+
+    .jse-brand-text {
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .jse-brand-sub {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      margin-left: 4px;
+    }
+
+    .jse-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .jse-back-link {
+      color: var(--text-muted-light);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .jse-back-link:hover {
+      color: var(--accent);
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: linear-gradient(135deg, #D4AF37 0%, #C5A059 50%, #B38E47 100%);
+      color: #060B14 !important;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.3px;
+      padding: 0.65rem 1.25rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--accent) !important;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .btn-outline-gold:hover {
+      background: rgba(197, 160, 89, 0.12);
+      transform: translateY(-1px);
+    }
+
+    /* Confidentiality Banner */
+    .confidentiality-notice {
+      background-color: var(--navy-950);
+      color: #94A3B8;
+      font-size: 0.775rem;
+      text-align: center;
+      padding: 0.45rem 1rem;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .confidentiality-notice svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Common Section Setup */
+    .section-wrap {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-dark {
+      background-color: var(--navy-900);
+      color: var(--text-light);
+      position: relative;
+    }
+
+    .section-dark::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.3), transparent);
+    }
+
+    .section-light {
+      background-color: #FFFFFF;
+      color: var(--text-dark);
+    }
+
+    .section-soft {
+      background-color: var(--gray-surface);
+      color: var(--text-dark);
+      border-top: 1px solid var(--gray-border);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    /* Section Headings */
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-tag.light-theme {
+      color: var(--accent-dark);
+    }
+
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin: 0 0 0.85rem 0;
+    }
+
+    .section-dark .section-title {
+      color: #FFFFFF;
+    }
+
+    .section-light .section-title,
+    .section-soft .section-title {
+      color: var(--navy-900);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 0 2rem 0;
+    }
+
+    .section-dark .section-subtitle {
+      color: var(--text-muted-light);
+    }
+
+    .section-light .section-subtitle,
+    .section-soft .section-subtitle {
+      color: var(--text-muted-dark);
+    }
+
+    /* Section 1: Hero Header */
+    .hero-section {
+      padding: 4.5rem 1.5rem 3.5rem;
+      background: radial-gradient(circle at 80% 20%, rgba(30, 49, 86, 0.6) 0%, rgba(10, 18, 33, 1) 70%);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    }
+
+    .hero-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(197, 160, 89, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      padding: 0.45rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #E2E8F0;
+      margin-top: 1.25rem;
+    }
+
+    .hero-meta-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* Section 2: KPIs */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--gray-border);
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem 1.35rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(10, 18, 33, 0.07);
+    }
+
+    .kpi-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-number span.unit {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted-dark);
+      margin-left: 2px;
+    }
+
+    .kpi-desc {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: #64748B;
+      padding-top: 0.75rem;
+      border-top: 1px dashed #E2E8F0;
+      margin-top: auto;
+    }
+
+    .kpi-badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      font-size: 0.725rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-badge.badge-neutral {
+      background: #EEF2F6;
+      color: var(--navy-900);
+    }
+
+    .kpi-badge.badge-gold {
+      background: #F8F3E8;
+      color: var(--accent-dark);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+
+    /* Section 3: Charts */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .chart-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .chart-panel-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .chart-panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .chart-panel-sub {
+      font-size: 0.825rem;
+      color: var(--text-muted-dark);
+      margin: 0;
+    }
+
+    /* CSS Bar Chart (Bloco A) */
+    .pure-bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.25rem;
+      height: 220px;
+      padding: 1.5rem 0.5rem 0.5rem;
+      border-bottom: 1px solid #CBD5E1;
+    }
+
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .bar-val {
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .bar-val.highlight {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .bar-pillar {
+      width: 100%;
+      max-width: 58px;
+      border-radius: 4px 4px 0 0;
+      background: #CBD5E1;
+      transition: height 0.3s ease;
+      position: relative;
+    }
+
+    .bar-pillar.accent {
+      background: linear-gradient(180deg, #D4AF37 0%, #C5A059 100%);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+    }
+
+    .bar-pillar.navy {
+      background: var(--navy-700);
+    }
+
+    .bar-lbl {
+      margin-top: 0.65rem;
+      font-size: 0.775rem;
+      font-weight: 600;
+      color: var(--text-muted-dark);
+      text-align: center;
+    }
+
+    .chart-callout {
+      margin-top: 1.25rem;
+      padding: 0.85rem 1rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.825rem;
+      color: #5A4310;
+      line-height: 1.45;
+    }
+
+    /* CSS Waterfall (Bloco B) */
+    .waterfall-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .wf-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .wf-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .wf-header .name {
+      color: var(--navy-900);
+    }
+
+    .wf-header .val {
+      color: var(--navy-900);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .wf-header .val.reduction {
+      color: var(--accent-dark);
+    }
+
+    .wf-track {
+      background: #E2E8F0;
+      height: 16px;
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      position: relative;
+    }
+
+    .wf-bar {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .wf-bar.acl {
+      width: 68.6%;
+      background: var(--navy-800);
+    }
+
+    .wf-bar.distrib {
+      width: 56.4%;
+      background: var(--navy-700);
+    }
+
+    .wf-bar.solar {
+      width: 25.1%;
+      background: repeating-linear-gradient(
+        45deg,
+        #C5A059,
+        #C5A059 8px,
+        #B38E47 8px,
+        #B38E47 16px
+      );
+    }
+
+    .wf-bar.net {
+      width: 100%;
+      background: linear-gradient(90deg, var(--navy-900) 0%, #1E3156 100%);
+    }
+
+    .wf-subtext {
+      font-size: 0.75rem;
+      color: #64748B;
+    }
+
+    /* Section 4: Diagnostic & Insights */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .insight-card {
+      background: var(--navy-850);
+      border: 1px solid var(--navy-border);
+      border-radius: 8px;
+      padding: 1.85rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(197, 160, 89, 0.5);
+    }
+
+    .insight-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .insight-impact-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      color: #F8F3E8;
+      font-size: 0.775rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .insight-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.35;
+      margin: 0 0 0.85rem 0;
+    }
+
+    .insight-body {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text-muted-light);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .insight-rec {
+      background: rgba(10, 18, 33, 0.6);
+      border-left: 2px solid var(--accent);
+      padding: 0.85rem 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .insight-rec-label {
+      font-size: 0.725rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .insight-rec-text {
+      font-size: 0.825rem;
+      line-height: 1.45;
+      color: #E2E8F0;
+      margin: 0;
+    }
+
+    /* Section 5: Table */
+    .table-responsive-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .scorecard-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+      min-width: 820px;
+    }
+
+    .scorecard-table th {
+      background-color: var(--navy-900);
+      color: #F8FAFC;
+      font-weight: 600;
+      font-size: 0.775rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 1rem 1.1rem;
+      white-space: nowrap;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .scorecard-table th.num,
+    .scorecard-table td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scorecard-table td {
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--gray-border);
+      color: var(--text-dark);
+      font-size: 0.85rem;
+    }
+
+    .scorecard-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .scorecard-table tr.row-baseline {
+      background-color: #F8FAFC;
+      font-style: normal;
+    }
+
+    .scorecard-table tr.row-baseline td {
+      color: #475569;
+    }
+
+    .scorecard-table tr.row-current {
+      background-color: #FDFBF7;
+      font-weight: 600;
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .scorecard-table tr.row-current td {
+      color: var(--navy-900);
+      border-top: 1px solid rgba(197, 160, 89, 0.4);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+    }
+
+    .scorecard-table .tag-current {
+      display: inline-block;
+      background: var(--accent);
+      color: #060B14;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .table-footer-note {
+      margin-top: 0.85rem;
+      font-size: 0.775rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Section 6: Value pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .pillar-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      background: var(--accent-light);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-dark);
+      margin-bottom: 1rem;
+    }
+
+    .pillar-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .pillar-text {
+      font-size: 0.875rem;
+      color: var(--text-muted-dark);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Section 7: Final CTA */
+    .cta-card {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 auto 1rem;
+      max-width: 680px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted-light);
+      max-width: 640px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons .btn-gold,
+    .cta-buttons .btn-outline-gold {
+      padding: 0.85rem 1.85rem;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .jse-footer {
+      background-color: var(--navy-950);
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 3.5rem 1.5rem 2.5rem;
+      color: var(--text-muted-light);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-tagline {
+      color: #94A3B8;
+      font-size: 0.875rem;
+      margin-top: 0.4rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.775rem;
+      color: #64748B;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.775rem;
+      color: #94A3B8;
+      max-width: 580px;
+      line-height: 1.5;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 1024px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-wrap {
+        padding: 3rem 1.25rem;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .jse-nav-actions .jse-back-link {
+        display: none;
+      }
+      .cta-card {
+        padding: 2.5rem 1.25rem;
+      }
+      .cta-title {
+        font-size: 1.6rem;
+      }
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .jse-nav,
+      .confidentiality-notice,
+      .cta-buttons,
+      #cta {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF;
+        color: #000000;
+      }
+      .section-dark {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .section-dark .section-title,
+      .section-dark .insight-title {
+        color: #000000 !important;
+      }
+      .insight-card {
+        background: #F8FAFC !important;
+        border: 1px solid #CBD5E1 !important;
+        color: #000000 !important;
+      }
+      .insight-body,
+      .insight-rec-text {
+        color: #334155 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Confidentiality Bar -->
+  <div class="confidentiality-notice" role="note" aria-label="Aviso de confidencialidade">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+    </svg>
+    <span>Exemplo real anonimizado. Valores ajustados para preservar a confidencialidade do cliente.</span>
+  </div>
+
+  <!-- Sticky Executive Navbar -->
+  <header class="jse-nav">
+    <div class="jse-nav-inner">
+      <a href="#" class="jse-brand" title="JSE Energy Advisor">
+        <div class="jse-brand-mark">J</div>
+        <div class="jse-brand-logo">
+          <span class="jse-brand-text">JSE</span>
+          <span class="jse-brand-sub">ENERGY ADVISOR</span>
+        </div>
+      </a>
+      <div class="jse-nav-actions">
+        <a href="https://jseenergia.com" class="jse-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Voltar ao site
+        </a>
+        <a href="#cta" class="btn-gold">Quero o meu Scorecard</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEÇÃO 1: CABEÇALHO / HERO -->
+  <section class="section-wrap section-dark hero-section">
+    <div class="section-inner">
+      <span class="section-tag">EXEMPLO REAL · SCORECARD ENERGÉTICO</span>
+      <h1 class="section-title">A fotografia mensal da energia de um cliente real</h1>
+      <p class="section-subtitle">
+        Este é o painel executivo que o cliente recebe todo mês: indicadores consolidados, alertas de anomalia e diretrizes de decisão — tudo apurado diretamente das faturas de energia. Dados anonimizados para preservar a confidencialidade.
+      </p>
+      
+      <div class="hero-meta-pill">
+        <span class="dot"></span>
+        <span>Competência analisada: <strong>Agosto/2026</strong> · Baseline de referência: <strong>Ago/2025 – Jul/2026</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: INDICADORES-CHAVE -->
+  <section class="section-wrap section-light">
+    <div class="section-inner">
+      <span class="section-tag light-theme">PANORAMA GERAL</span>
+      <h2 class="section-title">Visão consolidada do fechamento mensal</h2>
+      <p class="section-subtitle">
+        Apurado nas faturas da distribuidora local e da comercializadora do Mercado Livre.
+      </p>
+
+      <div class="kpi-grid">
+        <!-- KPI 1 -->
+        <article class="kpi-card">
+          <div>
+            <div class="kpi-label">Custo Total de Energia</div>
+            <div class="kpi-number">R$ 132.129,79</div>
+          </div>
+          <div class="kpi-desc">
+            <span class="kpi-badge badge-gold">-10,0% vs mês anterior</span><br>
+            <span>+9,2% vs baseline fixo de 12 meses</span>
+          </div>
+        </article>
+
+        <!-- KPI 2 -->
+        <article class="kpi-card">
+          <div>
+            <div class="kpi-label">Preço Médio Efetivo</div>
+            <div class="kpi-number">R$ 688,14<span class="unit">/MWh</span></div>
+          </div>
+          <div class="kpi-desc">
+            <span class="kpi-badge badge-neutral">+5,2% vs baseline (R$ 654,27)</span><br>
+            <span>Volume consumido: <strong>192 MWh</strong></span>
+          </div>
+        </article>
+
+        <!-- KPI 3 -->
+        <article class="kpi-card">
+          <div>
+            <div class="kpi-label">Multas &amp; Desvios Evitáveis</div>
+            <div class="kpi-number" style="color: #9A2C2C;">R$ 1.064,09</div>
+          </div>
+          <div class="kpi-desc">
+            <span class="kpi-badge badge-neutral">Energia reativa / FP &lt; 0,92</span><br>
+            <span>Ritmo anualizado: <strong>~R$ 12,8 mil/ano</strong></span>
+          </div>
+        </article>
+
+        <!-- KPI 4 -->
+        <article class="kpi-card">
+          <div>
+            <div class="kpi-label">Custo Evitado Solar (real)</div>
+            <div class="kpi-number" style="color: var(--accent-dark);">R$ 26.508,00</div>
+          </div>
+          <div class="kpi-desc">
+            <span class="kpi-badge badge-gold">Geração real: 40,5 MWh</span><br>
+            <span>~R$ 318 mil/ano (61,5% do potencial)</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: EVOLUÇÃO E COMPOSIÇÃO -->
+  <section class="section-wrap section-soft">
+    <div class="section-inner">
+      <span class="section-tag light-theme">FLUXO ORÇAMENTÁRIO</span>
+      <h2 class="section-title">De onde vem o custo — e para onde ele vai</h2>
+      <p class="section-subtitle">
+        Comparativo histórico recente e a decomposição exata das rubricas tarifárias no fechamento de Agosto/2026.
+      </p>
+
+      <div class="charts-grid">
+        <!-- Bloco A: Evolução do Custo Total -->
+        <div class="chart-panel">
+          <div class="chart-panel-header">
+            <h3 class="chart-panel-title">Evolução do custo total</h3>
+            <p class="chart-panel-sub">Série histórica recente frente ao baseline médio contratual (R$ mil)</p>
+          </div>
+          
+          <div class="pure-bar-chart" aria-label="Gráfico de barras da evolução do custo total de energia">
+            <!-- Col 1 -->
+            <div class="bar-col">
+              <div class="bar-val">R$ 121,0k</div>
+              <div class="bar-pillar" style="height: 70%;" title="Baseline médio: R$ 121,0 mil"></div>
+              <div class="bar-lbl">Baseline</div>
+            </div>
+            <!-- Col 2 -->
+            <div class="bar-col">
+              <div class="bar-val">R$ 138,0k</div>
+              <div class="bar-pillar navy" style="height: 84%;" title="Junho/26: R$ 138,0 mil"></div>
+              <div class="bar-lbl">Jun/26</div>
+            </div>
+            <!-- Col 3 -->
+            <div class="bar-col">
+              <div class="bar-val">R$ 146,9k</div>
+              <div class="bar-pillar navy" style="height: 96%;" title="Julho/26: R$ 146,9 mil"></div>
+              <div class="bar-lbl">Jul/26</div>
+            </div>
+            <!-- Col 4 (Destaque) -->
+            <div class="bar-col">
+              <div class="bar-val highlight">R$ 132,1k</div>
+              <div class="bar-pillar accent" style="height: 80%;" title="Agosto/26: R$ 132,1 mil"></div>
+              <div class="bar-lbl" style="color: var(--accent-dark); font-weight: 700;">Ago/26</div>
+            </div>
+          </div>
+
+          <div class="chart-callout">
+            <strong>Destaque em Agosto/26:</strong> Queda de <strong>R$ 14,8 mil (-10,0%)</strong> frente ao pico orçamentário registrado em Julho, aproximando a operação do equilíbrio projetado.
+          </div>
+        </div>
+
+        <!-- Bloco B: Composição da Conta (Waterfall Simplificado) -->
+        <div class="chart-panel">
+          <div class="chart-panel-header">
+            <h3 class="chart-panel-title">Composição da conta (Agosto/2026)</h3>
+            <p class="chart-panel-sub">Abertura de fornecedores, tributos e geração própria apurados</p>
+          </div>
+
+          <div class="waterfall-list">
+            <!-- ACL -->
+            <div class="wf-item">
+              <div class="wf-header">
+                <span class="name">Contrato do ACL (Mercado Livre)</span>
+                <span class="val">R$ 72,5 mil</span>
+              </div>
+              <div class="wf-track">
+                <div class="wf-bar acl"></div>
+              </div>
+              <span class="wf-subtext">Energia incentivada negociada com a comercializadora parceira</span>
+            </div>
+
+            <!-- Distribuidora -->
+            <div class="wf-item">
+              <div class="wf-header">
+                <span class="name">Encargos e tributos da distribuidora local</span>
+                <span class="val">R$ 59,6 mil</span>
+              </div>
+              <div class="wf-track">
+                <div class="wf-bar distrib"></div>
+              </div>
+              <span class="wf-subtext">Fio B, TUSD, encargos setoriais e ICMS/PIS/COFINS incidentes</span>
+            </div>
+
+            <!-- Custo Evitado Solar -->
+            <div class="wf-item">
+              <div class="wf-header">
+                <span class="name">Custo evitado solar (real)</span>
+                <span class="val reduction">-R$ 26,5 mil</span>
+              </div>
+              <div class="wf-track">
+                <div class="wf-bar solar"></div>
+              </div>
+              <span class="wf-subtext">Economia gerada por 40,5 MWh de autoprodução fotovoltaica</span>
+            </div>
+
+            <!-- Custo Líquido -->
+            <div class="wf-item" style="margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px dashed var(--gray-border);">
+              <div class="wf-header">
+                <span class="name" style="font-weight: 700; color: var(--navy-900);">Custo líquido operacional estimado</span>
+                <span class="val" style="font-size: 1.05rem; font-weight: 700; color: var(--accent-dark);">~R$ 105,6 mil</span>
+              </div>
+              <div class="wf-track" style="height: 18px;">
+                <div class="wf-bar net" style="width: 80%;"></div>
+              </div>
+              <span class="wf-subtext">Desembolso efetivo após dedução da geração distribuída da planta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: DIAGNÓSTICO & INSIGHTS -->
+  <section class="section-wrap section-dark">
+    <div class="section-inner">
+      <span class="section-tag">AUDITORIA EXECUTIVA</span>
+      <h2 class="section-title">O que o Scorecard revelou este mês</h2>
+      <p class="section-subtitle">
+        Cada anomalia identificada vem com impacto financeiro quantificado e recomendação tática. É aqui que o dado vira decisão.
+      </p>
+
+      <div class="insights-grid">
+        <!-- INSIGHT 01 -->
+        <article class="insight-card">
+          <div class="insight-number">01</div>
+          <span class="insight-impact-badge">Impacto: R$ 12,8 mil / ano</span>
+          <h3 class="insight-title">Multa por energia reativa em atividade</h3>
+          <p class="insight-body">
+            O fator de potência da planta ficou abaixo do limite regulatório de 0,92, gerando R$ 1.064,09 em penalidade no mês (R$ 603,80 em junho e R$ 1.311,73 em julho). No acumulado, são cerca de R$ 12,8 mil por ano em despesa evitável.
+          </p>
+          <div class="insight-rec">
+            <div class="insight-rec-label">Recomendação Consultiva</div>
+            <p class="insight-rec-text">
+              Inspeção e correção do fator de potência via parametrização ou reforço de banco de capacitores — retorno direto já no próximo ciclo de faturamento.
+            </p>
+          </div>
+        </article>
+
+        <!-- INSIGHT 02 -->
+        <article class="insight-card">
+          <div class="insight-number">02</div>
+          <span class="insight-impact-badge">Impacto: Folga de 9,5% (600 kW)</span>
+          <h3 class="insight-title">Demanda medida abaixo da contratada — mas sem margem segura</h3>
+          <p class="insight-body">
+            A demanda medida recuou para 547,7 kW frente aos 600 kW contratados. Porém, o histórico do baseline atingiu 593,9 kW em janeiro, evidenciando que reduzir a demanda contratada hoje criaria risco real de ultrapassagem tarifária (multa em dobro).
+          </p>
+          <div class="insight-rec">
+            <div class="insight-rec-label">Recomendação Consultiva</div>
+            <p class="insight-rec-text">
+              Manter o contrato atual e reavaliar com mais um ciclo de dados, evitando exposição tarifária punitiva no período de retomada de safra ou pico fabril.
+            </p>
+          </div>
+        </article>
+
+        <!-- INSIGHT 03 -->
+        <article class="insight-card">
+          <div class="insight-number">03</div>
+          <span class="insight-impact-badge">Impacto: Gap de ~25,4 MWh/mês (≈ R$ 199 mil/ano)</span>
+          <h3 class="insight-title">Geração solar operando a 61,5% do potencial</h3>
+          <p class="insight-body">
+            A geração real das usinas somou 40,5 MWh no mês, frente a um potencial de 65,9 MWh. Parte do gap decorre de um inversor fora da contabilidade do portal de monitoramento, o que subestima o custo evitado real.
+          </p>
+          <div class="insight-rec">
+            <div class="insight-rec-label">Recomendação Consultiva</div>
+            <p class="insight-rec-text">
+              Reconexão do inversor, inspeção técnica das usinas e revisão do potencial declarado antes do próximo ciclo anual de reconciliação de créditos.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5: QUADRO COMPARATIVO -->
+  <section class="section-wrap section-light">
+    <div class="section-inner">
+      <span class="section-tag light-theme">HISTÓRICO CONSOLIDADO</span>
+      <h2 class="section-title">Evolução frente ao baseline fixo</h2>
+      <p class="section-subtitle">
+        Quadro analítico mensal auditando cada componente de custo, oscilações de demanda e penalidades regulatórias.
+      </p>
+
+      <div class="table-responsive-container">
+        <table class="scorecard-table">
+          <thead>
+            <tr>
+              <th>Competência</th>
+              <th class="num">Energia ACL</th>
+              <th class="num">Distribuidora (encargos)</th>
+              <th class="num">Custo Bruto Total</th>
+              <th class="num">Preço Médio</th>
+              <th class="num">Multas UFER</th>
+              <th class="num">Demanda Medida</th>
+              <th class="num">Variação vs Base</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Linha 1: Baseline Fixo -->
+            <tr class="row-baseline">
+              <td><strong>Baseline fixo</strong> (Ago/25–Jul/26)</td>
+              <td class="num">média ~R$ 66.500,00</td>
+              <td class="num">média ~R$ 54.500,00</td>
+              <td class="num">R$ 121.000,00</td>
+              <td class="num">R$ 654,27/MWh</td>
+              <td class="num">R$ 1.173,81/mês</td>
+              <td class="num">562,4 kW (méd.)</td>
+              <td class="num"><em>Referência</em></td>
+            </tr>
+
+            <!-- Linha 2: Junho/2026 -->
+            <tr>
+              <td>Junho/2026</td>
+              <td class="num">R$ 73.120,40</td>
+              <td class="num">R$ 64.836,37</td>
+              <td class="num">R$ 137.956,77</td>
+              <td class="num">R$ 679,12/MWh</td>
+              <td class="num">R$ 603,80</td>
+              <td class="num">573,7 kW</td>
+              <td class="num">+14,0%</td>
+            </tr>
+
+            <!-- Linha 3: Julho/2026 -->
+            <tr>
+              <td>Julho/2026</td>
+              <td class="num">R$ 81.340,15</td>
+              <td class="num">R$ 65.549,40</td>
+              <td class="num">R$ 146.889,55</td>
+              <td class="num">R$ 721,45/MWh</td>
+              <td class="num">R$ 1.311,73</td>
+              <td class="num">515,8 kW</td>
+              <td class="num">+21,4%</td>
+            </tr>
+
+            <!-- Linha 4: Agosto/2026 (Atual Destaque) -->
+            <tr class="row-current">
+              <td>
+                <strong>Agosto/2026</strong>
+                <span class="tag-current">Atual</span>
+              </td>
+              <td class="num">R$ 72.521,45</td>
+              <td class="num">R$ 59.608,34</td>
+              <td class="num"><strong>R$ 132.129,79</strong></td>
+              <td class="num">R$ 688,14/MWh</td>
+              <td class="num" style="color: #9A2C2C;">R$ 1.064,09</td>
+              <td class="num">547,7 kW</td>
+              <td class="num" style="color: var(--accent-dark); font-weight: 700;">-10,0% MoM · +9,2% base</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Fontes: faturas da distribuidora local e da comercializadora do ACL (competência Ago/26) e portal de monitoramento das usinas solares.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 6: O QUE ISSO SIGNIFICA PARA VOCÊ -->
+  <section class="section-wrap section-soft">
+    <div class="section-inner">
+      <span class="section-tag light-theme">VALOR CONSULTIVO CONTÍNUO</span>
+      <h2 class="section-title">É assim que a economia se mantém</h2>
+      <p class="section-subtitle">
+        Sem este acompanhamento, a multa de reativo continuaria drenando R$ 12,8 mil por ano, o gap solar de R$ 199 mil por ano passaria despercebido e qualquer decisão sobre demanda contratada seria tomada no escuro. O Scorecard Energético transforma a fatura — que todo mundo recebe — em inteligência — que quase ninguém tem.
+      </p>
+
+      <div class="pillars-grid">
+        <!-- Card 1 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Detecta</h3>
+          <p class="pillar-text">
+            Mapeia anomalias, erros de faturamento e penalidades antes que se tornem um prejuízo contínuo e silencioso acumulado na operação.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Quantifica</h3>
+          <p class="pillar-text">
+            Traduz grandezas técnicas (kW, kvarh, perdas) em impacto monetário exato no caixa da empresa, com projeção anualizada de economia.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Orienta</h3>
+          <p class="pillar-text">
+            Entrega a recomendação tática pronta para execução pela sua equipe ou com nosso suporte, sem hesitação e sem perda de prazo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 7: CTA FINAL -->
+  <section class="section-wrap section-dark" id="cta">
+    <div class="section-inner">
+      <div class="cta-card">
+        <span class="section-tag" style="margin-bottom: 0.85rem;">PRÓXIMO PASSO ESTRATÉGICO</span>
+        <h2 class="cta-title">Quer receber o Scorecard da sua operação todo mês?</h2>
+        <p class="cta-desc">
+          O monitoramento contínuo da JSE entrega este painel mensalmente, a partir de R$ 1.500/mês. Tudo começa pelo Diagnóstico Energético Empresarial.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="https://jseenergia.com#contato" class="btn-gold" title="Começar pelo diagnóstico">
+            Começar pelo diagnóstico
+          </a>
+          <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" class="btn-outline-gold" title="Conversar no WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            Falar com o especialista
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="jse-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="jse-brand">
+            <div class="jse-brand-mark">J</div>
+            <div class="jse-brand-logo">
+              <span class="jse-brand-text">JSE</span>
+              <span class="jse-brand-sub">ENERGY ADVISOR</span>
+            </div>
+          </div>
+          <div class="footer-tagline">Inteligência energética contínua para a sua operação.</div>
+        </div>
+
+        <div>
+          <a href="https://jseenergia.com" class="jse-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Voltar ao site principal
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 JSE Energy Advisor. Todos os direitos reservados.
+        </div>
+        <div class="footer-disclaimer">
+          Exemplo real anonimizado. Valores ajustados para preservar a confidencialidade do cliente.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll handling for on-page CTA anchors
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctaAnchor = document.querySelector('a[href="#cta"]');
+      if (ctaAnchor) {
+        ctaAnchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.getElementById('cta');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    });
+  </script>
+<script>
+/* Skip artifact shell — fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}) — vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}) — single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}) — donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>
