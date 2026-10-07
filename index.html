@@ -1,77 +1,1778 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSE Energy Advisor | Inteligência Energética Empresarial</title>
-<meta name="description" content="Sua energia sob controle, todo mês. Comece com um diagnóstico isento e mantenha a economia com monitoramento mensal de inteligência energética.">
-<link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSE Energy Advisor | Inteligência Energética Contínua</title>
+  <meta name="description" content="Inteligência energética contínua para médias empresas e grupos multiplanta. Diagnóstico isento e monitoramento mensal para manter cada real economizado.">
+  <link rel="icon" type="image/png" href="images/favicon-jse.png?v=2">
+  <link rel="canonical" href="https://jseenergia.com/">
 
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EBNW40D5F9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EBNW40D5F9');
-</script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBNW40D5F9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EBNW40D5F9');
+  </script>
 
-<!-- Open Graph / prévia ao compartilhar o link (WhatsApp, etc.) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="JSE Energy Advisor | Inteligência Energética Empresarial">
-<meta property="og:description" content="Sua energia sob controle, todo mês. Diagnóstico isento e monitoramento mensal para que cada real economizado continue economizado.">
-<meta property="og:image" content="https://jseenergia.com/images/preview-share.jpg">
-<meta property="og:url" content="https://jseenergia.com/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="JSE Energy Advisor | Inteligência Energética Empresarial">
-<meta name="twitter:description" content="Sua energia sob controle, todo mês. Diagnóstico isento e monitoramento mensal para que cada real economizado continue economizado.">
-<meta name="twitter:image" content="https://jseenergia.com/images/preview-share.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+  <!-- Prévia ao compartilhar o link (WhatsApp, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSE Energy Advisor | Inteligência Energética Contínua">
+  <meta property="og:description" content="Sua energia sob controle, todo mês. Diagnóstico isento e monitoramento mensal para que cada real economizado continue economizado.">
+  <meta property="og:image" content="https://jseenergia.com/images/preview-share.jpg">
+  <meta property="og:url" content="https://jseenergia.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSE Energy Advisor | Inteligência Energética Contínua">
+  <meta name="twitter:image" content="https://jseenergia.com/images/preview-share.jpg">
+
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+
+  <!-- Basecoat & Shell -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  <style>
+/* Skip artifact shell — fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root — the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+
+  <style>
+    :root {
+      --accent: #c5a059;
+      --accent-text: #8c6820;
+      --accent-contrast: #ffffff;
+      --navy-950: #060d19;
+      --navy-900: #0c182c;
+      --navy-850: #10213b;
+      --navy-800: #162b4c;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #8f6c1e;
+      --gold-gradient: linear-gradient(135deg, #dfbc61 0%, #b88a32 100%);
+      --text-dark: #0f1d32;
+      --text-dark-muted: #4a5b73;
+      --surface-light: #f8fafc;
+      --surface-gray: #edf2f7;
+      --border-light: #e2e8f0;
+      --border-dark: rgba(212, 175, 55, 0.22);
+    }
+
+    /* Base Reset & Typography */
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--navy-950);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-serif-brand {
+      font-family: 'Cinzel', serif;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    /* Navigation */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(12, 24, 44, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-primary);
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 4px;
+      background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(12,24,44,0.8) 100%);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      line-height: 1.1;
+      font-family: 'Cinzel', serif;
+    }
+
+    .brand-title span {
+      display: block;
+      font-size: 0.65rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: #d1d9e6;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--gold-primary);
+    }
+
+    .nav-cta-item {
+      display: flex;
+      align-items: center;
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--gold-gradient);
+      color: #0c182c;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      filter: brightness(1.05);
+      color: #070e1a;
+    }
+
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--gold-primary);
+      border: 1px solid var(--gold-primary);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.62rem 1.4rem;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline-gold:hover {
+      background: rgba(212, 175, 55, 0.12);
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    /* Common Section Containers */
+    .section-wrap {
+      padding: 5.5rem 1.5rem;
+      position: relative;
+    }
+
+    .container-boxed {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .badge-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 30px;
+    }
+
+    /* Section Themes */
+    .theme-dark {
+      background-color: var(--navy-900);
+      color: #ffffff;
+    }
+
+    .theme-dark .badge-sub {
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--gold-primary);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .theme-dark .section-head h2 {
+      color: #ffffff;
+    }
+
+    .theme-dark .section-subtitle {
+      color: #b5c3d8;
+    }
+
+    .theme-light {
+      background-color: #ffffff;
+      color: var(--text-dark);
+    }
+
+    .theme-light-alt {
+      background-color: var(--surface-light);
+      color: var(--text-dark);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .theme-light .badge-sub,
+    .theme-light-alt .badge-sub {
+      background: rgba(184, 138, 50, 0.1);
+      color: var(--gold-dark);
+      border: 1px solid rgba(184, 138, 50, 0.25);
+    }
+
+    .theme-light .section-head h2,
+    .theme-light-alt .section-head h2 {
+      color: var(--navy-900);
+    }
+
+    .theme-light .section-subtitle,
+    .theme-light-alt .section-subtitle {
+      color: var(--text-dark-muted);
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+      line-height: 1.25;
+      margin: 0 0 1rem 0;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin: 0 auto;
+    }
+
+    /* SECTION 1: HERO */
+    .hero-section {
+      background: radial-gradient(circle at 75% 25%, rgba(22, 43, 76, 0.8) 0%, rgba(6, 13, 25, 0.98) 100%), #060d19;
+      color: #ffffff;
+      padding: 6.5rem 1.5rem 7rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(212,175,55,0) 70%);
+      top: -150px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.3rem, 4.5vw, 3.5rem);
+      line-height: 1.18;
+      margin: 0.6rem 0 1.5rem 0;
+      color: #ffffff;
+    }
+
+    .hero-highlight {
+      color: var(--gold-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #c9d6e8;
+      margin-bottom: 2.5rem;
+      max-width: 620px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-reputation {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .rep-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rep-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      line-height: 1.1;
+    }
+
+    .rep-label {
+      font-size: 0.76rem;
+      color: #9cb1cb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Visual Card */
+    .hero-card-preview {
+      background: linear-gradient(160deg, rgba(16, 33, 59, 0.9) 0%, rgba(10, 20, 36, 0.95) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: var(--gold-primary);
+      letter-spacing: 0.08em;
+      margin: 0;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: #4ade80;
+    }
+
+    .status-dot::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    .preview-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.9rem;
+      border-radius: 4px;
+    }
+
+    .metric-box-label {
+      font-size: 0.72rem;
+      color: #9cb1cb;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-box-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .metric-box-val.gold {
+      color: var(--gold-primary);
+    }
+
+    .preview-banner {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px dashed rgba(212, 175, 55, 0.35);
+      padding: 0.85rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #d8e4f5;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    /* SECTION 2: O PROBLEMA */
+    .problem-callout-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .problem-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+    }
+
+    .problem-text p {
+      margin-bottom: 1.4rem;
+    }
+
+    .problem-highlight-box {
+      background: #fbfcfe;
+      border-left: 4px solid var(--gold-dark);
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border-radius: 0 8px 8px 0;
+      border-top: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .loss-points {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 0 0;
+    }
+
+    .loss-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .loss-icon {
+      color: #c0392b;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* SECTION 3: A OFERTA CENTRAL */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .plan-card {
+      background: var(--navy-850);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 2.25rem 1.85rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    .plan-card.featured {
+      border: 2px solid var(--gold-primary);
+      background: linear-gradient(180deg, #122543 0%, #0d1a30 100%);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold-gradient);
+      color: #0c182c;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.95rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+
+    .plan-price {
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin: 1rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .plan-price span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      color: #9cb1cb;
+      font-weight: 400;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 2rem 0;
+      flex-grow: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      color: #c9d6e8;
+      font-size: 0.92rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .plan-features svg {
+      color: var(--gold-primary);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .plans-footer-note {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #c1d0e4;
+      font-size: 1rem;
+    }
+
+    .complementares-callout-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed var(--gold-primary);
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .complementares-callout-link:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    /* SECTION 4: COMO COMEÇAR / DEE */
+    .timeline-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      margin: 3.5rem 0 2.5rem 0;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.75rem 1.4rem;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 0.65rem;
+    }
+
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--text-dark-muted);
+      line-height: 1.55;
+    }
+
+    .dee-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 2.5rem auto 1.5rem auto;
+    }
+
+    .dee-price-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    }
+
+    .dee-price-card.featured-dee {
+      border: 2px solid var(--gold-dark);
+      background: #fdfdfb;
+    }
+
+    .dee-val {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin: 0.75rem 0;
+    }
+
+    .guarantee-box {
+      max-width: 900px;
+      margin: 2rem auto 0 auto;
+      border: 1.5px solid var(--gold-dark);
+      border-radius: 8px;
+      padding: 1.6rem 2rem;
+      background: #fbf9f4;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .guarantee-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(184, 138, 50, 0.15);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .guarantee-content h4 {
+      margin: 0 0 0.25rem 0;
+      color: var(--navy-900);
+      font-size: 1.05rem;
+    }
+
+    .guarantee-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4a5b73;
+    }
+
+    /* FAIXA DE TRANSIÇÃO (Opção A) */
+    .transition-strip {
+      background: linear-gradient(90deg, #070e1a 0%, #10213b 50%, #070e1a 100%);
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .transition-strip a {
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .transition-strip a:hover {
+      color: var(--gold-primary);
+      transform: translateX(4px);
+    }
+
+    .transition-strip svg {
+      stroke: var(--gold-primary);
+      width: 22px;
+      height: 22px;
+      transition: transform 0.2s ease;
+    }
+
+    .transition-strip a:hover svg {
+      transform: translateX(5px);
+    }
+
+    /* SECTION 5: O SCORECARD ENERGÉTICO */
+    .scorecard-indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .scorecard-ind-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scorecard-ind-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold-dark);
+    }
+
+    .ind-label {
+      font-size: 0.82rem;
+      color: var(--text-dark-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .ind-headline {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 0.4rem;
+    }
+
+    .ind-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* Scorecard Preview Demo Box */
+    .scorecard-demo-wrap {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .scorecard-demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scorecard-demo-title h4 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--navy-900);
+      font-family: 'Cinzel', serif;
+    }
+
+    .scorecard-demo-title span {
+      font-size: 0.8rem;
+      color: var(--text-dark-muted);
+    }
+
+    /* SECTION 6: CUSTO DE OPORTUNIDADE */
+    .opp-comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 950px;
+      margin: 3rem auto 0 auto;
+    }
+
+    .comp-col {
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comp-col.internal {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comp-col.jse {
+      background: linear-gradient(170deg, #122442 0%, #0d1a30 100%);
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .comp-role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .comp-col.internal .comp-role { color: #94a3b8; }
+    .comp-col.jse .comp-role { color: var(--gold-primary); font-weight: 700; }
+
+    .comp-cost {
+      font-family: 'Cinzel', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .comp-col.internal .comp-cost { color: #e2e8f0; }
+    .comp-col.jse .comp-cost { color: var(--gold-primary); }
+
+    .comp-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .comp-details li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: #cbd5e1;
+    }
+
+    /* SECTION 7: RESULTADOS REAIS */
+    .case-container {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 2.75rem;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.03);
+    }
+
+    .case-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .case-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .case-card {
+      background: var(--surface-light);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .case-card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dark-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .case-card-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .case-card-value.highlight {
+      color: var(--gold-dark);
+    }
+
+    .case-closure-note {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* SECTION 8: PÚBLICO-ALVO */
+    .segments-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin: 3rem 0;
+    }
+
+    .segment-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .segment-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-dark);
+    }
+
+    .segment-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      background: rgba(184, 138, 50, 0.1);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .segment-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--navy-900);
+    }
+
+    .target-highlight-bar {
+      background: #ffffff;
+      border-left: 4px solid var(--gold-dark);
+      padding: 1.4rem 1.8rem;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy-900);
+    }
+
+    /* SECTION 9: SOBRE */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-bio-box {
+      background: var(--navy-850);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 8px;
+      padding: 2.25rem;
+      position: relative;
+    }
+
+    .about-stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quote-block {
+      position: relative;
+      padding: 2rem 2rem 2rem 2.8rem;
+      border-left: 3px solid var(--gold-primary);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.8rem;
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: rgba(212, 175, 55, 0.35);
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: #e2ecf9;
+      margin: 0 0 1rem 0;
+    }
+
+    .quote-author {
+      font-size: 0.88rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* SERVIÇOS COMPLEMENTARES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.85rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-dark);
+    }
+
+    .service-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      background: rgba(184, 138, 50, 0.12);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-dark-muted);
+      line-height: 1.5;
+    }
+
+    /* SECTION 10: FAQ */
+    .faq-accordion {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--gold-dark);
+    }
+
+    .faq-item.first-featured {
+      border-color: rgba(184, 138, 50, 0.4);
+      background: #fdfdfb;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .faq-trigger svg {
+      transition: transform 0.25s ease;
+      color: var(--gold-dark);
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.4rem 1.5rem;
+      color: #4a5b73;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* SECTION 11: CTA FINAL + FORMULÁRIO */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background: var(--navy-850);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 2.25rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #d1ddef;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .form-select option {
+      background-color: var(--navy-900);
+      color: #ffffff;
+    }
+
+    .form-input::placeholder {
+      color: #768ca6;
+    }
+
+    .form-success-box {
+      display: none;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold-primary);
+      border-radius: 6px;
+      padding: 1.5rem;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-success-box h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--gold-primary);
+      font-family: 'Cinzel', serif;
+    }
+
+    .form-success-box p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #dbe5f2;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--navy-950);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4.5rem 1.5rem 2rem 1.5rem;
+      color: #9ab0c8;
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-heading {
+      color: #ffffff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-links a {
+      color: #9ab0c8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6c7f96;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .problem-callout-grid,
+      .opp-comp-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .plans-grid,
+      .timeline-steps,
+      .scorecard-indicators-grid,
+      .case-metrics-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .segments-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    /* Responsive Navigation adjustments */
+    @media (max-width: 1080px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.65rem 1.25rem 0.55rem 1.25rem;
+        gap: 0.45rem;
+      }
+
+      .nav-menu {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 3px;
+      }
+
+      .nav-menu::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 1.1rem;
+        padding-right: 1rem;
+      }
+
+      .nav-link {
+        font-size: 0.82rem;
+      }
+
+      .nav-cta-item {
+        margin-left: 0.25rem;
+      }
+
+      .nav-cta-item .btn-gold {
+        font-size: 0.8rem;
+        padding: 0.45rem 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .plans-grid,
+      .timeline-steps,
+      .dee-pricing-grid,
+      .scorecard-indicators-grid,
+      .case-metrics-grid,
+      .services-grid,
+      .segments-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-wrap {
+        padding: 4rem 1.25rem;
+      }
+
+      .hero-section {
+        padding: 4.5rem 1.25rem 5rem 1.25rem;
+      }
+
+      .hero-reputation {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container {
+        padding: 0.55rem 0.85rem 0.5rem 0.85rem;
+        gap: 0.4rem;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+
+      .brand-title {
+        font-size: 1rem;
+      }
+
+      .brand-title span {
+        font-size: 0.58rem;
+      }
+
+      .nav-links {
+        gap: 0.95rem;
+        padding-right: 0.85rem;
+      }
+
+      .nav-link {
+        font-size: 0.78rem;
+      }
+
+      .nav-cta-item .btn-gold {
+        font-size: 0.74rem;
+        padding: 0.4rem 0.85rem;
+      }
+    }
+  
+    /* ===== Ajustes de integração (logo, foto, clientes, privacidade) ===== */
+    .logo-img { height: 44px; width: auto; display: block; }
+    .site-footer .logo-img { height: 40px; }
+    .about-photo { width: 100%; max-width: 240px; aspect-ratio: 1/1; object-fit: cover; border-radius: 14px; border: 1px solid rgba(212, 175, 55, 0.35); margin-bottom: 1.5rem; display: block; }
+    .clients-strip .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+    .form-privacy-note { font-size: 0.8rem; line-height: 1.5; color: var(--text-dark-muted); margin: 0.25rem 0 0.75rem; }
+    .form-privacy-note a { color: inherit; text-decoration: underline; }
+    .form-success-box a { color: inherit; font-weight: 600; text-decoration: underline; }
+/* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
+  .clients-strip{background:#F5F2ED;padding:40px 0;border-bottom:1px solid #e9e5dc;}
+  .clients-strip .container{display:flex;align-items:center;gap:28px;}
+  .clients-label{flex:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555555;white-space:nowrap;}
+  .clients-viewport{position:relative;flex:1;min-width:0;}
+  .clients-track{
+    display:flex;align-items:center;gap:20px;
+    overflow-x:auto;scroll-behavior:smooth;cursor:grab;
+    padding:6px 52px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+    scrollbar-width:none;
+  }
+  .clients-track::-webkit-scrollbar{display:none;}
+  .clients-track.dragging{cursor:grabbing;scroll-behavior:auto;}
+  .client-chip{
+    flex:none;display:flex;align-items:center;justify-content:center;
+    background:#ffffff;border:1px solid #e9e5dc;border-radius:12px;
+    padding:16px 26px;
+    box-shadow:0 4px 14px rgba(13,43,66,.06);
+    transition:box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .client-chip:hover{
+    box-shadow:0 14px 30px rgba(200,164,92,.24);
+    border-color:rgba(200,164,92,.45);
+    transform:translateY(-4px);
+  }
+  .clients-track img{height:64px;width:auto;flex:none;filter:grayscale(1);opacity:.6;transition:filter .2s ease, opacity .2s ease;}
+  .client-chip:hover img{filter:grayscale(0);opacity:1;}
+  .clients-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:46px;height:46px;border-radius:50%;
+    background:#ffffff;border:1px solid #e4e0d8;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(13,43,66,.18);
+    cursor:pointer;z-index:2;padding:0;
+    transition:box-shadow .2s ease, transform .2s ease, opacity .2s ease, border-color .2s ease;
+  }
+  .clients-arrow:hover{box-shadow:0 10px 26px rgba(200,164,92,.45);border-color:rgba(200,164,92,.55);transform:translateY(-50%) scale(1.08);}
+  .clients-arrow svg{width:20px;height:20px;color:#0D2B42;}
+  .clients-arrow--left{left:0;}
+  .clients-arrow--right{right:0;}
+  .clients-arrow.is-hidden{opacity:0;pointer-events:none;}
+  @media(max-width:700px){
+    .clients-strip .container{flex-direction:column;align-items:flex-start;gap:14px;}
+    .clients-viewport{width:100%;}
+    .clients-track{gap:14px;padding:6px 44px;}
+    .client-chip{padding:12px 18px;}
+    .clients-track img{height:44px;}
+    .clients-arrow{width:38px;height:38px;}
+    .clients-arrow svg{width:16px;height:16px;}
+  }
+
+  </style>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="container">
-    <a href="#top" class="logo">
-      <img src="images/logo-jse.png" alt="JSE Energy Advisor" class="logo-img">
-    </a>
-    <nav class="nav-links">
-      <a href="#problema">O problema</a>
-      <a href="#planos">Planos</a>
-      <a href="#dee">O que é o DEE</a>
-      <a href="#parceria">Investimento</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <button class="btn btn-accent nav-cta" onclick="openLeadModal()">Quero meu Diagnóstico</button>
-  </div>
-</header>
+  <!-- FIXED HEADER / NAVIGATION -->
+  <header class="site-nav">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="JSE Energy Advisor Início">
+        <img src="images/logo-jse.png" alt="JSE Energy Advisor" class="logo-img">
+      </a>
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">Inteligência Energética Empresarial</span>
-      <h1>Sua energia <span>sob controle</span>, todo mês.</h1>
-      <p class="lead">A JSE Energy Advisor entrega inteligência energética contínua para a sua operação. Começa com um diagnóstico isento e se mantém com monitoramento mensal, para que cada real economizado continue economizado.</p>
-      <div class="hero-actions">
-        <button class="btn btn-accent" onclick="openLeadModal()">Começar pelo diagnóstico</button>
-        <a class="btn btn-outline" href="#planos">Conhecer o monitoramento contínuo</a>
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="#oferta" class="nav-link">A oferta</a></li>
+          <li><a href="#como-comecar" class="nav-link">Como começar</a></li>
+          <li><a href="#scorecard" class="nav-link">Scorecard</a></li>
+          <li><a href="#resultados" class="nav-link">Resultados</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+          <li class="nav-cta-item">
+            <a href="#contato" class="btn-gold">Começar pelo diagnóstico</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SEÇÃO 1: HERO -->
+  <section class="hero-section" id="hero">
+    <div class="container-boxed hero-grid">
+      <div class="hero-content">
+        <div class="badge-sub">Consultoria de Inteligência Energética</div>
+        <h1>Sua energia sob controle, <span class="hero-highlight">todo mês.</span></h1>
+        <p class="hero-desc">
+          A JSE Energy Advisor entrega inteligência energética contínua para a sua operação. Começa com um diagnóstico isento e se mantém com monitoramento mensal, para que cada real economizado continue economizado.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#contato" class="btn-gold">Começar pelo diagnóstico</a>
+          <a href="#oferta" class="btn-outline-gold">Conhecer o monitoramento contínuo</a>
+        </div>
+
+        <div class="hero-reputation">
+          <div class="rep-item">
+            <span class="rep-num">20+ Anos</span>
+            <span class="rep-label">Experiência prática no setor</span>
+          </div>
+          <div class="rep-item">
+            <span class="rep-num">+R$ 500 Mi</span>
+            <span class="rep-label">Em economia mapeada</span>
+          </div>
+          <div class="rep-item">
+            <span class="rep-num">Isenção Total</span>
+            <span class="rep-label">Sem venda de energia</span>
+          </div>
+        </div>
       </div>
-      <div class="exemption-seal">
-        <span class="check">✓</span>
-        <span>Consultoria isenta, sem vínculo com fornecedores ou fabricantes</span>
+
+      <div class="hero-card-preview">
+        <div class="hero-card-header">
+          <h3 class="hero-card-title">Scorecard Energético • Sumário</h3>
+          <span class="status-dot">Monitoramento Ativo</span>
+        </div>
+
+        <div class="preview-metrics-grid">
+          <div class="metric-box">
+            <div class="metric-box-label">Custo Total Consolidado</div>
+            <div class="metric-box-val">R$ 27.750<small style="font-size:0.7rem; color:#9cb1cb;">/mês</small></div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-box-label">Economia Mensal Mantida</div>
+            <div class="metric-box-val gold">R$ 3.800<small style="font-size:0.7rem; color:#d4af37;">/mês</small></div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-box-label">Fator de Potência Médio</div>
+            <div class="metric-box-val">0.96 <small style="font-size:0.7rem; color:#4ade80;">(Adequado)</small></div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-box-label">Multas Evitadas</div>
+            <div class="metric-box-val gold">100% Zeradas</div>
+          </div>
+        </div>
+
+        <div class="preview-banner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold-primary); flex-shrink:0;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
+          <span>Operação calibrada contra a linha de base técnica do DEE inicial.</span>
+        </div>
       </div>
     </div>
-    <div class="hero-photo">
-      <img src="images/foto-hero.jpg" alt="Jussiê Guimarães, consultor JSE Energy Advisor">
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CLIENTES ATENDIDOS -->
+  <!-- CLIENTES ATENDIDOS -->
 <div class="clients-strip">
   <div class="container">
     <span class="clients-label">Clientes Atendidos</span>
@@ -150,616 +1851,1073 @@
 })();
 </script>
 
-<!-- O PROBLEMA -->
-<section id="problema">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">O problema</span>
-      <h2>Energia sem gestão técnica é dinheiro saindo pela porta de suas unidades</h2>
-      <p>O diagnóstico encontra o vazamento. Mas sem acompanhamento, a economia some: a demanda contratada volta a subir, as multas por fator de potência reaparecem, o enquadramento tarifário desatualiza. Gestão de energia não é um evento, é uma operação contínua. Quem trata como evento, paga duas vezes: a primeira na conta, a segunda na economia que não se mantém.</p>
-    </div>
-
-    <div class="accent-cards dark" style="margin-bottom:32px;">
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v3"/><path d="M12 12l5-5"/><path d="M18 3l1.5 1.5"/></svg></div>
-        <h3>Demanda contratada superdimensionada</h3>
-        <p>Sua empresa paga por uma capacidade de energia que não usa.</p>
-      </div>
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
-        <h3>Multas por baixo fator de potência</h3>
-        <p>Cobranças recorrentes que passam despercebidas na fatura.</p>
-      </div>
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></div>
-        <h3>Enquadramento tarifário incorreto</h3>
-        <p>Sua empresa pode estar no grupo ou modalidade tarifária errada.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SISTEMA OPERACIONAL DE INTELIGÊNCIA ENERGÉTICA -->
-<section class="section-alt" id="planos">
-  <div class="container">
-    <div class="plans-header">
-      <div class="plans-kicker"><span>JSE Energy Advisor</span></div>
-      <h2 class="plans-title">Depois do diagnóstico, quem mantém sua energia sob controle?</h2>
-      <p class="plans-subtitle">O DEE encontra a oportunidade. O Sistema Operacional de Inteligência Energética garante que ela se mantenha, com monitoramento mensal, alertas de desvio e apoio à decisão. Inteligência energética sênior por uma fração do custo de um engenheiro interno.</p>
-      <div class="plans-divider">◆</div>
-    </div>
-
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-card-head"><span>Monitoramento</span></div>
-        <div class="plan-body">
-          <div class="plan-price">R$ 1.500<span>/mês</span></div>
-          <div class="plans-divider small">◆</div>
-          <p class="plan-desc">A fotografia mensal da sua energia</p>
-          <ul class="plan-features">
-            <li><span class="plan-check">✓</span>Scorecard Energético Mensal</li>
-            <li><span class="plan-check">✓</span>Coleta automatizada de dados</li>
-            <li><span class="plan-check">✓</span>Alertas de anomalia (multas e fator de potência)</li>
-          </ul>
+  <!-- SEÇÃO 2: O PROBLEMA -->
+  <section class="section-wrap theme-light" id="problema">
+    <div class="container-boxed">
+      <div class="problem-callout-grid">
+        <div>
+          <div class="badge-sub">Diagnóstico versus Manutenção</div>
+          <h2 class="section-title">Energia sem gestão técnica é dinheiro saindo pela porta de suas unidades.</h2>
+          <div class="problem-text">
+            <p>
+              O diagnóstico encontra o vazamento. Mas sem acompanhamento, a economia some: a demanda contratada volta a subir, as multas por fator de potência reaparecem, o enquadramento tarifário desatualiza.
+            </p>
+            <p>
+              Gestão de energia não é um evento, <strong>é uma operação contínua</strong>. Quem trata como evento, paga duas vezes: a primeira na conta, a segunda na economia que não se mantém.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="plan-card plan-card--featured">
-        <span class="plan-badge">★ Mais Escolhido</span>
-        <div class="plan-card-head"><span>Gestão</span></div>
-        <div class="plan-body">
-          <div class="plan-price">R$ 2.500<span>/mês</span></div>
-          <div class="plans-divider small">◆</div>
-          <p class="plan-desc">Curadoria e recomendações táticas</p>
-          <ul class="plan-features">
-            <li><span class="plan-check">✓</span>Tudo do Monitoramento, mais:</li>
-            <li><span class="plan-check">✓</span>Insights e recomendações mensais</li>
-            <li><span class="plan-check">✓</span>Análise de conformidade regulatória</li>
-            <li><span class="plan-check">✓</span>Reunião trimestral de acompanhamento</li>
-            <li><span class="plan-check">✓</span>Suporte prioritário via WhatsApp</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-card-head"><span>Consultoria</span></div>
-        <div class="plan-body">
-          <div class="plan-price">R$ 4.000<span>/mês</span></div>
-          <div class="plans-divider small">◆</div>
-          <p class="plan-desc">Consultoria dedicada com o C-Level</p>
-          <ul class="plan-features">
-            <li><span class="plan-check">✓</span>Tudo da Gestão, mais:</li>
-            <li><span class="plan-check">✓</span>Consultor dedicado: 30 minutos por mês</li>
-            <li><span class="plan-check">✓</span>Acompanhamento de implementação</li>
-            <li><span class="plan-check">✓</span>Viabilidade completa de projetos</li>
+        <div class="problem-highlight-box">
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin: 0 0 0.5rem 0;">Vazamentos recorrentes em empresas sem gestão contínua:</h3>
+          <ul class="loss-points">
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Ultrapassagem de demanda gerando penalidades e tarifas multiplicadas.</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Multas silenciosas por baixo fator de potência (energia reativa excedente).</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Enquadramento na modalidade tarifária incorreta (Verde x Azul ou B3 x A4).</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Falta de auditoria técnica mensal contra erros de faturamento da distribuidora.</span>
+            </li>
           </ul>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="plans-footer">
-      <div class="plans-divider small">◆</div>
-      <p class="plans-footnote">Todos os planos começam pelo Diagnóstico Energético Empresarial, a etapa de entrada que identifica onde está a economia.</p>
-    </div>
+  <!-- SEÇÃO 3: A OFERTA CENTRAL -->
+  <section class="section-wrap theme-dark" id="oferta">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Sistema Operacional de Inteligência Energética</div>
+        <h2 class="section-title">Depois do diagnóstico, quem mantém sua energia sob controle?</h2>
+        <p class="section-subtitle">
+          O DEE encontra a oportunidade. O Sistema Operacional de Inteligência Energética garante que ela se mantenha, com monitoramento mensal, alertas de desvio e apoio à decisão. Inteligência energética sênior por uma fração do custo de um engenheiro interno.
+        </p>
+      </div>
 
-    <div class="plans-bridge">
-      <p>O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? <a href="servicos-complementares" target="_blank" rel="noopener">Conheça nossos serviços complementares.</a></p>
+      <div class="plans-grid">
+        <!-- PLANO 1 -->
+        <div class="plan-card">
+          <h3 class="plan-name">Monitoramento</h3>
+          <p style="font-size: 0.85rem; color: #9cb1cb; margin: 0;">Supervisão essencial de anomalias e histórico.</p>
+          <div class="plan-price">
+            R$ 1.500 <span>/ mês</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Scorecard Energético Mensal consolidado</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Coleta estruturada e auditoria de dados</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Alertas de anomalia (multas e fator de potência)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Verificação de conformidade de faturamento</span>
+            </li>
+          </ul>
+          <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Monitoramento</a>
+        </div>
+
+        <!-- PLANO 2 (DESTAQUE) -->
+        <div class="plan-card featured">
+          <div class="featured-badge">Mais Escolhido</div>
+          <h3 class="plan-name">Gestão</h3>
+          <p style="font-size: 0.85rem; color: #cbd7e6; margin: 0;">Gestão ativa contínua e suporte executivo.</p>
+          <div class="plan-price">
+            R$ 2.500 <span>/ mês</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Tudo do plano Monitoramento</strong></span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Insights mensais de otimização operacional</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Acompanhamento de conformidade regulatória</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Reunião trimestral de alinhamento com a diretoria</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Suporte ágil via canal exclusivo de WhatsApp</span>
+            </li>
+          </ul>
+          <a href="#contato" class="btn-gold" style="width: 100%; text-align: center;">Selecionar Gestão</a>
+        </div>
+
+        <!-- PLANO 3 -->
+        <div class="plan-card">
+          <h3 class="plan-name">Consultoria</h3>
+          <p style="font-size: 0.85rem; color: #9cb1cb; margin: 0;">Assessoria sênior dedicada para expansão e projetos.</p>
+          <div class="plan-price">
+            R$ 4.000 <span>/ mês</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Tudo do plano Gestão</strong></span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Consultor dedicado sênior (30 min/mês em sessão executiva)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Acompanhamento direto de implementação técnica</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Estudos de viabilidade técnica e financeira de novos projetos</span>
+            </li>
+          </ul>
+          <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Consultoria</a>
+        </div>
+      </div>
+
+      <div class="plans-footer-note">
+        <p style="margin-bottom: 0.8rem; font-weight: 500;">
+          Todos os planos começam pelo <strong>Diagnóstico Energético Empresarial</strong>, a etapa de entrada que identifica onde está a economia.
+        </p>
+        <p style="margin: 0;">
+          O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? 
+          <a href="#complementares" class="complementares-callout-link">Conheça nossos serviços complementares &rarr;</a>
+        </p>
+      </div>
     </div>
+  </section>
+
+  <!-- SEÇÃO 4: COMO COMEÇAR / DEE -->
+  <section class="section-wrap theme-light" id="como-comecar">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Porta de Entrada Estruturada</div>
+        <h2 class="section-title">Tudo começa com um diagnóstico isento.</h2>
+        <p class="section-subtitle">
+          O Diagnóstico Energético Empresarial é a porta de entrada. Em 90 dias, você recebe o diagnóstico completo, o plano de ação e o acompanhamento da implementação, fechando com o Scorecard Energético que define a linha de base da sua operação.
+        </p>
+      </div>
+
+      <!-- 4 ETAPAS EM LINHA -->
+      <div class="timeline-steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Análise</div>
+          <div class="step-desc">
+            Levantamento de informações, entrevistas com stakeholders e análise profunda de dados de faturas e processos. 100% online.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Planejamento</div>
+          <div class="step-desc">
+            Definição de objetivos técnicos e financeiros, priorização rigorosa de iniciativas e elaboração do plano de ação executivo.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Estruturação</div>
+          <div class="step-desc">
+            Construção minuciosa do Scorecard Energético personalizado e definição precisa da linha de base de consumo e custo.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-title">Acompanhamento</div>
+          <div class="step-desc">
+            Análise dos resultados nas faturas (energia consumida, uso da rede e geração própria, se houver), ajustes e emissão do Scorecard do mês.
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.9rem; color: #64748b; margin-bottom: 3rem;">
+        <em>* A etapa 4 é a ponte para o Sistema Operacional: ao fim dos 90 dias, o acompanhamento continua como assinatura mensal.</em>
+      </p>
+
+      <!-- 2 CARDS DE INVESTIMENTO DO DEE -->
+      <div class="dee-pricing-grid">
+        <div class="dee-price-card">
+          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Essencial</h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin: 0.25rem 0 1rem 0;">Diagnóstico técnico + planejamento estratégico</p>
+          <div class="dee-val">R$ 10.800</div>
+          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
+            Entrega dos achados técnicos fundamentais, auditoria tarifária e plano de ação estruturado para sua equipe interna.
+          </p>
+          <a href="#contato" class="btn-outline-gold" style="color: var(--gold-dark); border-color: var(--gold-dark);">Contratar Essencial</a>
+        </div>
+
+        <div class="dee-price-card featured-dee">
+          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Completo</h3>
+          <p style="font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; margin: 0.25rem 0 1rem 0;">Diagnóstico + Plano + 3 meses de acompanhamento</p>
+          <div class="dee-val" style="color: var(--navy-900);">R$ 13.500</div>
+          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
+            Diagnóstico completo, plano de ação detalhado, 3 meses de acompanhamento prático, emissão do Scorecard Energético e relatório final executivo.
+          </p>
+          <a href="#contato" class="btn-gold">Contratar Completo</a>
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.9rem; color: #475569; max-width: 750px; margin: 1.5rem auto 0 auto;">
+        <strong>Condições de pagamento:</strong> À vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo 100% isento de taxa de sucesso (sem success fee).
+      </p>
+
+      <!-- GARANTIA DE PERFORMANCE -->
+      <div class="guarantee-box">
+        <div class="guarantee-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="guarantee-content">
+          <h4>Garantia de Performance JSE</h4>
+          <p>
+            Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a <strong>R$ 1.000/mês</strong>, o valor investido é devolvido integralmente ao cliente. Risco zero para a sua empresa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIXA DE TRANSIÇÃO (Opção A) -->
+  <div class="transition-strip">
+    <a href="#complementares">
+      <span>O DEE encontra. Os serviços complementares capturam. O monitoramento mantém.</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
   </div>
-</section>
 
-<!-- COMO COMEÇAR: DEE (ONBOARDING DE 90 DIAS) -->
-<section id="dee">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Como começar</span>
-      <h2>Tudo começa com um diagnóstico isento</h2>
-      <p>O Diagnóstico Energético Empresarial é a porta de entrada. Em 90 dias, você recebe o diagnóstico completo, o plano de ação e o acompanhamento da implementação, fechando com o Scorecard Energético que define a linha de base da sua operação.</p>
+  <!-- SEÇÃO 5: O SCORECARD ENERGÉTICO -->
+  <section class="section-wrap theme-light-alt" id="scorecard">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Inteligência Visual para Decisão</div>
+        <h2 class="section-title">A fotografia mensal da sua energia.</h2>
+        <p class="section-subtitle">
+          O Scorecard Energético é o entregável que transforma dados em decisão. Todo mês, sua operação recebe um painel executivo com os indicadores que importam: custo total de energia, preço médio efetivo (R$/MWh), multas e desvios evitáveis e custo evitado de geração própria. Com alertas de anomalia e comparação com a linha de base definida no diagnóstico.
+        </p>
+      </div>
+
+      <!-- 4 INDICADORES EM CARDS PEQUENOS -->
+      <div class="scorecard-indicators-grid">
+        <div class="scorecard-ind-card">
+          <div class="ind-label">Indicador 01</div>
+          <div class="ind-headline">Custo Total de Energia</div>
+          <div class="ind-desc">
+            Soma consolidada do consumo ativo, demanda da rede e encargos das distribuidoras com histórico evolutivo.
+          </div>
+        </div>
+
+        <div class="scorecard-ind-card">
+          <div class="ind-label">Indicador 02</div>
+          <div class="ind-headline">Preço Médio Efetivo (R$/MWh)</div>
+          <div class="ind-desc">
+            O custo real por megawatt-hora consumido na ponta, considerando todas as componentes tarifárias e tributos.
+          </div>
+        </div>
+
+        <div class="scorecard-ind-card">
+          <div class="ind-label">Indicador 03</div>
+          <div class="ind-headline">Multas e Desvios Evitáveis</div>
+          <div class="ind-desc">
+            Rastreamento rigoroso de reativo excedente, ultrapassagem de demanda e bandeiras tarifárias para blindagem do caixa.
+          </div>
+        </div>
+
+        <div class="scorecard-ind-card">
+          <div class="ind-label">Indicador 04</div>
+          <div class="ind-headline">Custo Evitado de Geração Própria</div>
+          <div class="ind-desc">
+            Auditoria da compensação de usinas solares ou geração distribuída, verificando se os créditos foram devidamente abatidos.
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMULAÇÃO DO SCORECARD MENSAAL -->
+      <div class="scorecard-demo-wrap">
+        <div class="scorecard-demo-header">
+          <div class="scorecard-demo-title">
+            <h4>Visão Mensal Consolidada • Exemplo de Entrega</h4>
+            <span>Unidade Matriz Industrial + Filial CD Logística</span>
+          </div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--gold-dark); background: rgba(184, 138, 50, 0.1); padding: 0.35rem 0.75rem; border-radius: 4px;">
+            Linha de Base: Setembro
+          </span>
+        </div>
+
+        <div class="shell-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div class="kpi" style="background: #f8fafc; border: 1px solid var(--border-light); padding: 1.1rem; border-radius: 6px;">
+            <div class="kpi-label" style="font-size: 0.75rem; color: #64748b;">Consumo Ativo Faturado</div>
+            <div class="kpi-value" style="font-size: 1.45rem; font-weight: 700; color: var(--navy-900);">48.320 kWh</div>
+            <div class="kpi-delta down" style="font-size: 0.78rem; color: #16a34a; font-weight: 600;">-8.4% vs linha de base</div>
+          </div>
+          <div class="kpi" style="background: #f8fafc; border: 1px solid var(--border-light); padding: 1.1rem; border-radius: 6px;">
+            <div class="kpi-label" style="font-size: 0.75rem; color: #64748b;">Preço Médio Efetivo</div>
+            <div class="kpi-value" style="font-size: 1.45rem; font-weight: 700; color: var(--navy-900);">R$ 685,20 /MWh</div>
+            <div class="kpi-delta down" style="font-size: 0.78rem; color: #16a34a; font-weight: 600;">Otimizado em R$ 42/MWh</div>
+          </div>
+          <div class="kpi" style="background: #f8fafc; border: 1px solid var(--border-light); padding: 1.1rem; border-radius: 6px;">
+            <div class="kpi-label" style="font-size: 0.75rem; color: #64748b;">Penalidades / Multas</div>
+            <div class="kpi-value" style="font-size: 1.45rem; font-weight: 700; color: #16a34a;">R$ 0,00</div>
+            <div class="kpi-delta down" style="font-size: 0.78rem; color: #16a34a; font-weight: 600;">Economia de R$ 1.400/mês</div>
+          </div>
+          <div class="kpi" style="background: #f8fafc; border: 1px solid var(--border-light); padding: 1.1rem; border-radius: 6px;">
+            <div class="kpi-label" style="font-size: 0.75rem; color: #64748b;">Economia Real Acumulada</div>
+            <div class="kpi-value" style="font-size: 1.45rem; font-weight: 700; color: var(--gold-dark);">R$ 27.600</div>
+            <div class="kpi-delta up" style="font-size: 0.78rem; color: #16a34a; font-weight: 600;">Nos últimos 6 meses</div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.85rem; color: #475569; background: #f1f5f9; padding: 0.85rem 1.25rem; border-radius: 6px; display: flex; align-items: center; justify-content: space-between;">
+          <span><strong>Status do Mês:</strong> Demanda em conformidade com o novo contrato ajustado. Fator de potência corrigido.</span>
+          <span style="color: #16a34a; font-weight: 700;">Zero Desvio</span>
+        </div>
+      </div>
     </div>
-    <div class="accent-cards cols-4">
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-        <h3>Etapa 01: Análise</h3>
-        <p>Levantamento de informações, entrevistas com stakeholders e análise de dados e processos. 100% online.</p>
+  </section>
+
+  <!-- SEÇÃO 6: CUSTO DE OPORTUNIDADE -->
+  <section class="section-wrap theme-dark" id="custo-oportunidade">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Eficiência de Capital</div>
+        <h2 class="section-title">Um engenheiro interno custa R$ 17 a 20 mil/mês. A inteligência JSE custa uma fração disso.</h2>
+        <p class="section-subtitle">
+          Um engenheiro de eficiência energética custa entre R$ 17 mil e R$ 20 mil por mês na folha, sem garantia de tempo para análise aprofundada. A JSE entrega a mesma profundidade técnica por R$ 1.500 a 4.000/mês, sem encargos trabalhistas e com 20+ anos de experiência aplicados à sua operação. Para grupos multiplanta, o comparativo é ainda mais forte: um gestor interno cobre uma unidade; o pacote JSE cobre várias.
+        </p>
       </div>
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
-        <h3>Etapa 02: Planejamento</h3>
-        <p>Definição de objetivos, priorização de iniciativas e elaboração do plano de ação.</p>
-      </div>
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-        <h3>Etapa 03: Estruturação</h3>
-        <p>Construção do Scorecard Energético e definição da linha de base.</p>
-      </div>
-      <div class="accent-card">
-        <div class="accent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-        <h3>Etapa 04: Acompanhamento</h3>
-        <p>Análise dos resultados nas faturas de energia (energia consumida, uso da rede e geração própria, se houver), ajustes e melhorias, e emissão do Scorecard Energético do mês.</p>
+
+      <div class="opp-comp-grid">
+        <!-- COLUNA 1: ENGENHEIRO INTERNO -->
+        <div class="comp-col internal">
+          <div class="comp-role">Engenheiro Interno de Eficiência</div>
+          <div class="comp-cost">R$ 17.000 a 20.000<span style="font-size: 0.85rem; font-family:'Plus Jakarta Sans'; color:#94a3b8;">/mês</span></div>
+          <ul class="comp-details">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              <span>Pesados encargos trabalhistas, benefícios e rescisão</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              <span>Gargalo operacional: cobre geralmente apenas uma unidade</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              <span>Tempo consumido por rotinas administrativas internas</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              <span>Risco de curva de aprendizado e turnover</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- COLUNA 2: JSE ENERGY ADVISOR -->
+        <div class="comp-col jse">
+          <div class="comp-role">JSE Energy Advisor • Inteligência Contínua</div>
+          <div class="comp-cost">R$ 1.500 a 4.000<span style="font-size: 0.85rem; font-family:'Plus Jakarta Sans'; color:#d4af37;">/mês</span></div>
+          <ul class="comp-details">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Zero encargos trabalhistas</strong>, custo consultivo direto</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Capacidade multiplanta:</strong> cobre várias unidades com a mesma metodologia</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Mais de 20 anos de vivência no setor elétrico dedicados à análise</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Scorecard executivo direto para apoio imediato à diretoria</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <p class="dee-note">A etapa 4 é a ponte para o Sistema Operacional: ao fim dos 90 dias, o acompanhamento continua como assinatura mensal.</p>
-  </div>
-</section>
+  </section>
 
-<!-- INVESTIMENTO DO ONBOARDING -->
-<section class="section-dark" id="parceria">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Investimento e garantia</span>
-      <h2>Estrutura de investimento do onboarding</h2>
-      <p>Transparência total sobre valores, condições e o que acontece se o diagnóstico não encontrar economia.</p>
-    </div>
-
-    <div class="price-cards">
-      <div class="price-card">
-        <span class="tag">Essencial</span>
-        <div class="price-value">R$ 10.800</div>
-        <h3>Escopo contratado</h3>
-        <p>Diagnóstico + planejamento, com entregáveis principais.</p>
+  <!-- SEÇÃO 7: RESULTADOS REAIS -->
+  <section class="section-wrap theme-light" id="resultados">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Estudo de Caso Comprovado</div>
+        <h2 class="section-title">Economia identificada, acompanhada e mantida.</h2>
+        <p class="section-subtitle">
+          Veja os números auditados de uma operação real sob a assessoria da JSE Energy Advisor.
+        </p>
       </div>
-      <div class="price-card">
-        <span class="tag">Completo</span>
-        <div class="price-value">R$ 13.500</div>
-        <h3>Escopo contratado</h3>
-        <p>Diagnóstico + plano de ação + 3 meses de acompanhamento + Scorecard + relatório final.</p>
+
+      <div class="case-container">
+        <div class="case-header-row">
+          <div>
+            <span style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700;">Case Industrial</span>
+            <h3 style="font-size: 1.5rem; color: var(--navy-900); margin: 0.2rem 0 0 0;">Grupo Bortech, Diagnóstico e Monitoramento</h3>
+          </div>
+          <span style="background: rgba(184, 138, 50, 0.1); border: 1px solid rgba(184, 138, 50, 0.3); color: var(--gold-dark); padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
+            Resultados Consolidados
+          </span>
+        </div>
+
+        <div class="case-metrics-grid">
+          <div class="case-card">
+            <div class="case-card-label">Custo anual monitorado de energia</div>
+            <div class="case-card-value">R$ 333 mil</div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-label">Economia média identificada</div>
+            <div class="case-card-value highlight">13,7%</div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-label">Eliminação de multas (Fator de Potência)</div>
+            <div class="case-card-value highlight">R$ 16.800<small style="font-size:0.8rem; color:#64748b;">/ano</small></div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-label">Ajuste de demanda superdimensionada</div>
+            <div class="case-card-value highlight">R$ 28.800<small style="font-size:0.8rem; color:#64748b;">/ano</small></div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-label">Investimento em infraestrutura</div>
+            <div class="case-card-value">CAPEX zero</div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-label">Retorno sobre o investimento</div>
+            <div class="case-card-value highlight">&lt; 6 meses</div>
+          </div>
+        </div>
+
+        <div class="case-closure-note">
+          E o que garante que essa economia se mantenha? <strong>O monitoramento contínuo.</strong>
+        </div>
       </div>
     </div>
+  </section>
 
-    <p class="price-terms">Pagamento à vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo isento de taxa de sucesso (sem success fee).</p>
+  <!-- SEÇÃO 8: PÚBLICO-ALVO -->
+  <section class="section-wrap theme-light-alt" id="publico-alvo">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Quem Atendemos</div>
+        <h2 class="section-title">Ideal para médias empresas, redes e grupos com múltiplas unidades que gastam acima de R$ 10.000/mês em energia.</h2>
+        <p class="section-subtitle">
+          Operações em que a conta de energia elétrica impacta diretamente a margem operacional e demandam olhar técnico sênior.
+        </p>
+      </div>
 
-    <div class="guarantee-strip">
-      <span class="icon">✓</span>
+      <div class="segments-grid">
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 20h20"></path>
+              <path d="M5 20V8l7 4V4l7 5v11"></path>
+            </svg>
+          </div>
+          <div class="segment-name">Indústrias</div>
+        </div>
+
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="segment-name">Centros Logísticos</div>
+        </div>
+
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </div>
+          <div class="segment-name">Supermercados</div>
+        </div>
+
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 21h18"></path>
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+              <path d="M9 9h1"></path><path d="M9 13h1"></path><path d="M9 17h1"></path>
+              <path d="M14 9h1"></path><path d="M14 13h1"></path><path d="M14 17h1"></path>
+            </svg>
+          </div>
+          <div class="segment-name">Hotéis</div>
+        </div>
+
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 22V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v17"></path>
+              <path d="M15 10h4a2 2 0 0 1 2 2v10"></path>
+              <path d="M7 8h4"></path>
+            </svg>
+          </div>
+          <div class="segment-name">Postos de Combustíveis</div>
+        </div>
+
+        <div class="segment-card">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <div class="segment-name">Construtoras</div>
+        </div>
+
+        <div class="segment-card" style="grid-column: span 2;">
+          <div class="segment-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </div>
+          <div class="segment-name">Redes e Grupos com Múltiplas Unidades</div>
+        </div>
+      </div>
+
+      <div class="target-highlight-bar">
+        Quanto mais unidades, maior o valor do monitoramento contínuo, uma única operação de inteligência cobre toda a rede.
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 9: SOBRE -->
+  <section class="section-wrap theme-dark" id="sobre">
+    <div class="container-boxed">
+      <div class="about-grid">
+        <div class="about-bio-box">
+          <img src="images/foto-jussie.jpg" alt="Jussiê Guimarães, Lead Energy Advisor da JSE" class="about-photo" loading="lazy">
+          <div class="badge-sub">Liderança Técnica</div>
+          <h2 style="font-size: 1.85rem; color: #ffffff; margin: 0.5rem 0 1.25rem 0;">
+            Quem está por trás da inteligência energética JSE
+          </h2>
+          <p style="color: #cbd7e6; line-height: 1.7; margin-bottom: 1.5rem;">
+            <strong>Jussiê Guimarães</strong> reúne mais de 20 anos de experiência prática nos setores elétrico e de eficiência corporativa, acumulando um histórico superior a R$ 20 milhões em energia gerada anualmente e mais de R$ 500 milhões em economia financeira mapeada para clientes.
+          </p>
+
+          <div class="about-stats-row">
+            <div>
+              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 20 Mi</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em energia gerada / ano</div>
+            </div>
+            <div>
+              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 500 Mi</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em economia mapeada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            Meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio, sem conflitos de interesse com fornecedores.
+          </p>
+          <div class="quote-author">Jussiê Guimarães • Fundador &amp; Lead Energy Advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: SERVIÇOS COMPLEMENTARES -->
+  <section class="section-wrap theme-light" id="complementares">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Engenharia Especializada</div>
+        <h2 class="section-title">Serviços Complementares de Engenharia</h2>
+        <p class="section-subtitle">
+          O Diagnóstico Energético Empresarial identifica onde está o vazamento. Os serviços complementares transformam cada oportunidade identificada em resultado real, da correção de fator de potência à viabilidade de geração própria. E o monitoramento contínuo garante que a economia se mantenha, mês após mês.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Projetos de Entrada de Energia</h3>
+          <p class="service-card-desc">
+            Dimensionamento e aprovação de cabines primárias e subestações de entrada junto às distribuidoras para novas cargas.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Regularizações Documentais</h3>
+          <p class="service-card-desc">
+            Saneamento de pendências regulatórias, adequação de titularidade e contratos de uso do sistema de distribuição (CUSD).
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Laudos Técnicos</h3>
+          <p class="service-card-desc">
+            Laudos periciais das instalações elétricas, qualidade de energia, termografia preventiva e conformidade com as normas ABNT.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Correção de Fator de Potência</h3>
+          <p class="service-card-desc">
+            Dimensionamento e especificação de bancos de capacitores automáticos para zerar multas por reativo excedente.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Viabilidade de Geração Própria</h3>
+          <p class="service-card-desc">
+            Análise isenta de investimento técnico em energia solar (fotovoltaica) ou biomassa sem viés de fabricante de painéis.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Projetos Elétricos e Adequações</h3>
+          <p class="service-card-desc">
+            Redimensionamento de circuitos, prontuário das instalações (NR-10), modernização de quadros e desbalanceamento de fases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 10: FAQ -->
+  <section class="section-wrap theme-light-alt" id="faq">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Tire suas dúvidas</div>
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <p class="section-subtitle">
+          Esclarecimentos diretos sobre a contratação, o modelo de atuação e a independência técnica da JSE.
+        </p>
+      </div>
+
+      <div class="faq-accordion" id="faqAccordion">
+        <!-- FAQ 1 (EM DESTAQUE) -->
+        <div class="faq-item first-featured active">
+          <button class="faq-trigger" aria-expanded="true">
+            <span>1. E depois do DEE, o que acontece?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer" style="max-height: 200px;">
+            <div class="faq-answer-inner">
+              O DEE é a porta de entrada. Depois dele, você pode manter sua energia sob controle com o monitoramento contínuo, é aí que a economia se sustenta.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>2. Posso contratar só o DEE?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sim. O diagnóstico pode ser contratado isoladamente. Os planos mensais são a evolução natural para quem quer manter a economia e a conformidade.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>3. Quanto custa o DEE?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              R$ 10.800 (Essencial) ou R$ 13.500 (Completo), à vista com 3% de desconto ou em até 12x no cartão. Sem success fee.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>4. E se não encontrar economia?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia, devolvemos o investimento integralmente.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>5. Vocês vendem energia?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Não. Somos consultores independentes. Nossa recomendação é técnica e isenta.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>6. Preciso instalar equipamentos?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Não. O DEE é uma análise de dados e engenharia financeira baseada no seu histórico.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 11: CTA FINAL + FORMULÁRIO -->
+  <section class="section-wrap theme-dark" id="contato">
+    <div class="container-boxed">
+      <div class="contact-grid">
+        <div>
+          <div class="badge-sub">Próximo Passo</div>
+          <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; margin: 0.5rem 0 1.25rem 0; color: #ffffff;">
+            Pronto para colocar sua energia sob controle?
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: #c9d6e8; margin-bottom: 2rem;">
+            Comece pelo diagnóstico. Continue com o monitoramento. Sua economia, mantida mês após mês.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <a href="#formDiagnostico" class="btn-gold" style="width: auto;">Começar pelo diagnóstico</a>
+            </div>
+            <div>
+              <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" class="btn-outline-gold" style="display: inline-flex; align-items: center; gap: 0.6rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.004c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Falar com o especialista no WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULÁRIO DE QUALIFICAÇÃO -->
+        <div class="contact-card" id="formDiagnostico">
+          <h3 style="color: #ffffff; font-size: 1.35rem; margin-top: 0; margin-bottom: 0.5rem; font-family: 'Cinzel', serif;">
+            Solicitar Diagnóstico Isento
+          </h3>
+          <p style="font-size: 0.85rem; color: #a6b9d2; margin-bottom: 1.5rem;">
+            Preencha os dados básicos da sua empresa para avaliar a elegibilidade e agendar a conversa inicial.
+          </p>
+
+          <form id="leadForm">
+            <!-- CAMPO 1: NOME COMPLETO -->
+            <div class="form-group">
+              <label for="nomeCompleto" class="form-label">Nome completo</label>
+              <input type="text" id="nomeCompleto" class="form-input" placeholder="Ex: Roberto Silva" required>
+            </div>
+
+            <!-- CAMPO 2: EMPRESA -->
+            <div class="form-group">
+              <label for="empresa" class="form-label">Empresa</label>
+              <input type="text" id="empresa" class="form-input" placeholder="Ex: Grupo Industrial Alpha" required>
+            </div>
+
+            <!-- CAMPO 3: SEGMENTO DE ATUAÇÃO -->
+            <div class="form-group">
+              <label for="segmento" class="form-label">Segmento de atuação</label>
+              <select id="segmento" class="form-select" required>
+                <option value="" disabled selected>Selecione seu segmento...</option>
+                <option value="Industria">Indústria de Manufatura / Transformação</option>
+                <option value="Logistica">Centro Logístico / Transportes</option>
+                <option value="Varejo">Rede de Supermercados / Varejo</option>
+                <option value="Hotelaria">Hotelaria / Hospitalidade</option>
+                <option value="Postos">Rede de Postos de Combustíveis</option>
+                <option value="Construcao">Construção Civil</option>
+                <option value="Multiplanta">Outro Grupo com Múltiplas Unidades</option>
+              </select>
+            </div>
+
+            <!-- CAMPO 4: GASTO FINANCEIRO MENSAL EM ENERGIA ELÉTRICA -->
+            <div class="form-group">
+              <label for="gastoMensal" class="form-label">Gasto financeiro mensal em energia elétrica</label>
+              <select id="gastoMensal" class="form-select" required>
+                <option value="" disabled selected>Selecione a faixa aproximada...</option>
+                <option value="10k-25k">Entre R$ 10.000 e R$ 25.000/mês</option>
+                <option value="25k-50k">Entre R$ 25.000 e R$ 50.000/mês</option>
+                <option value="50k-100k">Entre R$ 50.000 e R$ 100.000/mês</option>
+                <option value="100k+">Acima de R$ 100.000/mês</option>
+              </select>
+            </div>
+
+            <!-- CAMPO 5: NÚMERO TOTAL DE UNIDADES ATIVAS -->
+            <div class="form-group">
+              <label for="unidades" class="form-label">Número total de unidades ativas</label>
+              <input type="number" id="unidades" min="1" class="form-input" placeholder="Ex: 1 unidade, 5 filiais..." required>
+            </div>
+
+            <p class="form-privacy-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato. Veja nossa <a href="privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+            <button type="submit" class="btn-gold" style="width: 100%; margin-top: 0.5rem; padding: 0.85rem;">
+              Falar com especialista
+            </button>
+          </form>
+
+          <div class="form-success-box" id="formSuccess">
+            <h4>Quase lá! Abrimos o WhatsApp para você.</h4>
+            <p>Sua mensagem já está preenchida, é só enviar. Se o WhatsApp não abriu, <a id="formWaLink" href="https://wa.me/5511999483633" target="_blank" rel="noopener">clique aqui para abrir a conversa</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="container-boxed footer-grid">
       <div>
-        <h4>Garantia de performance</h4>
-        <p>Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a R$ 1.000/mês, o valor investido é devolvido integralmente.</p>
-      </div>
-    </div>
-
-    <div class="exemption-strip">
-      <strong>Isenção consultiva:</strong> compromisso exclusivo com o diagnóstico. Não vendemos equipamentos nem contratos de energia, nossa recomendação é técnica e isenta.
-    </div>
-  </div>
-</section>
-
-<!-- FAIXA DE CONEXÃO: DEE > COMPLEMENTARES > MONITORAMENTO -->
-<div class="bridge-strip">
-  <div class="container">
-    <p>O DEE encontra. Os serviços complementares capturam. O monitoramento mantém.</p>
-    <a class="bridge-link" href="servicos-complementares" target="_blank" rel="noopener">Conhecer os serviços complementares →</a>
-  </div>
-</div>
-
-<!-- O SCORECARD ENERGÉTICO -->
-<section id="scorecard">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">O Scorecard Energético</span>
-      <h2>A fotografia mensal da sua energia</h2>
-      <p>O Scorecard Energético é o entregável que transforma dados em decisão. Todo mês, sua operação recebe um painel executivo com os indicadores que importam: custo total de energia, preço médio efetivo (R$/MWh), multas e desvios evitáveis e custo evitado de geração própria. Com alertas de anomalia e comparação com a linha de base definida no diagnóstico.</p>
-    </div>
-    <div class="scorecard-grid">
-      <div class="scorecard-item">Custo total de energia</div>
-      <div class="scorecard-item">Preço médio efetivo (R$/MWh)</div>
-      <div class="scorecard-item">Multas e desvios evitáveis</div>
-      <div class="scorecard-item">Custo evitado de geração própria</div>
-    </div>
-  </div>
-</section>
-
-<!-- CUSTO DE OPORTUNIDADE -->
-<section class="section-alt" id="custo-inercia">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Custo de oportunidade</span>
-      <h2>Um engenheiro interno custa R$ 17 a 20 mil/mês. A inteligência JSE custa uma fração disso.</h2>
-      <p>Um engenheiro de eficiência energética custa entre R$ 17 mil e R$ 20 mil por mês na folha, sem garantia de tempo para análise aprofundada. A JSE entrega a mesma profundidade técnica por R$ 1.500 a 4.000/mês, sem encargos trabalhistas e com 20+ anos de experiência aplicados à sua operação. Para grupos multiplanta, o comparativo é ainda mais forte: um gestor interno cobre uma unidade; o pacote JSE cobre várias.</p>
-    </div>
-
-    <div class="cost-compare">
-      <div class="cost-card cost-card--out">
-        <span class="tag">Engenheiro interno</span>
-        <div class="cost-value">R$ 17 a 20 mil<span>/mês</span></div>
-        <p>Salário, encargos e benefícios de um profissional dedicado, sem garantia de tempo disponível para análise aprofundada.</p>
-      </div>
-      <div class="cost-vs">vs</div>
-      <div class="cost-card cost-card--in">
-        <span class="tag">Inteligência JSE</span>
-        <div class="cost-value">R$ 1.500 a 4.000<span>/mês</span></div>
-        <p>Mesma profundidade técnica, sem encargos trabalhistas, com 20+ anos de experiência aplicados à sua operação.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTADOS REAIS -->
-<section id="cases">
-  <div class="container">
-    <div class="section-head center">
-      <span class="eyebrow">Resultados reais</span>
-      <h2>Economia identificada, acompanhada e mantida</h2>
-    </div>
-    <div class="highlight-box" style="margin-bottom:32px;">
-      <div class="num">R$&nbsp;3.000 a R$&nbsp;8.000 / mês</div>
-      <p>É o que nosso diagnóstico encontra, em média, de economia potencial por cliente. O DEE existe pra estancar esse vazamento financeiro, de forma isenta e com garantia de resultado.</p>
-    </div>
-    <div class="cases-grid">
-      <div class="case-card">
-        <span class="case-tag">Case Bortech</span>
-        <div class="case-stat-row">
-          <div>
-            <div class="case-stat-num">R$ 333 mil</div>
-            <div class="case-stat-label">Custo anual monitorado de energia</div>
-          </div>
-          <div>
-            <div class="case-stat-num">13,7%</div>
-            <div class="case-stat-label">Economia média identificada</div>
-          </div>
-        </div>
-        <ul class="case-findings">
-          <li>Eliminação de multas por baixo fator de potência: R$ 16.800/ano</li>
-          <li>Ajuste de demanda superdimensionada: R$ 28.800/ano</li>
-        </ul>
-        <div class="case-footer">
-          <span>CAPEX zero</span>
-          <span>Payback inferior a 6 meses</span>
-        </div>
-      </div>
-    </div>
-    <p class="results-close">E o que garante que essa economia se mantenha? <span>O monitoramento contínuo.</span></p>
-  </div>
-</section>
-
-<!-- PARA QUEM É -->
-<section>
-  <div class="container">
-    <div class="section-head center section-head--compact">
-      <span class="eyebrow">Público-alvo</span>
-      <h2>Ideal para médias empresas, redes e grupos com múltiplas unidades que gastam acima de R$&nbsp;10.000/mês em energia</h2>
-    </div>
-    <div class="segments-grid">
-      <div class="segment">Indústrias</div>
-      <div class="segment">Centros Logísticos</div>
-      <div class="segment">Supermercados</div>
-      <div class="segment">Hotéis</div>
-      <div class="segment">Postos de Combustíveis</div>
-      <div class="segment">Construtoras</div>
-      <div class="segment segment--wide">Redes e Grupos com Múltiplas Unidades</div>
-    </div>
-    <p class="segments-note">Quanto mais unidades, maior o valor do monitoramento contínuo, uma única operação de inteligência cobre toda a rede.</p>
-  </div>
-</section>
-
-<!-- AUTORIDADE -->
-<section class="authority" id="autoridade">
-  <div class="container authority-grid">
-    <div class="authority-photo">
-      <img src="images/foto-jussie.jpg" alt="Jussiê Guimarães">
-    </div>
-    <div>
-      <div class="role">Energy Advisor</div>
-      <h2>Jussiê Guimarães</h2>
-      <p class="bio">Engenheiro com mais de 20 anos de experiência em desenvolvimento de negócios e projetos técnico-comerciais. Minha atuação combina visão estratégica com conhecimento técnico profundo. Já liderei centenas de projetos para médias empresas, de indústrias a centros logísticos, redes de varejo e hotelaria.</p>
-      <p class="bio extra">Meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio, sem conflitos de interesse com fornecedores.</p>
-      <div class="stats">
-        <div><div class="stat-number">20+</div><div class="stat-label">Anos de experiência</div></div>
-        <div><div class="stat-number">R$ 20+ mi</div><div class="stat-label">Em energia gerada/ano</div></div>
-        <div><div class="stat-number">R$ 500 mi</div><div class="stat-label">Em economia mapeada</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section-alt" id="faq">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">FAQ</span>
-      <h2>Perguntas frequentes</h2>
-      <p>As principais dúvidas sobre o que acontece depois do diagnóstico, custo e garantia.</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          E depois do DEE, o que acontece?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a" style="max-height:200px;">
-          <p>O DEE é a porta de entrada. Depois dele, você pode manter sua energia sob controle com o monitoramento contínuo, é aí que a economia se sustenta.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Posso contratar só o DEE?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Sim. O diagnóstico pode ser contratado isoladamente. Os planos mensais são a evolução natural para quem quer manter a economia e a conformidade.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Quanto custa o DEE?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>R$ 10.800 (Essencial) ou R$ 13.500 (Completo), à vista com 3% de desconto ou em até 12x no cartão. Sem success fee.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          E se não encontrar economia?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia, devolvemos o investimento integralmente.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Vocês vendem energia?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Não. Somos consultores independentes. Nossa recomendação é técnica e isenta.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Preciso instalar equipamentos?
-          <span class="icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Não. O DEE é uma análise de dados e engenharia financeira baseada no seu histórico.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="container">
-    <h2>Pronto para colocar sua energia sob controle?</h2>
-    <p>Comece pelo diagnóstico. Continue com o monitoramento. Sua economia, mantida mês após mês.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <button class="btn btn-accent" onclick="openLeadModal()">Começar pelo diagnóstico</button>
-      <a class="btn btn-outline" href="https://wa.me/5511999483633" target="_blank" rel="noopener">Falar com o especialista</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="logo">
+        <div class="brand-logo" style="margin-bottom: 1rem;">
           <img src="images/logo-jse.png" alt="JSE Energy Advisor" class="logo-img">
-        </a>
-        <p>Diagnóstico Energético Empresarial para médias empresas.</p>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: #879cb5;">
+          Inteligência energética contínua para médias empresas e grupos com múltiplas unidades. Começa pelo diagnóstico isento e se mantém com monitoramento mensal.
+        </p>
       </div>
-      <div class="footer-links">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#problema">O problema</a></li>
-          <li><a href="#planos">Planos</a></li>
-          <li><a href="#dee">O que é o DEE</a></li>
-          <li><a href="#parceria">Investimento</a></li>
-          <li><a href="servicos-complementares" target="_blank" rel="noopener">Serviços Complementares</a></li>
-          <li><a href="#faq">FAQ</a></li>
+
+      <div>
+        <div class="footer-heading">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#oferta">A oferta</a></li>
+          <li><a href="#como-comecar">Como começar</a></li>
+          <li><a href="#scorecard">Scorecard Energético</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
         </ul>
       </div>
-      <div class="footer-links">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="https://wa.me/5511999483633" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a href="mailto:executivo.jussie@gmail.com">executivo.jussie@gmail.com</a></li>
-          <li><a href="https://linkedin.com/in/jussieguimaraes" target="_blank" rel="noopener">LinkedIn</a></li>
+
+      <div>
+        <div class="footer-heading">Serviços</div>
+        <ul class="footer-links">
+          <li><a href="#como-comecar">Diagnóstico Energético (DEE)</a></li>
+          <li><a href="#oferta">Sistema de Monitoramento</a></li>
+          <li><a href="#complementares">Serviços Complementares</a></li>
+          <li><a href="#scorecard">Auditoria e Scorecard</a></li>
         </ul>
       </div>
+
+      <div>
+        <div class="footer-heading">Contato &amp; Plantão</div>
+        <p style="margin-bottom: 0.8rem; color: #879cb5;">
+          Atendimento executivo em todo o Brasil para empresas do Grupo A e Grupo B corporativo.
+        </p>
+        <p style="margin: 0;">
+          <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" style="color: var(--gold-primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>WhatsApp: (11) 99948-3633</span>
+          </a>
+        </p>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 JSE Energy Advisor. Todos os direitos reservados.</span>
-      <span><a href="privacidade" style="color:rgba(255,255,255,.5);">Política de Privacidade</a> · Diagnóstico Energético Empresarial</span>
+
+    <div class="container-boxed footer-bottom">
+      &copy; 2026 JSE Energy Advisor. Todos os direitos reservados. &middot; <a href="privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- MODAL DE PRÉ-QUALIFICAÇÃO -->
-<div class="modal-overlay" id="leadModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLeadModal()" aria-label="Fechar">✕</button>
-    <span class="eyebrow">Antes de conversarmos</span>
-    <h3>Conta um pouco sobre sua empresa</h3>
-    <p class="modal-sub">Assim entramos na conversa com o contexto certo, e o atendimento é mais rápido.</p>
+  <!-- INTERACTIVE LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const trigger = item.querySelector('.faq-trigger');
+        const answer = item.querySelector('.faq-answer');
 
-    <form id="leadForm" onsubmit="submitLeadForm(event)" novalidate>
-      <div class="form-field">
-        <label for="leadNome">Nome completo</label>
-        <input type="text" id="leadNome" placeholder="Ex: Carlos Andrade">
-        <span class="field-error" id="errNome">Campo obrigatório (mín. 3 caracteres)</span>
-      </div>
-      <div class="form-field">
-        <label for="leadEmpresa">Nome da empresa</label>
-        <input type="text" id="leadEmpresa" placeholder="Ex: Metalúrgica Andrade Ltda">
-        <span class="field-error" id="errEmpresa">Campo obrigatório (mín. 4 caracteres)</span>
-      </div>
-      <div class="form-field">
-        <label for="leadSegmento">Segmento de atuação</label>
-        <select id="leadSegmento">
-          <option value="" selected>Selecione</option>
-          <option>Indústria</option>
-          <option>Hotelaria</option>
-          <option>Supermercado / Varejo</option>
-          <option>Centro Logístico / Transporte</option>
-          <option>Posto de Combustíveis</option>
-          <option>Construção Civil</option>
-          <option>Agronegócio</option>
-          <option>Outro</option>
-        </select>
-        <span class="field-error" id="errSegmento">Campo obrigatório</span>
-      </div>
-      <div class="form-field">
-        <label for="leadGasto">Gasto mensal com energia elétrica</label>
-        <select id="leadGasto">
-          <option value="" selected>Selecione</option>
-          <option value="Até R$ 10.000">Até R$ 10.000</option>
-          <option value="R$ 10.000 a R$ 25.000">R$ 10.000 a R$ 25.000</option>
-          <option value="R$ 25.000 a R$ 50.000">R$ 25.000 a R$ 50.000</option>
-          <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
-          <option value="Não sei informar">Não sei informar</option>
-        </select>
-        <span class="field-error" id="errGasto">Campo obrigatório</span>
-      </div>
-      <div class="form-field">
-        <label for="leadUnidades">Número total de unidades ativas</label>
-        <select id="leadUnidades">
-          <option value="" selected>Selecione</option>
-          <option value="1 unidade">1 unidade</option>
-          <option value="2 a 5 unidades">2 a 5 unidades</option>
-          <option value="6 a 15 unidades">6 a 15 unidades</option>
-          <option value="Acima de 15 unidades">Acima de 15 unidades</option>
-        </select>
-        <span class="field-error" id="errUnidades">Campo obrigatório</span>
-      </div>
-      <p class="form-note" style="margin-top:-10px;">Se sua empresa tem mais de uma unidade, informe o gasto consolidado do grupo ou só da unidade principal. Ajustamos a conversa a partir disso.</p>
+        trigger.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
 
-      <p class="form-note">Ao continuar, você será direcionado ao WhatsApp com sua mensagem já preenchida. Seus dados são usados apenas para esse contato. Veja nossa <a href="privacidade" target="_blank" style="color:var(--secondary);">Política de Privacidade</a>.</p>
-      <button type="submit" class="btn btn-accent modal-submit">Falar com Especialista</button>
-      <a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="modal-fallback">Prefere ir direto? Fale pelo WhatsApp</a>
-    </form>
-  </div>
-</div>
+          // Close other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              otherItem.querySelector('.faq-answer').style.maxHeight = null;
+              otherItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+            }
+          });
 
-<script>
-function openLeadModal(){
-  document.getElementById('leadModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  if(typeof gtag === 'function'){
-    gtag('event', 'cta_click', {
-      event_category: 'engagement',
-      event_label: 'Abertura do formulário de diagnóstico'
+          // Toggle current
+          if (isActive) {
+            item.classList.remove('active');
+            answer.style.maxHeight = null;
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Formulário: monta a mensagem e abre o WhatsApp do Jussiê (nenhum dado fica só no navegador do visitante)
+      const leadForm = document.getElementById('leadForm');
+      const formSuccess = document.getElementById('formSuccess');
+
+      const GASTO_TEXTO = {
+        '10k-25k': 'na faixa de R$ 10.000 a R$ 25.000',
+        '25k-50k': 'na faixa de R$ 25.000 a R$ 50.000',
+        '50k-100k': 'na faixa de R$ 50.000 a R$ 100.000',
+        '100k+': 'acima de R$ 100.000'
+      };
+
+      if (leadForm && formSuccess) {
+        leadForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const nome = document.getElementById('nomeCompleto').value.trim();
+          const empresa = document.getElementById('empresa').value.trim();
+          const segSel = document.getElementById('segmento');
+          const segmento = segSel.options[segSel.selectedIndex] ? segSel.options[segSel.selectedIndex].text : '';
+          const gasto = document.getElementById('gastoMensal').value;
+          const unidades = parseInt(document.getElementById('unidades').value, 10);
+
+          if (nome.length < 3 || empresa.length < 2 || !segSel.value || !gasto || !unidades || unidades < 1) {
+            alert('Por favor, preencha todos os campos do formulário.');
+            return;
+          }
+
+          const fraseUnidades = unidades === 1 ? '1 unidade' : unidades + ' unidades';
+          const mensagem = 'Olá, Jussiê! Preenchi o formulário no site. Me chamo ' + nome +
+            ', sou da ' + empresa + ' (' + fraseUnidades + '), segmento: ' + segmento +
+            '. Nosso gasto médio mensal com energia está ' + GASTO_TEXTO[gasto] +
+            ' e gostaria de saber mais sobre o diagnóstico energético.';
+          const url = 'https://wa.me/5511999483633?text=' + encodeURIComponent(mensagem);
+
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', { event_category: 'engagement', event_label: 'Formulário de diagnóstico' });
+          }
+
+          document.getElementById('formWaLink').href = url;
+          leadForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+          window.open(url, '_blank', 'noopener');
+        });
+      }
     });
-  }
-}
-function closeLeadModal(){
-  document.getElementById('leadModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-document.getElementById('leadModal').addEventListener('click', function(e){
-  if(e.target === this) closeLeadModal();
-});
-if(location.hash === '#diagnostico'){ openLeadModal(); }
-
-// Tabela de variação do texto final, conforme especificação técnica
-const TEXTOS_VARIAVEIS = {
-  'Até R$ 10.000': 'gostaria de saber se o DEE faz sentido para o nosso porte.',
-  'R$ 10.000 a R$ 25.000': 'tenho interesse em entender onde estamos perdendo dinheiro.',
-  'R$ 25.000 a R$ 50.000': 'queremos otimizar nossos custos. Já desconfiamos que há espaço para economia significativa.',
-  'Acima de R$ 50.000': 'estamos avaliando um projeto estrutural de eficiência energética para reduzir custos.',
-  'Não sei informar': 'gostaria de ajuda para entender melhor nosso consumo e oportunidades.'
-};
-
-// Versão do texto do gasto ajustada para encaixar no meio da frase (minúscula quando começa com palavra, não com "R$")
-const GASTO_MEIO_FRASE = {
-  'Até R$ 10.000': 'até R$ 10.000',
-  'R$ 10.000 a R$ 25.000': 'R$ 10.000 a R$ 25.000',
-  'R$ 25.000 a R$ 50.000': 'R$ 25.000 a R$ 50.000',
-  'Acima de R$ 50.000': 'acima de R$ 50.000',
-  'Não sei informar': 'não sei informar'
-};
-
-function montarMensagemWhatsApp(dados){
-  const textoVariavel = TEXTOS_VARIAVEIS[dados.gasto] || 'gostaria de saber mais sobre o Diagnóstico Energético Empresarial.';
-  const gastoMeioFrase = GASTO_MEIO_FRASE[dados.gasto] || dados.gasto;
-
-  const fraseGasto = dados.gasto === 'Não sei informar'
-    ? 'Ainda não sei precisar nosso gasto médio mensal com energia'
-    : `Nosso gasto médio mensal com energia está na faixa de ${gastoMeioFrase}`;
-
-  return `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${dados.nome}, sou da ${dados.empresa} (${dados.unidades}), segmento de ${dados.segmento}. ${fraseGasto} e ${textoVariavel}`;
-}
-
-function setFieldError(inputEl, errEl, hasError){
-  inputEl.classList.toggle('input-error', hasError);
-  errEl.classList.toggle('active', hasError);
-}
-
-function submitLeadForm(event){
-  event.preventDefault();
-
-  const nomeEl = document.getElementById('leadNome');
-  const empresaEl = document.getElementById('leadEmpresa');
-  const segmentoEl = document.getElementById('leadSegmento');
-  const gastoEl = document.getElementById('leadGasto');
-  const unidadesEl = document.getElementById('leadUnidades');
-
-  const nome = nomeEl.value.trim();
-  const empresa = empresaEl.value.trim();
-  const segmento = segmentoEl.value;
-  const gasto = gastoEl.value;
-  const unidades = unidadesEl.value;
-
-  let valido = true;
-
-  if(nome.length < 3){ setFieldError(nomeEl, document.getElementById('errNome'), true); valido = false; }
-  else setFieldError(nomeEl, document.getElementById('errNome'), false);
-
-  if(empresa.length < 4){ setFieldError(empresaEl, document.getElementById('errEmpresa'), true); valido = false; }
-  else setFieldError(empresaEl, document.getElementById('errEmpresa'), false);
-
-  if(!segmento){ setFieldError(segmentoEl, document.getElementById('errSegmento'), true); valido = false; }
-  else setFieldError(segmentoEl, document.getElementById('errSegmento'), false);
-
-  if(!gasto){ setFieldError(gastoEl, document.getElementById('errGasto'), true); valido = false; }
-  else setFieldError(gastoEl, document.getElementById('errGasto'), false);
-
-  if(!unidades){ setFieldError(unidadesEl, document.getElementById('errUnidades'), true); valido = false; }
-  else setFieldError(unidadesEl, document.getElementById('errUnidades'), false);
-
-  if(!valido) return;
-
-  const mensagem = montarMensagemWhatsApp({ nome, empresa, segmento, gasto, unidades });
-  const mensagemCodificada = encodeURIComponent(mensagem);
-  const url = `https://wa.me/5511999483633?text=${mensagemCodificada}`;
-
-  if(typeof gtag === 'function'){
-    gtag('event', 'generate_lead', {
-      event_category: 'conversion',
-      event_label: 'Formulário de diagnóstico enviado',
-      segmento: segmento,
-      gasto: gasto,
-      unidades: unidades
-    });
-  }
-
-  window.open(url, '_blank', 'noopener');
-  closeLeadModal();
-  document.getElementById('leadForm').reset();
-}
-</script>
-
-<script>
-function toggleFaq(btn){
-  const item = btn.parentElement;
-  const answer = item.querySelector('.faq-a');
-  const isOpen = item.classList.contains('open');
-
-  document.querySelectorAll('.faq-item.open').forEach(el=>{
-    el.classList.remove('open');
-    el.querySelector('.faq-a').style.maxHeight = 0;
-  });
-
-  if(!isOpen){
-    item.classList.add('open');
-    answer.style.maxHeight = answer.scrollHeight + 'px';
-  }
-}
-</script>
-
-<a href="https://wa.me/5511999483633" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.696 4.607 1.899 6.477L4 29l7.72-1.865A11.93 11.93 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm6.977 17.03c-.293.826-1.454 1.512-2.383 1.71-.634.134-1.462.24-4.248-.912-3.564-1.474-5.856-5.09-6.033-5.326-.177-.236-1.448-1.928-1.448-3.677s.914-2.61 1.24-2.966c.325-.356.71-.445.947-.445.236 0 .473.002.679.012.218.01.51-.083.797.607.293.708 1 2.44 1.088 2.617.088.177.147.384.03.62-.118.236-.177.384-.354.591-.177.207-.372.462-.531.62-.177.177-.362.368-.156.72.207.354.918 1.516 1.972 2.456 1.354 1.207 2.495 1.583 2.849 1.76.354.177.561.148.768-.09.207-.236.885-1.03 1.122-1.384.236-.354.472-.295.797-.177.325.118 2.056.97 2.41 1.147.354.177.59.265.679.413.088.148.088.856-.206 1.682z"/></svg>
-</a>
+  </script>
 
 </body>
 </html>
