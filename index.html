@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSE Energy Advisor — Inteligência Energética Contínua</title>
-  <meta name="description" content="Inteligência energética contínua para médias empresas e grupos multiplanta. Diagnóstico energético e monitoramento mensal para manter cada real economizado.">
+  <meta name="description" content="Inteligência energética contínua para médias empresas e grupos multiplanta. Diagnóstico isento e monitoramento mensal para manter cada real economizado.">
 
   <!-- Google Analytics GA4 -->
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EBNW40D5F9');</script>
@@ -198,45 +198,87 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
       flex-shrink: 0;
     }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid var(--gold-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-primary);
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      border-radius: 4px;
-      background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(12,24,44,0.8) 100%);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    .logo-symbol-svg {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
     }
 
-    .brand-title {
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
       font-size: 1.125rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: #ffffff;
       line-height: 1.1;
       font-family: 'Cinzel', serif;
     }
 
-    .brand-title span {
+    .brand-tagline-svg {
       display: block;
-      font-size: 0.65rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      color: var(--gold-primary);
-      text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 3px;
+      height: 10px;
+      width: auto;
+      max-width: 175px;
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.15rem;
+      text-decoration: none;
+    }
+
+    .footer-symbol-svg {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .footer-brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      line-height: 1.1;
+      font-family: 'Cinzel', serif;
+    }
+
+    .footer-tagline-svg {
+      display: block;
+      margin-top: 4px;
+      height: 12px;
+      width: auto;
+      max-width: 200px;
+    }
+
+    .footer-social-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .footer-social-icon {
+      color: #B68D3E;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-social-icon:hover {
+      color: #e5c378;
+      transform: translateY(-2px);
     }
 
     .nav-menu {
@@ -729,6 +771,19 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       color: var(--gold-primary);
       flex-shrink: 0;
       margin-top: 3px;
+    }
+
+    .consultoria-highlight-note {
+      font-size: 0.8rem;
+      color: #dfbc61;
+      background: rgba(182, 141, 62, 0.12);
+      border: 1px dashed rgba(182, 141, 62, 0.4);
+      padding: 0.45rem 0.75rem;
+      border-radius: 4px;
+      margin: -0.25rem 0 1rem 0;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .plans-footer-note {
@@ -1669,7 +1724,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     }
 
     /* Responsive Navigation adjustments */
-    @media (max-width: 1080px) {
+    @media (max-width: 1260px) {
       .nav-container {
         flex-direction: column;
         align-items: flex-start;
@@ -1770,7 +1825,17 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       }
     }
   
-    /* Faixa de clientes atendidos (único acréscimo à página original) */
+    /* ===== Acréscimos da integração (logo oficial e faixa de clientes) ===== */
+    .brand-logo .logo-img { height: 46px; width: auto; display: block; }
+    .footer-logo-wrap .logo-img--footer { height: 42px; width: auto; display: block; }
+    @media (max-width: 640px) { .brand-logo .logo-img { height: 34px; } }
+    /* menu mais compacto: com 10 itens + logo oficial, o cabeçalho estourava em telas de notebook */
+    @media (min-width: 1261px) {
+      .nav-container { max-width: 1360px; }
+      .nav-links { gap: 0.85rem; }
+      .nav-link { font-size: 0.8rem; }
+      .brand-logo .logo-img { height: 38px; }
+    }
 /* ---------- FAIXA DE CLIENTES ATENDIDOS ---------- */
   .clients-strip{background:#F5F2ED;padding:40px 0;border-bottom:1px solid #e9e5dc;}
   .clients-strip .container{display:flex;align-items:center;gap:28px;}
@@ -1826,16 +1891,6 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
 
     .clients-strip .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
-  
-    /* Logo da JSE (imagem com fundo transparente) */
-    .brand-logo .logo-img { height: 46px; width: auto; display: block; }
-    .brand-logo .logo-img--footer { height: 42px; }
-    @media (max-width: 640px) { .brand-logo .logo-img { height: 34px; } }
-  
-    /* Redes sociais no rodapé */
-    .footer-social-row { margin: 0.9rem 0 0 0; display: flex; flex-wrap: wrap; gap: 1.25rem; }
-    .footer-social-row a { display: inline-flex; align-items: center; gap: 0.45rem; color: #c9d6e8; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
-    .footer-social-row a:hover { color: var(--gold-primary); }
   </style>
 </head>
 <body>
@@ -1851,14 +1906,15 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <ul class="nav-links">
           <li><a href="#inicio" class="nav-link">Início</a></li>
           <li><a href="#oferta" class="nav-link">A oferta</a></li>
-          <li><a href="#dee" class="nav-link">Como começar</a></li>
           <li><a href="#scorecard" class="nav-link">Scorecard Energético</a></li>
           <li><a href="#resultados" class="nav-link">Resultados</a></li>
+          <li><a href="#dee" class="nav-link">Diagnóstico (DEE)</a></li>
+          <li><a href="#complementares" class="nav-link">Complementares</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#faq" class="nav-link">Perguntas Frequentes</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
           <li class="nav-cta-item">
-            <a href="#contato" class="btn-gold">Começar pelo diagnóstico</a>
+            <a href="#oferta" class="btn-gold">Escolha seu plano</a>
           </li>
         </ul>
       </nav>
@@ -1872,11 +1928,11 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <div class="badge-sub">Consultoria de Inteligência Energética</div>
         <h1>Sua energia sob controle, <span class="hero-highlight">todo mês.</span></h1>
         <p class="hero-desc">
-          A JSE Energy Advisor entrega inteligência energética contínua para a sua operação. Começa com um diagnóstico energético e se mantém com monitoramento mensal — para que cada real economizado continue economizado.
+          A JSE Energy Advisor entrega inteligência energética contínua para a sua operação. Assine o plano ideal para a sua operação — o Diagnóstico Energético Empresarial vem embutido no primeiro ano — para que cada real economizado continue economizado.
         </p>
 
         <div class="hero-cta-group">
-          <a href="#contato" class="btn-gold">Começar pelo diagnóstico</a>
+          <a href="#oferta" class="btn-gold">Escolha seu plano</a>
           <a href="#oferta" class="btn-outline-gold">Conhecer o monitoramento contínuo</a>
         </div>
 
@@ -2012,6 +2068,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 })();
 </script>
 
+
   <!-- SEÇÃO 2: O PROBLEMA -->
   <section class="section-wrap theme-light" id="problema">
     <div class="container-boxed">
@@ -2087,7 +2144,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <h3 class="plan-name">Monitoramento</h3>
           <p style="font-size: 0.85rem; color: #9cb1cb; margin: 0;">Supervisão essencial de anomalias e histórico.</p>
           <div class="plan-price">
-            R$ 1.500 <span>/ mês</span>
+            R$ 2.400 <span>/ mês</span>
           </div>
           <ul class="plan-features">
             <li>
@@ -2110,13 +2167,12 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Monitoramento</a>
         </div>
 
-        <!-- PLANO 2 (DESTAQUE) -->
-        <div class="plan-card featured">
-          <div class="featured-badge">Mais Escolhido</div>
+        <!-- PLANO 2 -->
+        <div class="plan-card">
           <h3 class="plan-name">Gestão</h3>
           <p style="font-size: 0.85rem; color: #cbd7e6; margin: 0;">Gestão ativa contínua e suporte executivo.</p>
           <div class="plan-price">
-            R$ 2.500 <span>/ mês</span>
+            R$ 3.900 <span>/ mês</span>
           </div>
           <ul class="plan-features">
             <li>
@@ -2140,15 +2196,19 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               <span>Suporte ágil via canal exclusivo de WhatsApp</span>
             </li>
           </ul>
-          <a href="#contato" class="btn-gold" style="width: 100%; text-align: center;">Selecionar Gestão</a>
+          <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Gestão</a>
         </div>
 
-        <!-- PLANO 3 -->
-        <div class="plan-card">
+        <!-- PLANO 3 (DESTAQUE - MAIS ESCOLHIDO) -->
+        <div class="plan-card featured">
+          <div class="featured-badge">Mais Escolhido</div>
           <h3 class="plan-name">Consultoria</h3>
-          <p style="font-size: 0.85rem; color: #9cb1cb; margin: 0;">Assessoria sênior dedicada para expansão e projetos.</p>
+          <p style="font-size: 0.85rem; color: #cbd7e6; margin: 0;">Assessoria sênior dedicada para expansão e projetos.</p>
           <div class="plan-price">
-            R$ 4.000 <span>/ mês</span>
+            R$ 4.500 <span>/ mês</span>
+          </div>
+          <div class="consultoria-highlight-note">
+            Apenas R$ 600 a mais que o plano Gestão
           </div>
           <ul class="plan-features">
             <li>
@@ -2167,113 +2227,27 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>Estudos de viabilidade técnica e financeira de novos projetos</span>
             </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>1 estudo de viabilidade técnica e financeira por ano incluso</strong></span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>50% de desconto em estudos de viabilidade adicionais</strong></span>
+            </li>
           </ul>
-          <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Consultoria</a>
+          <a href="#contato" class="btn-gold" style="width: 100%; text-align: center;">Selecionar Consultoria</a>
         </div>
       </div>
 
       <div class="plans-footer-note">
         <p style="margin-bottom: 0.8rem; font-weight: 500;">
-          Todos os planos começam pelo <strong>Diagnóstico Energético Empresarial</strong> — a etapa de entrada que identifica onde está a economia.
+          Todos os planos incluem o <strong>Diagnóstico Energético Empresarial embutido na mensalidade do primeiro ano</strong> — você assina e o diagnóstico já está dentro.
         </p>
         <p style="margin: 0;">
           O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? 
           <a href="#complementares" class="complementares-callout-link">Conheça nossos serviços complementares &rarr;</a>
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO 4: COMO COMEÇAR / DEE -->
-  <section class="section-wrap theme-light" id="dee">
-    <div class="container-boxed">
-      <div class="section-head">
-        <div class="badge-sub">Porta de Entrada Estruturada</div>
-        <h2 class="section-title">Tudo começa com um diagnóstico energético.</h2>
-        <p class="section-subtitle">
-          O Diagnóstico Energético Empresarial é a porta de entrada. Em 90 dias, você recebe o diagnóstico completo, o plano de ação e o acompanhamento da implementação — fechando com o Scorecard Energético que define a linha de base da sua operação.
-        </p>
-      </div>
-
-      <!-- 4 ETAPAS EM LINHA -->
-      <div class="timeline-steps">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <div class="step-title">Análise</div>
-          <div class="step-desc">
-            Levantamento de informações, entrevistas com stakeholders e análise profunda de dados de faturas e processos. 100% online.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <div class="step-title">Planejamento</div>
-          <div class="step-desc">
-            Definição de objetivos técnicos e financeiros, priorização rigorosa de iniciativas e elaboração do plano de ação executivo.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <div class="step-title">Estruturação</div>
-          <div class="step-desc">
-            Construção minuciosa do Scorecard Energético personalizado e definição precisa da linha de base de consumo e custo.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">04</div>
-          <div class="step-title">Acompanhamento</div>
-          <div class="step-desc">
-            Análise dos resultados nas faturas (energia consumida, uso da rede e geração própria, se houver), ajustes e emissão do Scorecard do mês.
-          </div>
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.9rem; color: #64748b; margin-bottom: 3rem;">
-        <em>* A etapa 4 é a ponte para o Sistema Operacional: ao fim dos 90 dias, o acompanhamento continua como assinatura mensal.</em>
-      </p>
-
-      <!-- 2 CARDS DE INVESTIMENTO DO DEE -->
-      <div class="dee-pricing-grid">
-        <div class="dee-price-card">
-          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Essencial</h3>
-          <p style="font-size: 0.85rem; color: #64748b; margin: 0.25rem 0 1rem 0;">Diagnóstico técnico + planejamento estratégico</p>
-          <div class="dee-val">R$ 10.800</div>
-          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
-            Entrega dos achados técnicos fundamentais, auditoria tarifária e plano de ação estruturado para sua equipe interna.
-          </p>
-          <a href="#contato" class="btn-outline-gold" style="color: var(--gold-dark); border-color: var(--gold-dark);">Contratar Essencial</a>
-        </div>
-
-        <div class="dee-price-card featured-dee">
-          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Completo</h3>
-          <p style="font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; margin: 0.25rem 0 1rem 0;">Diagnóstico + Plano + 3 meses de acompanhamento</p>
-          <div class="dee-val" style="color: var(--navy-900);">R$ 13.500</div>
-          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
-            Diagnóstico completo, plano de ação detalhado, 3 meses de acompanhamento prático, emissão do Scorecard Energético e relatório final executivo.
-          </p>
-          <a href="#contato" class="btn-gold">Contratar Completo</a>
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.9rem; color: #475569; max-width: 750px; margin: 1.5rem auto 0 auto;">
-        <strong>Condições de pagamento:</strong> À vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo 100% isento de taxa de sucesso (sem success fee).
-      </p>
-
-      <!-- GARANTIA DE PERFORMANCE -->
-      <div class="guarantee-box">
-        <div class="guarantee-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <div class="guarantee-content">
-          <h4>Garantia de Performance JSE</h4>
-          <p>
-            Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a <strong>R$ 1.000/mês</strong>, o valor investido é devolvido integralmente ao cliente. Risco zero para a sua empresa.
-          </p>
-        </div>
       </div>
     </div>
   </section>
@@ -2289,7 +2263,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     </a>
   </div>
 
-  <!-- SEÇÃO 5: O SCORECARD ENERGÉTICO -->
+  <!-- SEÇÃO 4: O SCORECARD ENERGÉTICO -->
   <section class="section-wrap theme-light-alt" id="scorecard">
     <div class="container-boxed">
       <div class="section-head">
@@ -2386,18 +2360,22 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <span><strong>Status do Mês:</strong> Demanda em conformidade com o novo contrato ajustado. Fator de potência corrigido.</span>
           <span style="color: #16a34a; font-weight: 700;">Zero Desvio</span>
         </div>
+
+        <div style="text-align: center; margin-top: 1.75rem;">
+          <a href="#contato" class="btn-gold" style="font-size: 0.9rem;">Coloque sua energia sob controle</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SEÇÃO 6: CUSTO DE OPORTUNIDADE -->
+  <!-- SEÇÃO 5: CUSTO DE OPORTUNIDADE -->
   <section class="section-wrap theme-dark" id="custo-oportunidade">
     <div class="container-boxed">
       <div class="section-head">
         <div class="badge-sub">Eficiência de Capital</div>
         <h2 class="section-title">Um engenheiro interno custa R$ 17 a 20 mil/mês. A inteligência JSE custa uma fração disso.</h2>
         <p class="section-subtitle">
-          Um engenheiro de eficiência energética custa entre R$ 17 mil e R$ 20 mil por mês na folha, sem garantia de tempo para análise aprofundada. A JSE entrega a mesma profundidade técnica por R$ 1.500 a 4.000/mês, sem encargos trabalhistas e com 20+ anos de experiência aplicados à sua operação. Para grupos multiplanta, o comparativo é ainda mais forte: um gestor interno cobre uma unidade; o pacote JSE cobre várias.
+          Um engenheiro de eficiência energética custa entre R$ 17 mil e R$ 20 mil por mês na folha, sem garantia de tempo para análise aprofundada. A JSE entrega a mesma profundidade técnica por R$ 2.400 a 4.500/mês, sem encargos trabalhistas e com 20+ anos de experiência aplicados à sua operação. Para grupos multiplanta, o comparativo é ainda mais forte: um gestor interno cobre uma unidade; o pacote JSE cobre várias.
         </p>
       </div>
 
@@ -2429,7 +2407,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- COLUNA 2: JSE ENERGY ADVISOR -->
         <div class="comp-col jse">
           <div class="comp-role">JSE Energy Advisor • Inteligência Contínua</div>
-          <div class="comp-cost">R$ 1.500 a 4.000<span style="font-size: 0.85rem; font-family:'Plus Jakarta Sans'; color:#d4af37;">/mês</span></div>
+          <div class="comp-cost">R$ 2.400 a 4.500<span style="font-size: 0.85rem; font-family:'Plus Jakarta Sans'; color:#d4af37;">/mês</span></div>
           <ul class="comp-details">
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2511,10 +2489,21 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           E o que garante que essa economia se mantenha? <strong>O monitoramento contínuo.</strong>
         </div>
       </div>
+
+      <!-- SEÇÃO CLIENTES ATENDIDOS -->
+      <div class="clients-container" style="margin-top: 3.5rem; text-align: center;">
+        <h3 style="font-size: 1.1rem; color: var(--navy-900); margin: 0 0 1.5rem 0; font-family: 'Cinzel', serif; letter-spacing: 0.05em; text-transform: uppercase;">Clientes Atendidos</h3>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.25rem;">
+          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Grupo Bortech</div>
+          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Eurofarma</div>
+          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Cliente JSE</div>
+          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Cliente JSE</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SEÇÃO 8: PÚBLICO-ALVO -->
+  <!-- SEÇÃO 7: PÚBLICO-ALVO -->
   <section class="section-wrap theme-light-alt" id="publico-alvo">
     <div class="container-boxed">
       <div class="section-head">
@@ -2614,44 +2603,106 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     </div>
   </section>
 
-  <!-- SEÇÃO 9: SOBRE -->
-  <section class="section-wrap theme-dark" id="sobre">
+  <!-- SEÇÃO 8: DEE BLOCO SECUNDÁRIO (INCLUSO NO SEU PLANO) -->
+  <section class="section-wrap theme-light" id="dee">
     <div class="container-boxed">
-      <div class="about-grid">
-        <div class="about-bio-box">
-          <div class="badge-sub">Liderança Técnica</div>
-          <h2 style="font-size: 1.85rem; color: #ffffff; margin: 0.5rem 0 1.25rem 0;">
-            Quem está por trás da inteligência energética JSE
-          </h2>
-          <p style="color: #cbd7e6; line-height: 1.7; margin-bottom: 1.5rem;">
-            <strong>Jussiê Guimarães</strong> reúne mais de 20 anos de experiência prática nos setores elétrico e de eficiência corporativa, acumulando um histórico superior a R$ 20 milhões em energia gerada anualmente e mais de R$ 500 milhões em economia financeira mapeada para clientes.
-          </p>
+      <div class="section-head">
+        <div class="badge-sub">Primeira Entrega da Assinatura</div>
+        <h2 class="section-title">O Diagnóstico Energético Empresarial — incluso no seu plano</h2>
+        <p class="section-subtitle">
+          O DEE é a primeira entrega da sua assinatura: embutido na mensalidade do primeiro ano, ele mapeia em 90 dias a linha de base da sua operação e orienta todo o plano de ação.
+        </p>
+      </div>
 
-          <div class="about-stats-row">
-            <div>
-              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 20 Mi</div>
-              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em energia gerada / ano</div>
-            </div>
-            <div>
-              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 500 Mi</div>
-              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em economia mapeada</div>
-            </div>
+      <!-- 4 ETAPAS EM LINHA -->
+      <div class="timeline-steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Análise</div>
+          <div class="step-desc">
+            Levantamento de informações, entrevistas com stakeholders e análise profunda de dados de faturas e processos. 100% online.
           </div>
         </div>
 
-        <div class="quote-block">
-          <div class="quote-mark">“</div>
-          <p class="quote-text">
-            Meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio — sem conflitos de interesse com fornecedores.
-          </p>
-          <div class="quote-author">Jussiê Guimarães • Fundador &amp; Lead Energy Advisor</div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Planejamento</div>
+          <div class="step-desc">
+            Definição de objetivos técnicos e financeiros, priorização rigorosa de iniciativas e elaboração do plano de ação executivo.
+          </div>
         </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Estruturação</div>
+          <div class="step-desc">
+            Construção minuciosa do Scorecard Energético personalizado e definição precisa da linha de base de consumo e custo.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-title">Acompanhamento</div>
+          <div class="step-desc">
+            Análise dos resultados nas faturas (energia consumida, uso da rede e geração própria, se houver), ajustes e emissão do Scorecard do mês.
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.95rem; color: #475569; margin: 3rem 0 1.5rem 0; font-weight: 600;">
+        Prefere contratar apenas o diagnóstico, sem assinatura? O DEE também está disponível isoladamente:
+      </p>
+
+      <!-- 2 CARDS DE INVESTIMENTO DO DEE ISOLADO -->
+      <div class="dee-pricing-grid">
+        <div class="dee-price-card">
+          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Essencial</h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin: 0.25rem 0 1rem 0;">Diagnóstico técnico + planejamento estratégico</p>
+          <div class="dee-val">R$ 10.800</div>
+          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
+            Entrega dos achados técnicos fundamentais, auditoria tarifária e plano de ação estruturado para sua equipe interna.
+          </p>
+          <a href="#contato" class="btn-outline-gold" style="color: var(--gold-dark); border-color: var(--gold-dark);">Contratar Essencial</a>
+        </div>
+
+        <div class="dee-price-card featured-dee">
+          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Completo</h3>
+          <p style="font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; margin: 0.25rem 0 1rem 0;">Diagnóstico + Plano + 3 meses de acompanhamento</p>
+          <div class="dee-val" style="color: var(--navy-900);">R$ 13.500</div>
+          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
+            Diagnóstico completo, plano de ação detalhado, 3 meses de acompanhamento prático, emissão do Scorecard Energético e relatório final executivo.
+          </p>
+          <a href="#contato" class="btn-gold">Contratar Completo</a>
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.9rem; color: #475569; max-width: 750px; margin: 1.5rem auto 0 auto;">
+        <strong>Condições de pagamento:</strong> À vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo 100% isento de taxa de sucesso (sem success fee).
+      </p>
+
+      <!-- GARANTIA DE PERFORMANCE -->
+      <div class="guarantee-box">
+        <div class="guarantee-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="guarantee-content">
+          <h4>Garantia de Performance JSE</h4>
+          <p>
+            Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a <strong>R$ 1.000/mês</strong>, o valor investido é devolvido integralmente ao cliente. Risco zero para a sua empresa. Válido desde que cumpridas as condições de implementação técnica recomendadas no plano de ação.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="#contato" class="btn-gold" style="font-size: 0.92rem;">Coloque sua energia sob controle</a>
       </div>
     </div>
   </section>
 
-  <!-- SEÇÃO: SERVIÇOS COMPLEMENTARES -->
-  <section class="section-wrap theme-light" id="complementares">
+  <!-- SEÇÃO 9: SERVIÇOS COMPLEMENTARES -->
+  <section class="section-wrap theme-light-alt" id="complementares">
     <div class="container-boxed">
       <div class="section-head">
         <div class="badge-sub">Engenharia Especializada</div>
@@ -2741,8 +2792,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           <div class="service-card-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
+              <polyline points="20 17 12 22 22 17"></polyline>
+              <polyline points="20 12 12 17 22 12"></polyline>
             </svg>
           </div>
           <h3 class="service-card-title">Projetos Elétricos e Adequações</h3>
@@ -2754,7 +2805,43 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     </div>
   </section>
 
-  <!-- SEÇÃO 10: FAQ -->
+  <!-- SEÇÃO 10: SOBRE -->
+  <section class="section-wrap theme-dark" id="sobre">
+    <div class="container-boxed">
+      <div class="about-grid">
+        <div class="about-bio-box">
+          <div class="badge-sub">Liderança Técnica</div>
+          <h2 style="font-size: 1.85rem; color: #ffffff; margin: 0.5rem 0 1.25rem 0;">
+            Quem está por trás da inteligência energética JSE
+          </h2>
+          <p style="color: #cbd7e6; line-height: 1.7; margin-bottom: 1.5rem;">
+            <strong>Jussiê Guimarães</strong> reúne mais de 20 anos de experiência prática nos setores elétrico e de eficiência corporativa, acumulando um histórico superior a R$ 20 milhões em energia gerada anualmente e mais de R$ 500 milhões em economia financeira mapeada para clientes.
+          </p>
+
+          <div class="about-stats-row">
+            <div>
+              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 20 Mi</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em energia gerada / ano</div>
+            </div>
+            <div>
+              <div style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-primary); font-weight: 700;">+R$ 500 Mi</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; text-transform: uppercase;">Em economia mapeada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            Meu compromisso é com a precisão do diagnóstico e a rentabilidade do seu negócio — sem conflitos de interesse com fornecedores.
+          </p>
+          <div class="quote-author">Jussiê Guimarães • Fundador &amp; Lead Energy Advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 11: FAQ -->
   <section class="section-wrap theme-light-alt" id="faq">
     <div class="container-boxed">
       <div class="section-head">
@@ -2769,14 +2856,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 1 (EM DESTAQUE) -->
         <div class="faq-item first-featured active">
           <button class="faq-trigger" aria-expanded="true">
-            <span>1. E depois do DEE, o que acontece?</span>
+            <span>O onboarding tem custo adicional?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-answer" style="max-height: 200px;">
             <div class="faq-answer-inner">
-              O DEE é a porta de entrada. Depois dele, você pode manter sua energia sob controle com o monitoramento contínuo — é aí que a economia se sustenta.
+              Não. O Diagnóstico Energético Empresarial está embutido na mensalidade do primeiro ano de qualquer plano — você assina e o diagnóstico já está incluído.
             </div>
           </div>
         </div>
@@ -2784,14 +2871,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 2 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>2. Posso contratar só o DEE?</span>
+            <span>Posso contratar apenas o diagnóstico, sem assinatura?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Sim. O diagnóstico pode ser contratado isoladamente. Os planos mensais são a evolução natural para quem quer manter a economia e a conformidade.
+              Sim. O DEE também está disponível isoladamente, nos pacotes Essencial e Completo — consulte a seção de investimento.
             </div>
           </div>
         </div>
@@ -2799,14 +2886,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 3 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>3. Quanto custa o DEE?</span>
+            <span>Como funciona a garantia de resultados?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              R$ 10.800 (Essencial) ou R$ 13.500 (Completo), à vista com 3% de desconto ou em até 12x no cartão. Sem success fee.
+              Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia potencial, o valor investido é devolvido — desde que cumpridas as condições de implementação técnica recomendadas.
             </div>
           </div>
         </div>
@@ -2814,22 +2901,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 4 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>4. E se não encontrar economia?</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia, devolvemos o investimento integralmente.
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="faq-item">
-          <button class="faq-trigger" aria-expanded="false">
-            <span>5. Vocês vendem energia?</span>
+            <span>Vocês vendem energia?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -2841,10 +2913,10 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           </div>
         </div>
 
-        <!-- FAQ 6 -->
+        <!-- FAQ 5 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>6. Preciso instalar equipamentos?</span>
+            <span>Preciso instalar equipamentos?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -2859,7 +2931,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
     </div>
   </section>
 
-  <!-- SEÇÃO 11: CTA FINAL + FORMULÁRIO -->
+  <!-- SEÇÃO 12: CTA FINAL + FORMULÁRIO -->
   <section class="section-wrap theme-dark" id="contato">
     <div class="container-boxed">
       <div class="contact-grid">
@@ -2869,12 +2941,12 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             Pronto para colocar sua energia sob controle?
           </h2>
           <p style="font-size: 1.1rem; line-height: 1.7; color: #c9d6e8; margin-bottom: 2rem;">
-            Comece pelo diagnóstico. Continue com o monitoramento. Sua economia, mantida mês após mês.
+            Escolha seu plano. O diagnóstico vem embutido. Sua economia, mantida mês após mês.
           </p>
 
           <div style="display: flex; flex-direction: column; gap: 1.25rem;">
             <div>
-              <a href="#formDiagnostico" class="btn-gold" style="width: auto;">Começar pelo diagnóstico</a>
+              <a href="#oferta" class="btn-gold" style="width: auto;">Escolha seu plano</a>
             </div>
             <div>
               <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" class="btn-outline-gold" style="display: inline-flex; align-items: center; gap: 0.6rem;">
@@ -2973,11 +3045,12 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
   <footer class="site-footer">
     <div class="container-boxed footer-grid">
       <div>
-        <div class="brand-logo" style="margin-bottom: 1rem;">
+        <!-- Logotipo Oficial Ampliado no Rodapé -->
+        <a href="#inicio" class="footer-logo-wrap" aria-label="JSE Energy Advisor">
           <img src="images/logo-jse-transparente.png" alt="JSE Energy Advisor" class="logo-img logo-img--footer">
-        </div>
+        </a>
         <p style="font-size: 0.88rem; line-height: 1.6; color: #879cb5;">
-          Inteligência energética contínua para médias empresas e grupos com múltiplas unidades. Começa pelo diagnóstico energético e se mantém com monitoramento mensal.
+          Inteligência energética contínua para médias empresas e grupos com múltiplas unidades. Começa pelo diagnóstico isento e se mantém com monitoramento mensal.
         </p>
       </div>
 
@@ -2986,9 +3059,10 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <ul class="footer-links">
           <li><a href="#inicio">Início</a></li>
           <li><a href="#oferta">A oferta</a></li>
-          <li><a href="#dee">Como começar</a></li>
           <li><a href="#scorecard">Scorecard Energético</a></li>
           <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#dee">Diagnóstico (DEE)</a></li>
+          <li><a href="#complementares">Complementares</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#faq">Perguntas Frequentes</a></li>
           <li><a href="#contato">Contato</a></li>
@@ -2998,10 +3072,10 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       <div>
         <div class="footer-heading">Serviços</div>
         <ul class="footer-links">
+          <li><a href="#oferta">Planos de Assinatura</a></li>
           <li><a href="#dee">Diagnóstico Energético (DEE)</a></li>
-          <li><a href="#oferta">Sistema de Monitoramento</a></li>
-          <li><a href="#complementares">Serviços Complementares</a></li>
           <li><a href="#scorecard">Auditoria e Scorecard</a></li>
+          <li><a href="#complementares">Serviços Complementares</a></li>
         </ul>
       </div>
 
@@ -3010,21 +3084,36 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <p style="margin-bottom: 0.8rem; color: #879cb5;">
           Atendimento executivo em todo o Brasil para empresas do Grupo A e Grupo B corporativo.
         </p>
-        <p style="margin: 0;">
+        <p style="margin-bottom: 1.25rem;">
           <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" style="color: var(--gold-primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
             <span>WhatsApp: (11) 99948-3633</span>
           </a>
         </p>
-        <p class="footer-social-row">
-          <a href="https://www.instagram.com/jussie.guimaraes/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Jussiê Guimarães"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>Instagram</span></a>
-          <a href="https://www.linkedin.com/in/jussieguimaraes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn do Jussiê Guimarães"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7.2v.1M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg><span>LinkedIn</span></a>
-        </p>
+
+        <!-- Redes Sociais Oficiais -->
+        <div class="footer-heading" style="margin-bottom: 0.75rem;">Conecte-se</div>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/jussie.guimaraes/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram @jussie.guimaraes">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/jussieguimaraes/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn Jussiê Guimarães">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
 
     <div class="container-boxed footer-bottom" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem;">
       <div>&copy; 2026 JSE Energy Advisor. Todos os direitos reservados.</div>
-      <div>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
         <button type="button" class="privacy-link-btn" id="openPrivacyFooterBtn" style="font-size: 0.8rem; color: #879cb5;">
           Política de Privacidade
         </button>
@@ -3241,7 +3330,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           const unidades = document.getElementById('unidades').value.trim();
 
           // Construct formatted message
-          const rawMessage = `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${nome}, sou da ${empresa} (${unidades} unidades), segmento: ${segmentoText}. Nosso gasto médio mensal com energia está na faixa de ${faixaText} e gostaria de saber mais sobre o diagnóstico energético.`;
+          const rawMessage = `Olá, Jussiê! Preenchi o formulário no site. Me chamo ${nome}, sou da ${empresa} (${unidades} unidades), segmento: ${segmentoText}. Nosso gasto médio mensal com energia está na faixa de ${faixaText} e gostaria de saber mais sobre os planos de assinatura.`;
           const encodedMessage = encodeURIComponent(rawMessage);
           const waUrl = `https://wa.me/5511999483633?text=${encodedMessage}`;
 
