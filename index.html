@@ -1891,6 +1891,20 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
 
     .clients-strip .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+  
+    /* ===== Brief 08/10: planos e DEE isolado ===== */
+    .plan-tagline { font-size: 0.95rem; font-weight: 700; color: var(--gold-primary); margin: 0.15rem 0 0.5rem 0; }
+    .plan-intro { font-size: 0.85rem; line-height: 1.55; color: #9cb1cb; margin: 0 0 0.25rem 0; }
+    .plan-card.featured .plan-intro { color: #cbd7e6; }
+    .plan-closing { font-size: 0.85rem; font-style: italic; color: #9cb1cb; margin: 0 0 1.25rem 0; }
+    .plan-highlight { font-size: 0.85rem; line-height: 1.55; color: #e5edf8; background: rgba(212, 175, 55, 0.1); border-left: 3px solid var(--gold-primary); padding: 0.85rem 1rem; border-radius: 4px; margin: 0 0 1.25rem 0; }
+    .dee-solo { display: flex; align-items: center; justify-content: space-between; gap: 2rem; background: #ffffff; border: 1px solid var(--border-light); border-radius: 12px; padding: 2rem 2.25rem; }
+    .dee-solo-title { font-size: 1.5rem; margin: 0 0 0.75rem 0; color: var(--text-dark); }
+    .dee-solo-text p { margin: 0 0 0.75rem 0; color: var(--text-dark-muted); line-height: 1.65; }
+    .dee-solo-text .dee-solo-terms { font-size: 0.88rem; margin: 0; }
+    .dee-solo-cta { flex-shrink: 0; white-space: nowrap; }
+    #dee-isolado .guarantee-box { margin-top: 2rem; }
+    @media (max-width: 760px) { .dee-solo { flex-direction: column; align-items: flex-start; padding: 1.5rem; } }
   </style>
 </head>
 <body>
@@ -2069,72 +2083,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 </script>
 
 
-  <!-- SEÇÃO 2: O PROBLEMA -->
-  <section class="section-wrap theme-light" id="problema">
-    <div class="container-boxed">
-      <div class="problem-callout-grid">
-        <div>
-          <div class="badge-sub">Diagnóstico versus Manutenção</div>
-          <h2 class="section-title">Energia sem gestão técnica é dinheiro saindo pela porta de suas unidades.</h2>
-          <div class="problem-text">
-            <p>
-              O diagnóstico encontra o vazamento. Mas sem acompanhamento, a economia some: a demanda contratada volta a subir, as multas por fator de potência reaparecem, o enquadramento tarifário desatualiza.
-            </p>
-            <p>
-              Gestão de energia não é um evento — <strong>é uma operação contínua</strong>. Quem trata como evento, paga duas vezes: a primeira na conta, a segunda na economia que não se mantém.
-            </p>
-          </div>
-        </div>
-
-        <div class="problem-highlight-box">
-          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin: 0 0 0.5rem 0;">Vazamentos recorrentes em empresas sem gestão contínua:</h3>
-          <ul class="loss-points">
-            <li>
-              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
-              <span>Ultrapassagem de demanda gerando penalidades e tarifas multiplicadas.</span>
-            </li>
-            <li>
-              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
-              <span>Multas silenciosas por baixo fator de potência (energia reativa excedente).</span>
-            </li>
-            <li>
-              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
-              <span>Enquadramento na modalidade tarifária incorreta (Verde x Azul ou B3 x A4).</span>
-            </li>
-            <li>
-              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
-              <span>Falta de auditoria técnica mensal contra erros de faturamento da distribuidora.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO 3: A OFERTA CENTRAL -->
+  <!-- SEÇÃO 3: PLANOS (SEÇÃO PRINCIPAL) -->
   <section class="section-wrap theme-dark" id="oferta">
     <div class="container-boxed">
       <div class="section-head">
         <div class="badge-sub">Sistema Operacional de Inteligência Energética</div>
-        <h2 class="section-title">Depois do diagnóstico, quem mantém sua energia sob controle?</h2>
+        <h2 class="section-title">Escolha o nível da inteligência energética da sua operação</h2>
         <p class="section-subtitle">
-          O DEE encontra a oportunidade. O Sistema Operacional de Inteligência Energética garante que ela se mantenha — com monitoramento mensal, alertas de desvio e apoio à decisão. Inteligência energética sênior por uma fração do custo de um engenheiro interno.
+          Todos os planos incluem o Diagnóstico Energético Empresarial (DEE) como onboarding — embutido na mensalidade do primeiro ano. Quem contrata o diagnóstico isoladamente paga R$ 13.500. Na assinatura, ele já está dentro.
         </p>
       </div>
 
@@ -2142,35 +2098,38 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- PLANO 1 -->
         <div class="plan-card">
           <h3 class="plan-name">Monitoramento</h3>
-          <p style="font-size: 0.85rem; color: #9cb1cb; margin: 0;">Supervisão essencial de anomalias e histórico.</p>
+          <p class="plan-tagline">Para quem quer enxergar.</p>
+          <p class="plan-intro">A fotografia mensal da sua energia. Todo mês, o Scorecard Energético mostra exatamente onde seu dinheiro está indo — e onde está vazando.</p>
           <div class="plan-price">
             R$ 2.400 <span>/ mês</span>
           </div>
           <ul class="plan-features">
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Scorecard Energético Mensal consolidado</span>
+              <span>Scorecard Energético Mensal</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Coleta estruturada e auditoria de dados</span>
+              <span>Auditoria de faturas</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Alertas de anomalia (multas e fator de potência)</span>
+              <span>Alertas de anomalia: multas, fator de potência, demanda</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>Verificação de conformidade de faturamento</span>
             </li>
           </ul>
+          <p class="plan-closing">Você enxerga cada desvio. A ação fica por sua conta.</p>
           <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Monitoramento</a>
         </div>
 
         <!-- PLANO 2 -->
         <div class="plan-card">
           <h3 class="plan-name">Gestão</h3>
-          <p style="font-size: 0.85rem; color: #cbd7e6; margin: 0;">Gestão ativa contínua e suporte executivo.</p>
+          <p class="plan-tagline">Para quem quer agir.</p>
+          <p class="plan-intro">Tudo do Monitoramento — e alguém para transformar o que o painel revela em ação.</p>
           <div class="plan-price">
             R$ 3.900 <span>/ mês</span>
           </div>
@@ -2181,11 +2140,11 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Insights mensais de otimização operacional</span>
+              <span>Insights e recomendações mensais de otimização</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Acompanhamento de conformidade regulatória</span>
+              <span>Conformidade regulatória acompanhada</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2193,22 +2152,20 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Suporte ágil via canal exclusivo de WhatsApp</span>
+              <span>Suporte prioritário via WhatsApp</span>
             </li>
           </ul>
           <a href="#contato" class="btn-outline-gold" style="width: 100%; text-align: center;">Selecionar Gestão</a>
         </div>
 
-        <!-- PLANO 3 (DESTAQUE - MAIS ESCOLHIDO) -->
+        <!-- PLANO 3 (DESTAQUE: CAMPEÃO DE CUSTO-BENEFÍCIO) -->
         <div class="plan-card featured">
           <div class="featured-badge">Mais Escolhido</div>
           <h3 class="plan-name">Consultoria</h3>
-          <p style="font-size: 0.85rem; color: #cbd7e6; margin: 0;">Assessoria sênior dedicada para expansão e projetos.</p>
+          <p class="plan-tagline">Para quem quer acelerar.</p>
+          <p class="plan-intro">Tudo da Gestão — mais um consultor sênior dedicado à sua operação.</p>
           <div class="plan-price">
             R$ 4.500 <span>/ mês</span>
-          </div>
-          <div class="consultoria-highlight-note">
-            Apenas R$ 600 a mais que o plano Gestão
           </div>
           <ul class="plan-features">
             <li>
@@ -2217,37 +2174,86 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Consultor dedicado sênior (30 min/mês em sessão executiva)</span>
+              <span>Consultor sênior dedicado: sessão executiva mensal</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Acompanhamento direto de implementação técnica</span>
+              <span>Acompanhamento direto da implementação das recomendações</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Estudos de viabilidade técnica e financeira de novos projetos</span>
+              <span>1 estudo de viabilidade por ano incluso: solar, Mercado Livre, BESS, carregadores</span>
             </li>
             <li>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>1 estudo de viabilidade técnica e financeira por ano incluso</strong></span>
-            </li>
-            <li>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span><strong>50% de desconto em estudos de viabilidade adicionais</strong></span>
+              <span>Estudos de viabilidade adicionais com 50% de desconto</span>
             </li>
           </ul>
+          <p class="plan-highlight"><strong>Espere aí...</strong> por apenas R$ 600 a mais do que o plano Gestão, você adiciona um consultor sênior dedicado à sua operação — e leva 1 estudo de viabilidade por ano incluso (estudos que custam de R$ 3.000 a R$ 10.000 cada quando contratados isoladamente), com 50% de desconto nos estudos adicionais.</p>
           <a href="#contato" class="btn-gold" style="width: 100%; text-align: center;">Selecionar Consultoria</a>
         </div>
       </div>
 
       <div class="plans-footer-note">
         <p style="margin-bottom: 0.8rem; font-weight: 500;">
-          Todos os planos incluem o <strong>Diagnóstico Energético Empresarial embutido na mensalidade do primeiro ano</strong> — você assina e o diagnóstico já está dentro.
+          Todos os planos incluem o <strong>DEE como onboarding embutido no primeiro ano</strong>.
         </p>
         <p style="margin: 0;">
-          O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura? 
+          O DEE aponta o caminho. Os complementares executam a captura. Quer ver como cada achado do diagnóstico vira economia na fatura?
           <a href="#complementares" class="complementares-callout-link">Conheça nossos serviços complementares &rarr;</a>
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 8: DEE BLOCO SECUNDÁRIO (INCLUSO NO SEU PLANO) -->
+  <section class="section-wrap theme-light" id="dee">
+    <div class="container-boxed">
+      <div class="section-head">
+        <div class="badge-sub">Primeira Entrega da Assinatura</div>
+        <h2 class="section-title">Tudo começa com um diagnóstico.</h2>
+        <p class="section-subtitle">
+          O DEE é a primeira entrega da sua assinatura: embutido na mensalidade do primeiro ano, ele mapeia em 90 dias a linha de base da sua operação e orienta todo o plano de ação.
+        </p>
+      </div>
+
+      <!-- 4 ETAPAS EM LINHA -->
+      <div class="timeline-steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Análise</div>
+          <div class="step-desc">
+            Levantamento de informações, entrevistas com stakeholders e análise profunda de dados de faturas e processos. 100% online.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Planejamento</div>
+          <div class="step-desc">
+            Definição de objetivos técnicos e financeiros, priorização rigorosa de iniciativas e elaboração do plano de ação executivo.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Estruturação</div>
+          <div class="step-desc">
+            Construção minuciosa do Scorecard Energético personalizado e definição precisa da linha de base de consumo e custo.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-title">Acompanhamento</div>
+          <div class="step-desc">
+            Análise dos resultados nas faturas (energia consumida, uso da rede e geração própria, se houver), ajustes e emissão do Scorecard do mês.
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#contato" class="btn-gold" style="font-size: 0.92rem;">Coloque sua energia sob controle</a>
       </div>
     </div>
   </section>
@@ -2489,15 +2495,93 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           E o que garante que essa economia se mantenha? <strong>O monitoramento contínuo.</strong>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- SEÇÃO CLIENTES ATENDIDOS -->
-      <div class="clients-container" style="margin-top: 3.5rem; text-align: center;">
-        <h3 style="font-size: 1.1rem; color: var(--navy-900); margin: 0 0 1.5rem 0; font-family: 'Cinzel', serif; letter-spacing: 0.05em; text-transform: uppercase;">Clientes Atendidos</h3>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.25rem;">
-          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Grupo Bortech</div>
-          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Eurofarma</div>
-          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Cliente JSE</div>
-          <div style="background: var(--surface-light); border: 1px solid var(--border-light); padding: 0.85rem 1.6rem; border-radius: 6px; font-weight: 600; color: var(--navy-900); font-size: 0.95rem;">Cliente JSE</div>
+  <!-- BLOCO SECUNDÁRIO: DEE ISOLADO -->
+  <section class="section-wrap theme-light-alt" id="dee-isolado">
+    <div class="container-boxed">
+      <div class="dee-solo">
+        <div class="dee-solo-text">
+          <h2 class="dee-solo-title">Prefere começar só pelo diagnóstico?</h2>
+          <p>O DEE também pode ser contratado isoladamente: <strong>Essencial (R$ 10.800)</strong> ou <strong>Completo com 3 meses de acompanhamento (R$ 13.500)</strong>. Mas atenção: na assinatura anual, o onboarding completo vem embutido — sem custo adicional.</p>
+          <p class="dee-solo-terms">
+        <strong>Condições de pagamento:</strong> À vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo 100% isento de taxa de sucesso (sem success fee).
+      </p>
+        </div>
+        <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer" class="btn-gold dee-solo-cta">Falar com o especialista</a>
+      </div>
+
+      <!-- GARANTIA DE PERFORMANCE -->
+      <div class="guarantee-box">
+        <div class="guarantee-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="guarantee-content">
+          <h4>Garantia de Performance JSE</h4>
+          <p>
+            Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a <strong>R$ 1.000/mês</strong>, o valor investido é devolvido integralmente ao cliente. Risco zero para a sua empresa. Válido desde que cumpridas as condições de implementação técnica recomendadas no plano de ação.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: O PROBLEMA -->
+  <section class="section-wrap theme-light" id="problema">
+    <div class="container-boxed">
+      <div class="problem-callout-grid">
+        <div>
+          <div class="badge-sub">Diagnóstico versus Manutenção</div>
+          <h2 class="section-title">Energia sem gestão técnica é dinheiro saindo pela porta de suas unidades.</h2>
+          <div class="problem-text">
+            <p>
+              O diagnóstico encontra o vazamento. Mas sem acompanhamento, a economia some: a demanda contratada volta a subir, as multas por fator de potência reaparecem, o enquadramento tarifário desatualiza.
+            </p>
+            <p>
+              Gestão de energia não é um evento — <strong>é uma operação contínua</strong>. Quem trata como evento, paga duas vezes: a primeira na conta, a segunda na economia que não se mantém.
+            </p>
+          </div>
+        </div>
+
+        <div class="problem-highlight-box">
+          <h3 style="font-size: 1.15rem; color: var(--navy-900); margin: 0 0 0.5rem 0;">Vazamentos recorrentes em empresas sem gestão contínua:</h3>
+          <ul class="loss-points">
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Ultrapassagem de demanda gerando penalidades e tarifas multiplicadas.</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Multas silenciosas por baixo fator de potência (energia reativa excedente).</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Enquadramento na modalidade tarifária incorreta (Verde x Azul ou B3 x A4).</span>
+            </li>
+            <li>
+              <svg class="loss-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Falta de auditoria técnica mensal contra erros de faturamento da distribuidora.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -2599,104 +2683,6 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 
       <div class="target-highlight-bar">
         Quanto mais unidades, maior o valor do monitoramento contínuo — uma única operação de inteligência cobre toda a rede.
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO 8: DEE BLOCO SECUNDÁRIO (INCLUSO NO SEU PLANO) -->
-  <section class="section-wrap theme-light" id="dee">
-    <div class="container-boxed">
-      <div class="section-head">
-        <div class="badge-sub">Primeira Entrega da Assinatura</div>
-        <h2 class="section-title">O Diagnóstico Energético Empresarial — incluso no seu plano</h2>
-        <p class="section-subtitle">
-          O DEE é a primeira entrega da sua assinatura: embutido na mensalidade do primeiro ano, ele mapeia em 90 dias a linha de base da sua operação e orienta todo o plano de ação.
-        </p>
-      </div>
-
-      <!-- 4 ETAPAS EM LINHA -->
-      <div class="timeline-steps">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <div class="step-title">Análise</div>
-          <div class="step-desc">
-            Levantamento de informações, entrevistas com stakeholders e análise profunda de dados de faturas e processos. 100% online.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <div class="step-title">Planejamento</div>
-          <div class="step-desc">
-            Definição de objetivos técnicos e financeiros, priorização rigorosa de iniciativas e elaboração do plano de ação executivo.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <div class="step-title">Estruturação</div>
-          <div class="step-desc">
-            Construção minuciosa do Scorecard Energético personalizado e definição precisa da linha de base de consumo e custo.
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">04</div>
-          <div class="step-title">Acompanhamento</div>
-          <div class="step-desc">
-            Análise dos resultados nas faturas (energia consumida, uso da rede e geração própria, se houver), ajustes e emissão do Scorecard do mês.
-          </div>
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.95rem; color: #475569; margin: 3rem 0 1.5rem 0; font-weight: 600;">
-        Prefere contratar apenas o diagnóstico, sem assinatura? O DEE também está disponível isoladamente:
-      </p>
-
-      <!-- 2 CARDS DE INVESTIMENTO DO DEE ISOLADO -->
-      <div class="dee-pricing-grid">
-        <div class="dee-price-card">
-          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Essencial</h3>
-          <p style="font-size: 0.85rem; color: #64748b; margin: 0.25rem 0 1rem 0;">Diagnóstico técnico + planejamento estratégico</p>
-          <div class="dee-val">R$ 10.800</div>
-          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
-            Entrega dos achados técnicos fundamentais, auditoria tarifária e plano de ação estruturado para sua equipe interna.
-          </p>
-          <a href="#contato" class="btn-outline-gold" style="color: var(--gold-dark); border-color: var(--gold-dark);">Contratar Essencial</a>
-        </div>
-
-        <div class="dee-price-card featured-dee">
-          <h3 style="margin: 0; font-size: 1.25rem; color: var(--navy-900);">DEE Completo</h3>
-          <p style="font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; margin: 0.25rem 0 1rem 0;">Diagnóstico + Plano + 3 meses de acompanhamento</p>
-          <div class="dee-val" style="color: var(--navy-900);">R$ 13.500</div>
-          <p style="font-size: 0.88rem; color: #475569; margin-bottom: 1.5rem;">
-            Diagnóstico completo, plano de ação detalhado, 3 meses de acompanhamento prático, emissão do Scorecard Energético e relatório final executivo.
-          </p>
-          <a href="#contato" class="btn-gold">Contratar Completo</a>
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.9rem; color: #475569; max-width: 750px; margin: 1.5rem auto 0 auto;">
-        <strong>Condições de pagamento:</strong> À vista com 3% de desconto, ou parcelamento em até 12x no cartão com a taxa da operadora. Modelo 100% isento de taxa de sucesso (sem success fee).
-      </p>
-
-      <!-- GARANTIA DE PERFORMANCE -->
-      <div class="guarantee-box">
-        <div class="guarantee-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <div class="guarantee-content">
-          <h4>Garantia de Performance JSE</h4>
-          <p>
-            Caso o diagnóstico técnico não identifique uma oportunidade de economia mínima equivalente a <strong>R$ 1.000/mês</strong>, o valor investido é devolvido integralmente ao cliente. Risco zero para a sua empresa. Válido desde que cumpridas as condições de implementação técnica recomendadas no plano de ação.
-          </p>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 2.5rem;">
-        <a href="#contato" class="btn-gold" style="font-size: 0.92rem;">Coloque sua energia sob controle</a>
       </div>
     </div>
   </section>
@@ -2863,7 +2849,7 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
           </button>
           <div class="faq-answer" style="max-height: 200px;">
             <div class="faq-answer-inner">
-              Não. O Diagnóstico Energético Empresarial está embutido na mensalidade do primeiro ano de qualquer plano — você assina e o diagnóstico já está incluído.
+              Não. O Diagnóstico Energético Empresarial (DEE) está embutido na mensalidade do primeiro ano de qualquer um dos nossos planos anuais.
             </div>
           </div>
         </div>
@@ -2871,14 +2857,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 2 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>Posso contratar apenas o diagnóstico, sem assinatura?</span>
+            <span>Posso contratar só o diagnóstico?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Sim. O DEE também está disponível isoladamente, nos pacotes Essencial e Completo — consulte a seção de investimento.
+              Sim, por R$ 10.800 (plano Essencial) ou R$ 13.500 (plano Completo). No entanto, a ampla maioria dos nossos clientes opta pela assinatura anual, na qual o onboarding técnico completo já vem integralmente embutido sem acréscimo no setup.
             </div>
           </div>
         </div>
@@ -2886,14 +2872,14 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
         <!-- FAQ 3 -->
         <div class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span>Como funciona a garantia de resultados?</span>
+            <span>E se não encontrar economia?</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia potencial, o valor investido é devolvido — desde que cumpridas as condições de implementação técnica recomendadas.
+              Mantém-se o compromisso formal da garantia: se o diagnóstico não identificar ao menos R$ 1.000,00/mês de economia na sua operação, devolvemos o investimento integralmente, desde que cumpridas as condições de implementação técnica.
             </div>
           </div>
         </div>
