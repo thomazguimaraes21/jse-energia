@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raio-X Energético | JSE Energy Advisor</title>
+  <meta name="description" content="Descubra em 3 minutos o potencial de economia de energia da sua empresa. Raio-X Energético gratuito da JSE Energy Advisor.">
+  <link rel="icon" href="/images/favicon-jse.png">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EBNW40D5F9');</script>
+  <meta name="description" content="Descubra em 3 minutos o potencial de economia e previsibilidade energética da sua empresa com a JSE Energy Advisor.">
+
+  <!-- Basecoat CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.0.2/dist/basecoat.cdn.min.css">
+  
+  <!-- Shell CSS & JS -->
+  <style>
+/* Skip artifact shell, fixed styles served beside every artifact.
+   Complements basecoat; artifacts override --accent for their own identity. */
+:root {
+  color-scheme: light dark;
+  --accent: #2563eb;
+  --accent-contrast: #ffffff;
+  --accent-text: color-mix(in srgb, var(--accent) 72%, #000);
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #14171f;
+  --text-muted: #5b6472;
+  --border: rgba(20, 23, 31, 0.10);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 23, 31, 0.08);
+  --space: 16px;
+}
+/* Theme resolution. Without data-theme the viewer's system preference decides,
+   as it always did. With it, the artifact's own choice wins in BOTH directions:
+   a page that hardcodes one palette must not be handed the opposite set of
+   tokens by the machine it happens to be opened on. The dark values appear
+   twice because a media query cannot be folded into a selector list.
+   The attribute sits inside :where() so these blocks keep the specificity of a
+   bare :root, the page's own <style> is linked after this file and must go on
+   overriding any token it wants, exactly as it could before. */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+    --bg: #101318;
+    --surface: #181c23;
+    --text: #eef1f6;
+    --text-muted: #9aa4b2;
+    --border: rgba(238, 241, 246, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+:root:where([data-theme="dark"]) {
+  color-scheme: dark;
+  --accent-text: color-mix(in srgb, var(--accent) 78%, #fff);
+  --bg: #101318;
+  --surface: #181c23;
+  --text: #eef1f6;
+  --text-muted: #9aa4b2;
+  --border: rgba(238, 241, 246, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root:where([data-theme="light"]) { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+.shell-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.shell-section { padding: calc(var(--space) * 2) 0; }
+.shell-grid { display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.shell-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: var(--space); }
+.shell-footer { padding: 24px 0 40px; color: var(--text-muted); font-size: 13px; }
+
+.shell-hero { padding: calc(var(--space) * 3) 0 calc(var(--space) * 2); }
+.shell-hero h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.shell-hero p { color: var(--text-muted); max-width: 60ch; margin: 0; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 4px; }
+.kpi .kpi-value { font-size: 28px; font-weight: 650; line-height: 1.1; }
+.kpi .kpi-label { font-size: 13px; color: var(--text-muted); }
+.kpi .kpi-delta { font-size: 12.5px; font-weight: 600; }
+.kpi .kpi-delta.up { color: #0a8f3c; }
+.kpi .kpi-delta.down { color: #cf3131; }
+
+table.shell-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.shell-table th {
+  text-align: left; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600;
+}
+table.shell-table th, table.shell-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--border); }
+table.shell-table td.num, table.shell-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+
+.chart-box { width: 100%; min-height: 220px; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent-text); }
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shell-fade { animation: shell-fade 400ms ease both; }
+  @keyframes shell-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+</style>
+  
+
+  <!-- Google Fonts Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
+  <style>
+    :root {
+      --jse-navy: #0a1628;
+      --jse-navy-hover: #10213b;
+      --jse-graphite: #1C1F22;
+      --jse-graphite-dark: #14171a;
+      --jse-gold: #c9973b;
+      --jse-gold-muted: rgba(201, 151, 59, 0.2);
+      --jse-green: #00C853;
+      --jse-green-dark: #00a846;
+      --jse-light: #f5f6f8;
+      --jse-text-dark: #1a1d21;
+      --jse-text-muted-light: #5b6470;
+      --accent: #c9973b;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--jse-navy);
+      color: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+
+    /* Utilitários tipográficos */
+    .heading-caps {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .gold-accent {
+      color: var(--jse-gold);
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0a1628;
+      border-bottom: 1px solid rgba(201, 151, 59, 0.25);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+    }
+    .brand-logo svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--jse-gold);
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-link {
+      color: #d1d8e0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-link:hover, .nav-link:focus-visible {
+      color: var(--jse-gold);
+      outline: none;
+    }
+    
+    /* Botões Padrão JSE */
+    .btn-energy {
+      background-color: var(--jse-green);
+      color: #042410;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.15s;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn-energy:hover {
+      background-color: #02b34a;
+      transform: translateY(-1px);
+      color: #042410;
+    }
+    .btn-gold-outline {
+      background-color: transparent;
+      color: var(--jse-gold);
+      border: 1.5px solid var(--jse-gold);
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s, transform 0.15s;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .btn-gold-outline:hover {
+      background-color: var(--jse-gold);
+      color: var(--jse-navy);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile toggle */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero-section {
+      background: linear-gradient(175deg, #0a1628 0%, #12213a 100%);
+      padding: 5rem 1.5rem 3.5rem;
+      border-bottom: 2px solid var(--jse-gold);
+      position: relative;
+    }
+    .hero-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--jse-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      background: rgba(201, 151, 59, 0.12);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 151, 59, 0.3);
+    }
+    .hero-title {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: #c9d3e0;
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.55;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas .btn-energy,
+    .hero-ctas .btn-gold-outline {
+      padding: 0.95rem 2rem;
+      font-size: 1rem;
+    }
+    .hero-security {
+      font-size: 0.85rem;
+      color: #8c9cb3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .hero-maxim-strip {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .hero-maxim {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      font-weight: 700;
+      color: var(--jse-gold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* SEÇÃO 3: GARGALOS (Fundo Claro) */
+    .light-section {
+      background-color: var(--jse-light);
+      color: var(--jse-text-dark);
+      padding: 5rem 1.5rem;
+    }
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header-light {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3.5rem;
+    }
+    .section-header-light .tag {
+      color: #8b6e14;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-header-light h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--jse-navy);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .section-header-light p {
+      color: var(--jse-text-muted-light);
+      font-size: 1.05rem;
+    }
+    .bottlenecks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2rem;
+    }
+    .bottleneck-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 2.25rem 2rem;
+      border-top: 4px solid var(--jse-gold);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .bottleneck-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.09);
+    }
+    .bottleneck-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      background: rgba(201, 151, 59, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--jse-gold);
+    }
+    .bottleneck-icon-box svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--jse-gold);
+      stroke-width: 2;
+      fill: none;
+    }
+    .bottleneck-card h3 {
+      font-size: 1.25rem;
+      color: var(--jse-navy);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .bottleneck-card p {
+      color: var(--jse-text-muted-light);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    /* SEÇÃO 4: QUIZ (Fundo Grafite #1C1F22) */
+    .quiz-section {
+      background-color: var(--jse-graphite);
+      color: #ffffff;
+      padding: 5rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .quiz-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .quiz-header h2 {
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .quiz-header p {
+      color: #a0aec0;
+      font-size: 1rem;
+    }
+    
+    /* Barra de Progresso Dourada */
+    .quiz-progress-bar-wrap {
+      background: #2a2e33;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(201, 151, 59, 0.2);
+    }
+    .quiz-progress-fill {
+      background: linear-gradient(90deg, #8c6823, var(--jse-gold));
+      height: 100%;
+      width: 14.28%;
+      transition: width 0.3s ease;
+    }
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--jse-gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .quiz-card {
+      background: #14171a;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 151, 59, 0.3);
+      padding: 2.5rem 2rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .quiz-question-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      color: #ffffff;
+      line-height: 1.4;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .quiz-question-badge {
+      background: var(--jse-gold);
+      color: var(--jse-navy);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .quiz-options {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .quiz-option-btn {
+      width: 100%;
+      text-align: left;
+      background: #1f2328;
+      color: #e2e8f0;
+      border: 1px solid #323841;
+      padding: 1.1rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .quiz-option-btn:hover {
+      background: #282e36;
+      border-color: var(--jse-gold);
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+    .quiz-option-btn.selected {
+      background: rgba(201, 151, 59, 0.18);
+      border-color: var(--jse-gold);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 0 0 1px var(--jse-gold);
+    }
+    .radio-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #525a66;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .quiz-option-btn.selected .radio-circle {
+      border-color: var(--jse-gold);
+      background-color: var(--jse-gold);
+    }
+    .quiz-option-btn.selected .radio-circle::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--jse-navy);
+      border-radius: 50%;
+    }
+    .quiz-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #282e36;
+    }
+    .btn-quiz-back {
+      background: transparent;
+      border: 1px solid #4a5568;
+      color: #cbd5e1;
+      padding: 0.65rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-quiz-back:hover:not(:disabled) {
+      background: #2a313b;
+      color: #ffffff;
+    }
+    .btn-quiz-back:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* SEÇÃO 5: RESULTADO (Injetado / Exibido dinamicamente) */
+    .result-section {
+      background-color: var(--jse-light);
+      color: var(--jse-text-dark);
+      padding: 4.5rem 1.5rem;
+      display: none; /* Exibido após conclusão */
+    }
+    .result-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 2px solid var(--jse-green);
+      padding: 3rem 2.5rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+    .result-badge {
+      display: inline-block;
+      background: rgba(0, 200, 83, 0.15);
+      color: #007a33;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(0, 200, 83, 0.35);
+    }
+    .result-title {
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      color: var(--jse-navy);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .result-desc {
+      color: var(--jse-text-muted-light);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+    .result-data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .result-data-item .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .result-data-item .value {
+      font-size: 1.15rem;
+      color: var(--jse-navy);
+      font-weight: 700;
+    }
+    .result-data-item.highlight .value {
+      color: #008a39;
+    }
+    .result-note-seed {
+      background: #f0f7f3;
+      border-left: 4px solid var(--jse-green);
+      padding: 1.1rem 1.4rem;
+      border-radius: 0 6px 6px 0;
+      color: #244030;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 2rem;
+    }
+
+    /* NOVA SEÇÃO: ASSINATURA (Fundo Claro #f5f6f8) */
+    .plans-section {
+      background-color: var(--jse-light);
+      color: var(--jse-text-dark);
+      padding: 5.5rem 1.5rem 4.5rem;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      align-items: stretch;
+    }
+    .plan-card {
+      background: #ffffff;
+      border-radius: 10px;
+      border-top: 4px solid var(--jse-gold);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    }
+    .plan-card.highlight {
+      border: 2px solid var(--jse-green);
+      border-top: 6px solid var(--jse-gold);
+      box-shadow: 0 14px 35px rgba(0, 200, 83, 0.15);
+    }
+    .plan-badge-top {
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      background: var(--jse-green);
+      color: #042410;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0, 200, 83, 0.3);
+    }
+    .plan-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--jse-navy);
+      margin-bottom: 0.25rem;
+    }
+    .plan-tagline {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #8c6823;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+    }
+    .plan-price-wrap {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .plan-price {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--jse-navy);
+      line-height: 1.1;
+    }
+    .plan-period {
+      font-size: 0.9rem;
+      color: var(--jse-text-muted-light);
+      font-weight: 500;
+    }
+    .plan-desc {
+      font-size: 0.94rem;
+      color: var(--jse-text-muted-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    .plan-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: #2d3748;
+      line-height: 1.45;
+    }
+    .plan-feature-item svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--jse-green);
+      stroke-width: 2.4;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .plan-cta {
+      margin-top: auto;
+    }
+    .plan-cta .btn-energy,
+    .plan-cta .btn-gold-outline {
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem 1.25rem;
+    }
+    .plan-card.highlight .btn-gold-outline {
+      background-color: var(--jse-green);
+      color: #042410;
+      border-color: var(--jse-green);
+    }
+    .plan-card.highlight .btn-gold-outline:hover {
+      background-color: #02b34a;
+      border-color: #02b34a;
+      color: #042410;
+    }
+
+    /* Banners de Suporte da Assinatura */
+    .plans-highlight-box {
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid var(--jse-gold);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+    .plans-highlight-box h4 {
+      font-size: 1.1rem;
+      color: var(--jse-navy);
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+    .plans-highlight-box p {
+      color: var(--jse-text-muted-light);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    .plans-popcorn-text {
+      margin-top: 0.5rem;
+      color: #8c6823;
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+    .plans-anchor-box {
+      background: #0a1628;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .plans-anchor-box p {
+      font-size: 0.96rem;
+      color: #d1d8e0;
+      line-height: 1.5;
+    }
+    .plans-anchor-box strong {
+      color: var(--jse-gold);
+    }
+
+    /* SEÇÃO 6: DEE REFORMULADA (Fundo Navy #0a1628) */
+    .dee-section {
+      background-color: #0a1628;
+      color: #ffffff;
+      padding: 5.5rem 1.5rem;
+      border-top: 1px solid rgba(201, 151, 59, 0.3);
+    }
+    .dee-header {
+      max-width: 880px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    .dee-header .tag {
+      color: var(--jse-gold);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .dee-header h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+    .dee-manifesto {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      background: rgba(16, 33, 59, 0.7);
+      border: 1px solid rgba(201, 151, 59, 0.25);
+      padding: 1.25rem 1.75rem;
+      border-radius: 8px;
+      line-height: 1.6;
+    }
+    .dee-fases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .dee-fase-card {
+      background: #0f1e33;
+      border: 1px solid var(--jse-gold);
+      border-radius: 8px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .fase-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--jse-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+    .dee-fase-card h3 {
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 0.85rem;
+      font-weight: 700;
+    }
+    .dee-fase-card p {
+      color: #a8b8cc;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .dee-meta-bar {
+      background: #0f1e33;
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      border: 1px solid rgba(201, 151, 59, 0.3);
+      margin-bottom: 2rem;
+    }
+    .dee-scope-info h4 {
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+    .dee-scope-info p {
+      color: #93a5be;
+      font-size: 0.92rem;
+    }
+    .dee-isolated-note {
+      text-align: right;
+      color: #8c9cb3;
+      font-size: 0.84rem;
+      max-width: 320px;
+      line-height: 1.45;
+    }
+    .dee-isolated-note strong {
+      color: var(--jse-gold);
+    }
+
+    /* Card Garantia Verde */
+    .dee-guarantee-card {
+      background: rgba(0, 200, 83, 0.12);
+      border: 1.5px solid var(--jse-green);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .guarantee-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      background: var(--jse-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #042410;
+    }
+    .guarantee-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+    }
+    .guarantee-text h4 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+    .guarantee-text p {
+      color: #d1f5dc;
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+    .dee-cta-center {
+      text-align: center;
+    }
+
+    /* SEÇÃO 7: AGENDAR SESSÃO (Fundo Grafite #1C1F22) */
+    .schedule-section {
+      background-color: var(--jse-graphite);
+      color: #ffffff;
+      padding: 5.5rem 1.5rem;
+    }
+    .schedule-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .schedule-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .schedule-header .tag {
+      color: var(--jse-gold);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .schedule-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      margin-bottom: 0.8rem;
+    }
+    .schedule-header p {
+      color: #a0aec0;
+      font-size: 1rem;
+    }
+    .schedule-form {
+      background: #14171a;
+      border: 1px solid rgba(201, 151, 59, 0.3);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      color: #d1d8e0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-control {
+      width: 100%;
+      background: #1f2328;
+      border: 1px solid #363d47;
+      color: #ffffff;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--jse-gold);
+      box-shadow: 0 0 0 2px rgba(201, 151, 59, 0.25);
+    }
+    .form-control::placeholder {
+      color: #64748b;
+    }
+    .form-note {
+      font-size: 0.8rem;
+      color: #718096;
+      margin-top: 1.25rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .form-feedback {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      background: rgba(0, 200, 83, 0.15);
+      border: 1px solid var(--jse-green);
+      color: #bbf7d0;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background-color: #0a1628;
+      color: #ffffff;
+      border-top: 2px solid var(--jse-gold);
+      padding: 4.5rem 1.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    .footer-brand h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      color: #9cb0c9;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 440px;
+    }
+    .footer-col h4 {
+      font-size: 0.85rem;
+      color: var(--jse-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+    .footer-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover {
+      color: var(--jse-gold);
+    }
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+    .footer-contact-item a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-contact-item a:hover {
+      color: var(--jse-gold);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+    }
+    .footer-maxim {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--jse-gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #6d8099;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .dee-isolated-note {
+        text-align: left;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #0a1628;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid rgba(201, 151, 59, 0.3);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .header-inner .btn-energy {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quiz-card, .schedule-form, .result-card {
+        padding: 1.75rem 1.25rem;
+      }
+      .hero-section {
+        padding: 3.5rem 1rem 2.5rem;
+      }
+      .hero-ctas {
+        flex-direction: column;
+      }
+      .hero-ctas .btn-energy,
+      .hero-ctas .btn-gold-outline {
+        width: 100%;
+      }
+      .dee-guarantee-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER FIXO -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand-logo" aria-label="JSE Energy Advisor, página inicial">
+        <img src="/images/logo-jse-transparente.png" alt="JSE Energy Advisor" style="height:52px;width:auto;display:block">
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#raio-x" class="nav-link">Raio-X Energético</a></li>
+        <li><a href="#planos" class="nav-link">Assinatura</a></li>
+        <li><a href="#dee" class="nav-link">Diagnóstico (DEE)</a></li>
+        <li><a href="#agendar" class="nav-link">Agendar Sessão</a></li>
+      </ul>
+
+      <a href="#raio-x" class="btn-energy">Fazer Raio-X</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-eyebrow">
+        <span>⚡</span> Leitura Estratégica Preliminar em 3 Minutos
+      </div>
+      <h1 class="hero-title heading-caps">
+        QUANTO CUSTA A ENERGIA QUE A SUA EMPRESA AINDA NÃO ENXERGA?
+      </h1>
+      <p class="hero-subtitle">
+        Descubra em 3 minutos o potencial de economia, previsibilidade e vantagem competitiva da sua operação, antes de assumir qualquer compromisso ou contratação de fornecedores.
+      </p>
+      
+      <div class="hero-ctas">
+        <a href="#raio-x" class="btn-energy">Começar o Raio-X Energético</a>
+        <a href="#planos" class="btn-gold-outline">Conhecer a assinatura</a>
+      </div>
+
+      <p class="hero-security">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Nenhum dado confidencial solicitado. Processo 100% alinhado à LGPD.
+      </p>
+
+      <div class="hero-maxim-strip">
+        <p class="hero-maxim">
+          "O diagnóstico encontra a economia. A assinatura garante que ela se mantenha."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SEÇÃO "TRÊS GARGALOS QUE DRENAM O CAIXA" -->
+  <section class="light-section">
+    <div class="section-wrap">
+      <div class="section-header-light">
+        <span class="tag">Invisibilidade Financeira</span>
+        <h2 class="heading-caps">Três Gargalos que Drenam o Caixa da sua Empresa</h2>
+        <p>A fatura de energia não é apenas uma conta operacional: é um dos maiores centros de ineficiência financeira e contratual das empresas brasileiras.</p>
+      </div>
+
+      <div class="bottlenecks-grid">
+        <!-- Card 1 -->
+        <article class="bottleneck-card">
+          <div class="bottleneck-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Tarifa mal escolhida</h3>
+          <p>Mais de 65% das empresas pagam enquadramentos tarifários defasados, suportando multas de demanda e bandeiras desnecessárias sem auditar seus contratos junto à distribuidora.</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bottleneck-card">
+          <div class="bottleneck-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>Multas silenciosas de reativo</h3>
+          <p>Fator de potência abaixo de 0,92 gera cobrança de energia reativa excedente, um custo 100% evitável que corrói o caixa sem gerar trabalho útil algum na linha de produção.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bottleneck-card">
+          <div class="bottleneck-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Demanda superdimensionada</h3>
+          <p>Você paga por kW contratado que nunca utiliza. O redimensionamento técnico do montante junto à concessionária devolve capital de giro para o seu caixa todo mês.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SEÇÃO QUIZ "RAIO-X ENERGÉTICO" -->
+  <section class="quiz-section" id="raio-x">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h2 class="heading-caps">Raio-X Energético Estratégico</h2>
+        <p>Responda a 7 pontos estratégicos da sua operação para obter uma leitura preliminar imediata do potencial de ganho energético.</p>
+      </div>
+
+      <!-- Barra de Progresso -->
+      <div class="quiz-progress-bar-wrap" aria-label="Progresso do formulário">
+        <div class="quiz-progress-fill" id="progressFill"></div>
+      </div>
+      <div class="quiz-meta">
+        <span id="stepIndicator">Etapa 1 de 7</span>
+        <span>Tempo estimado: ~3 min</span>
+      </div>
+
+      <!-- Card do Quiz Dinâmico -->
+      <div class="quiz-card" role="region" aria-live="polite">
+        <div class="quiz-question-title">
+          <span class="quiz-question-badge" id="questionBadge">Q1</span>
+          <span id="questionText">Qual o setor da sua operação?</span>
+        </div>
+
+        <div class="quiz-options" id="quizOptions">
+          <!-- Injetado dinamicamente via JS -->
+        </div>
+
+        <div class="quiz-controls">
+          <button type="button" class="btn-quiz-back" id="btnPrev" disabled>← Voltar</button>
+          <button type="button" class="btn-energy" id="btnNext" style="display: none;">Próxima Pergunta →</button>
+          <button type="button" class="btn-energy" id="btnFinish" style="display: none;">Ver meu resultado</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SEÇÃO RESULTADO (Aparece após o Quiz) -->
+  <section class="result-section" id="resultado">
+    <div class="section-wrap">
+      <div class="result-card">
+        <span class="result-badge">⚡ Diagnóstico Preliminar Concluído</span>
+        <h2 class="result-title">Sua empresa possui alto potencial de captura de valor energético.</h2>
+        <p class="result-desc">
+          Resultado gerado a partir do cruzamento setorial, enquadramento regulatório preliminar e volume de dispêndio financeiro.
+        </p>
+
+        <div class="result-data-grid">
+          <div class="result-data-item">
+            <div class="label">Setor Analisado</div>
+            <div class="value" id="resSector">-</div>
+          </div>
+          <div class="result-data-item">
+            <div class="label">Gasto Mensal Declarado</div>
+            <div class="value" id="resSpend">-</div>
+          </div>
+          <div class="result-data-item highlight">
+            <div class="label">Alavanca Imediata Prioritária</div>
+            <div class="value" id="resLever">-</div>
+          </div>
+        </div>
+
+        <div class="result-note-seed">
+          <strong>Atenção Estratégica:</strong> Se identificarmos oportunidades no aprofundamento técnico, o caminho recomendado é a assinatura da inteligência contínua, o diagnóstico de 90 dias já vem embutido no primeiro ano de acompanhamento.
+        </div>
+
+        <div style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+          <a href="#agendar" class="btn-energy" style="padding: 1rem 2.25rem; font-size: 1rem;">Agendar conversa com consultor</a>
+          <a href="#planos" class="btn-gold-outline" style="padding: 1rem 2.25rem; font-size: 1rem;">Ver planos da assinatura</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVA SEÇÃO: A INTELIGÊNCIA CONTÍNUA, COM O DIAGNÓSTICO EMBUTIDO (ASSINATURA COMO PRODUTO CENTRAL) -->
+  <section class="plans-section" id="planos">
+    <div class="section-wrap">
+      <div class="section-header-light">
+        <span class="tag">Sistema Operacional de Inteligência Energética</span>
+        <h2 class="heading-caps">A Inteligência Contínua, com o Diagnóstico Embutido</h2>
+        <p>A energia da sua empresa tratada como ativo estratégico mensal de governança, blindagem regulatória e redução sistemática de despesas.</p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- Plano 1: Monitoramento -->
+        <article class="plan-card">
+          <h3 class="plan-name">Monitoramento</h3>
+          <span class="plan-tagline">Para quem quer enxergar.</span>
+          <div class="plan-price-wrap">
+            <span class="plan-price">R$ 2.400</span>
+            <span class="plan-period">/mês</span>
+          </div>
+          <p class="plan-desc">A fotografia mensal da sua energia: controle executivo, auditoria técnica de cobranças e eliminação de surpresas na fatura.</p>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Scorecard Energético Mensal</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Auditoria completa de faturas</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Alertas imediatos de anomalia</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Verificação de conformidade contínua</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>DEE (90 dias) incluso</strong> no 1º ano</span>
+            </li>
+          </ul>
+          <div class="plan-cta">
+            <a href="#agendar" class="btn-gold-outline" onclick="selectPlan('Monitoramento')">Selecionar Monitoramento</a>
+          </div>
+        </article>
+
+        <!-- Plano 2: Gestão -->
+        <article class="plan-card">
+          <h3 class="plan-name">Gestão</h3>
+          <span class="plan-tagline">Para quem quer agir.</span>
+          <div class="plan-price-wrap">
+            <span class="plan-price">R$ 3.900</span>
+            <span class="plan-period">/mês</span>
+          </div>
+          <p class="plan-desc">Tudo do Monitoramento com suporte consultivo permanente, reuniões com a diretoria e otimização regulatória ativa.</p>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tudo incluído no plano Monitoramento</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Insights mensais de otimização energética</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Conformidade regulatória proativa</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Reunião trimestral com a diretoria</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Suporte prioritário direto via WhatsApp</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>DEE (90 dias) incluso</strong> no 1º ano</span>
+            </li>
+          </ul>
+          <div class="plan-cta">
+            <a href="#agendar" class="btn-gold-outline" onclick="selectPlan('Gestão')">Selecionar Gestão</a>
+          </div>
+        </article>
+
+        <!-- Plano 3: Consultoria (Destaque Mais Escolhido) -->
+        <article class="plan-card highlight">
+          <span class="plan-badge-top">Mais Escolhido</span>
+          <h3 class="plan-name">Consultoria</h3>
+          <span class="plan-tagline">Para quem quer acelerar.</span>
+          <div class="plan-price-wrap">
+            <span class="plan-price">R$ 4.500</span>
+            <span class="plan-period">/mês</span>
+          </div>
+          <p class="plan-desc">A parceria mais completa: consultor sênior dedicado, execução acompanhada e estudos técnicos anuais sem custo extra.</p>
+          <ul class="plan-features">
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tudo incluído no plano Gestão</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Consultor sênior dedicado</strong> à sua operação</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Acompanhamento direto na implementação técnica</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>1 estudo de viabilidade/ano incluso</strong> (solar, Mercado Livre, BESS ou carregadores)</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>50% de desconto em estudos adicionais</span>
+            </li>
+            <li class="plan-feature-item">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>DEE (90 dias) incluso</strong> no 1º ano</span>
+            </li>
+          </ul>
+          <div class="plan-cta">
+            <a href="#agendar" class="btn-energy" onclick="selectPlan('Consultoria')">Selecionar Consultoria</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Texto de Destaque da Assinatura + Frase Pipoca -->
+      <div class="plans-highlight-box">
+        <h4>Diagnóstico de Onboarding 100% Embutido na Assinatura</h4>
+        <p>
+          Todos os planos incluem o <strong>Diagnóstico Energético Empresarial (DEE)</strong> embutido na mensalidade do primeiro ano. Quem contrata o diagnóstico isoladamente paga R$ 13.500. Na assinatura, ele já está dentro desde o dia um.
+        </p>
+        <p class="plans-popcorn-text">
+          ⚡ <em>Por apenas R$ 600 a mais que o Gestão, você adiciona um consultor sênior dedicado e leva 1 estudo de viabilidade por ano incluso.</em>
+        </p>
+      </div>
+
+      <!-- Âncora Externa de Custo -->
+      <div class="plans-anchor-box">
+        <p>
+          💡 <strong>Comparativo de Eficiência:</strong> Um engenheiro interno custa de <strong>R$ 17 a 20 mil/mês</strong> entre salário e encargos. A inteligência JSE custa <strong>R$ 2.400 a 4.500/mês</strong>, sem encargos e com capacidade multiplanta e senioridade regulatória imediata.
+        </p>
+        <a href="#agendar" class="btn-energy" style="white-space: nowrap;">Falar com um Consultor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SEÇÃO DEE "O DEE É A PRIMEIRA ENTREGA DA SUA ASSINATURA" -->
+  <section class="dee-section" id="dee">
+    <div class="section-wrap">
+      <div class="dee-header">
+        <span class="tag">Onboarding Estratégico de 90 Dias</span>
+        <h2 class="heading-caps">O DEE é a primeira entrega da sua assinatura</h2>
+        <div class="dee-manifesto">
+          "Não somos vendedores de painéis solares ou representantes comissionados de comercializadoras. A JSE Energy Advisor atua como conselheira estratégica neutra, mapeando em 90 dias a sua linha de base para proteger o caixa e a governança da sua empresa."
+        </div>
+      </div>
+
+      <!-- As 5 Fases em Cards -->
+      <div class="dee-fases-grid">
+        <div class="dee-fase-card">
+          <span class="fase-badge">Fase 01</span>
+          <h3>Diagnóstico Completo da Operação</h3>
+          <p>Auditoria retroativa das últimas 24 a 36 faturas. Levantamento de perdas técnicas, multas por reativo excedente, penalidades de ultrapassagem e erros de enquadramento da concessionária.</p>
+        </div>
+
+        <div class="dee-fase-card">
+          <span class="fase-badge">Fase 02</span>
+          <h3>Planejamento Estratégico de Energia</h3>
+          <p>Simulações de cenários de curto, médio e longo prazo: migração para o Mercado Livre (ACL), contratos bilaterais (PPA) ou viabilidade de autoprodução.</p>
+        </div>
+
+        <div class="dee-fase-card">
+          <span class="fase-badge">Fase 03</span>
+          <h3>Plano de Ação Priorizado</h3>
+          <p>Roadmap detalhado com matriz de esforço vs. impacto financeiro, ROI, payback simples e descontado e cronograma de implementação.</p>
+        </div>
+
+        <div class="dee-fase-card">
+          <span class="fase-badge">Fase 04</span>
+          <h3>Acompanhamento e Validação</h3>
+          <p>Apoio técnico independente na negociação de contratos com comercializadoras e fornecedores. Blindagem regulatória e defesa técnica junto à concessionária.</p>
+        </div>
+
+        <div class="dee-fase-card">
+          <span class="fase-badge">Fase 05</span>
+          <h3>Relatório Executivo Final</h3>
+          <p>Dossiê executivo formatado para Diretoria e Conselho. Indicadores de economia, mitigação de riscos e ganhos de pegada ESG.</p>
+        </div>
+      </div>
+
+      <!-- Barra de Escopo e Investimento Embutido -->
+      <div class="dee-meta-bar">
+        <div class="dee-scope-info">
+          <h4>Escopo Fechado de 90 Dias</h4>
+          <p>Garantia de atendimento consultivo sênior, sem surpresas de custos adicionais e sem conflitos de interesse.</p>
+        </div>
+        <div class="dee-isolated-note">
+          Prefere começar só pelo diagnóstico? É possível, mas na assinatura o onboarding vem <strong>100% embutido</strong> no primeiro ano.
+        </div>
+      </div>
+
+      <!-- Destaque da GARANTIA em card Verde Energy -->
+      <div class="dee-guarantee-card">
+        <div class="guarantee-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="guarantee-text">
+          <h4 class="heading-caps">Garantia de Performance JSE</h4>
+          <p>Se o diagnóstico não identificar ao menos R$ 1.000/mês de economia, devolvemos o investimento integralmente. Risco zero para a sua empresa.</p>
+        </div>
+      </div>
+
+      <div class="dee-cta-center">
+        <a href="#agendar" class="btn-gold-outline" style="padding: 1rem 2.25rem;">Agendar conversa com consultor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SEÇÃO AGENDAR SESSÃO CONSULTIVA (Formulário) -->
+  <section class="schedule-section" id="agendar">
+    <div class="schedule-wrap">
+      <div class="schedule-header">
+        <span class="tag">Próximo Passo Executivo</span>
+        <h2 class="heading-caps">Agendar Sessão Consultiva</h2>
+        <p>Preencha os dados da sua empresa para alinharmos a agenda com um dos nossos consultores de inteligência energética.</p>
+      </div>
+
+      <form class="schedule-form" id="consultationForm">
+        <div class="form-group">
+          <label for="clientName" class="form-label">Nome do Executivo / Gestor *</label>
+          <input type="text" id="clientName" class="form-control" placeholder="Ex: Roberto Silveira" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientCompany" class="form-label">Empresa & Cargo *</label>
+          <input type="text" id="clientCompany" class="form-control" placeholder="Ex: Indústrias Metalúrgica Alfa, Diretor de Operações" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientEmail" class="form-label">E-mail Corporativo *</label>
+          <input type="email" id="clientEmail" class="form-control" placeholder="roberto@empresa.com.br" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientPhone" class="form-label">WhatsApp para Contato Direto *</label>
+          <input type="tel" id="clientPhone" class="form-control" placeholder="(11) 98765-4321" required>
+        </div>
+
+        <button type="submit" class="btn-energy" style="width: 100%; padding: 1rem; margin-top: 0.5rem; font-size: 1rem;">
+          Confirmar Solicitação de Reunião
+        </button>
+
+        <p class="form-note">
+          Seus dados serão tratados com sigilo profissional estrito de acordo com a LGPD.
+        </p>
+
+        <div class="form-feedback" id="formFeedback">
+          Solicitação iniciada! Redirecionando para o canal de atendimento direto via WhatsApp...
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" aria-label="JSE Energy Advisor"><img src="/images/logo-jse-transparente.png" alt="JSE Energy Advisor" style="height:64px;width:auto;display:block;margin-bottom:1rem"></a>
+          <p>
+            Consultoria de Inteligência Energética. Posicionando energia e infraestrutura como ferramentas estratégicas de crescimento, previsibilidade financeira e vantagem competitiva contínua para o empresário brasileiro.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-nav">
+            <li><a href="#raio-x">Raio-X Energético</a></li>
+            <li><a href="#planos">Assinatura Contínua</a></li>
+            <li><a href="#dee">Diagnóstico Onboarding (DEE)</a></li>
+            <li><a href="#agendar">Agendar Sessão Estratégica</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato Direto</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span>📱</span>
+              <a href="https://wa.me/5511999483633" target="_blank" rel="noopener noreferrer">(11) 9 9948-3633</a>
+            </li>
+            <li class="footer-contact-item">
+              <span>✉️</span>
+              <a href="mailto:executivo.jussie@gmail.com">executivo.jussie@gmail.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <span>🌐</span>
+              <a href="/">jseenergia.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-maxim">
+          "O diagnóstico encontra a economia. A assinatura garante que ela se mantenha."
+        </p>
+        <p class="footer-copy">
+          &copy; <span id="currentYear"></span> JSE Energy Advisor. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inserir ano corrente no footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Toggle menu mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+        menuToggle.setAttribute('aria-expanded', !expanded);
+        navLinks.classList.toggle('active');
+      });
+
+      // Fechar menu mobile ao clicar no link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ========================================================
+       LÓGICA DO QUIZ "RAIO-X ENERGÉTICO"
+       ======================================================== */
+    const quizData = [
+      {
+        id: 1,
+        question: "Qual o setor da sua operação?",
+        options: [
+          "Indústria",
+          "Supermercado",
+          "Hotel",
+          "Centro Logístico",
+          "Posto de Combustíveis",
+          "Outro"
+        ]
+      },
+      {
+        id: 2,
+        question: "Qual a faixa média do seu gasto mensal consolidado com energia?",
+        options: [
+          "Entre R$ 10.000 e R$ 25.000/mês",
+          "Entre R$ 25.000 e R$ 50.000/mês",
+          "Entre R$ 50.000 e R$ 100.000/mês",
+          "Acima de R$ 100.000/mês"
+        ]
+      },
+      {
+        id: 3,
+        question: "Você conhece a modalidade tarifária em que sua conta está enquadrada?",
+        options: [
+          "Convencional (Baixa Tensão)",
+          "Horossazonal Verde (A4)",
+          "Horossazonal Azul (A3a)",
+          "Tarifa Branca",
+          "Não sei informar com certeza"
+        ]
+      },
+      {
+        id: 4,
+        question: "Sua empresa já possui geração própria de energia (ex: solar fotovoltaica)?",
+        options: [
+          "Sim, já geramos",
+          "Não, compramos 100% da distribuidora",
+          "Estamos avaliando propostas"
+        ]
+      },
+      {
+        id: 5,
+        question: "Quantas unidades ou plantas a sua operação possui?",
+        options: [
+          "1 unidade",
+          "2 a 3 unidades",
+          "4 ou mais unidades"
+        ]
+      },
+      {
+        id: 6,
+        question: "Quem cuida hoje da gestão de energia da sua empresa?",
+        options: [
+          "Ninguém específico",
+          "Financeiro",
+          "Manutenção",
+          "Engenheiro interno",
+          "Consultoria externa"
+        ]
+      },
+      {
+        id: 7,
+        question: "Você já recebeu multas ou cobranças inesperadas de energia nos últimos 12 meses?",
+        options: [
+          "Sim, com frequência",
+          "Sim, algumas vezes",
+          "Não que eu saiba"
+        ]
+      }
+    ];
+
+    let currentStep = 0;
+    const userAnswers = {};
+
+    const progressFill = document.getElementById('progressFill');
+    const stepIndicator = document.getElementById('stepIndicator');
+    const questionBadge = document.getElementById('questionBadge');
+    const questionText = document.getElementById('questionText');
+    const quizOptions = document.getElementById('quizOptions');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnFinish = document.getElementById('btnFinish');
+
+    function renderQuestion(index) {
+      const q = quizData[index];
+      const total = quizData.length;
+
+      // Atualiza progresso e cabeçalho
+      const progressPct = ((index + 1) / total) * 100;
+      progressFill.style.width = `${progressPct}%`;
+      stepIndicator.textContent = `Etapa ${index + 1} de ${total}`;
+      questionBadge.textContent = `Q${index + 1}`;
+      questionText.textContent = q.question;
+
+      // Limpa opções anteriores
+      quizOptions.innerHTML = '';
+
+      // Monta os botões de opção
+      q.options.forEach((optText) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-option-btn';
+        if (userAnswers[index] === optText) {
+          btn.classList.add('selected');
+        }
+
+        btn.innerHTML = `
+          <span>${optText}</span>
+          <span class="radio-circle" aria-hidden="true"></span>
+        `;
+
+        btn.addEventListener('click', () => {
+          userAnswers[index] = optText;
+          // Feedback visual
+          quizOptions.querySelectorAll('.quiz-option-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+
+          // Auto-avanço suave ou controle
+          setTimeout(() => {
+            if (currentStep < total - 1) {
+              currentStep++;
+              renderQuestion(currentStep);
+            } else {
+              showFinishState();
+            }
+          }, 240);
+        });
+
+        quizOptions.appendChild(btn);
+      });
+
+      // Gerenciar botões de navegação
+      btnPrev.disabled = (index === 0);
+      
+      if (index === total - 1) {
+        btnNext.style.display = 'none';
+        if (userAnswers[index]) {
+          btnFinish.style.display = 'inline-flex';
+        } else {
+          btnFinish.style.display = 'none';
+        }
+      } else {
+        btnFinish.style.display = 'none';
+        btnNext.style.display = userAnswers[index] ? 'inline-flex' : 'none';
+      }
+    }
+
+    function showFinishState() {
+      btnNext.style.display = 'none';
+      btnFinish.style.display = 'inline-flex';
+    }
+
+    btnPrev.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        renderQuestion(currentStep);
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentStep < quizData.length - 1 && userAnswers[currentStep]) {
+        currentStep++;
+        renderQuestion(currentStep);
+      }
+    });
+
+    btnFinish.addEventListener('click', () => {
+      calcularResultado();
+    });
+
+    function calcularResultado() {
+      const setor = userAnswers[0] || "Operação Corporativa";
+      const gasto = userAnswers[1] || "Acima de R$ 10.000/mês";
+      const tarifa = userAnswers[2] || "";
+      const multas = userAnswers[6] || "";
+      const solar = userAnswers[3] || "";
+
+      // Determinação da alavanca prioritária baseada nas respostas
+      let alavanca = "Auditoria Tarifária Retroativa";
+      if (multas.includes("Sim, com frequência") || multas.includes("algumas vezes")) {
+        alavanca = "Correção de Fator de Potência & Reativo Excedente";
+      } else if (tarifa.includes("Não sei") || tarifa.includes("Convencional")) {
+        alavanca = "Revisão e Migração de Enquadramento Tarifário";
+      } else if (solar.includes("Não, compramos 100%")) {
+        alavanca = "Redimensionamento de Demanda Contratada & ACL";
+      } else {
+        alavanca = "Auditoria Tarifária & Otimização de Demanda";
+      }
+
+      // Preenchimento dos dados na seção resultado
+      document.getElementById('resSector').textContent = setor;
+      document.getElementById('resSpend').textContent = gasto;
+      document.getElementById('resLever').textContent = alavanca;
+
+      // Exibe seção de resultado
+      const resultSection = document.getElementById('resultado');
+      resultSection.style.display = 'block';
+
+      // Rola a página suavemente até o resultado
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Inicializa questão 1
+    renderQuestion(0);
+
+    /* ========================================================
+       SELEÇÃO DE PLANO & AGENDAMENTO COM WHATSAPP
+       ======================================================== */
+    let selectedPlanName = "Consultoria";
+
+    function selectPlan(planName) {
+      selectedPlanName = planName;
+    }
+
+    const consultationForm = document.getElementById('consultationForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    consultationForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('clientName').value.trim();
+      const company = document.getElementById('clientCompany').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+
+      if (!name || !company || !email || !phone) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      // Resumo das respostas do quiz se houverem
+      const setor = userAnswers[0] || "Não informado no quiz";
+      const faixa = userAnswers[1] || "Não informado no quiz";
+      const alavanca = document.getElementById('resLever').textContent || "Auditoria Tarifária & Otimização de Demanda";
+
+      const msg = `*Solicitação de Sessão Consultiva, JSE Energy Advisor*%0A%0A` +
+                  `*Nome:* ${encodeURIComponent(name)}%0A` +
+                  `*Empresa / Cargo:* ${encodeURIComponent(company)}%0A` +
+                  `*E-mail:* ${encodeURIComponent(email)}%0A` +
+                  `*WhatsApp:* ${encodeURIComponent(phone)}%0A%0A` +
+                  `*Plano de Interesse:* Assinatura ${encodeURIComponent(selectedPlanName)} (com DEE embutido)%0A%0A` +
+                  `*Resumo do Raio-X Energético:*%0A` +
+                  `• Setor: ${encodeURIComponent(setor)}%0A` +
+                  `• Gasto Médio: ${encodeURIComponent(faixa)}%0A` +
+                  `• Alavanca Preliminar: ${encodeURIComponent(alavanca)}%0A%0A` +
+                  `Olá, gostaria de agendar uma sessão com o consultor para avaliar a Assinatura de Inteligência Energética JSE com o onboarding DEE embutido.`;
+
+      formFeedback.style.display = 'block';
+
+      setTimeout(() => {
+        window.open(`https://wa.me/5511999483633?text=${msg}`, '_blank');
+      }, 700);
+    });
+  </script>
+<script>
+/* Skip artifact shell, fixed helpers served beside every artifact. */
+(function () {
+  "use strict";
+
+  var fmt = {
+    num: function (v, opts) { return new Intl.NumberFormat("pt-BR", opts || {}).format(v); },
+    brl: function (v) { return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v); },
+    pct: function (v) { return new Intl.NumberFormat("pt-BR", { style: "percent", maximumFractionDigits: 1 }).format(v); }
+  };
+
+  // axisFmt keeps axis tick labels short (compact notation) so long values
+  // (e.g. full BRL amounts) never clip against the plot edge.
+  function axisFmt(v) {
+    return fmt.num(v, { notation: "compact", maximumFractionDigits: 1 });
+  }
+
+  // format accepts a function OR one of the fmt names ("num" | "brl" | "pct").
+  function coerceFormat(spec) {
+    if (typeof spec === "function") return spec;
+    if (typeof spec === "string" && fmt[spec]) return fmt[spec];
+    return function (v) { return fmt.num(v); };
+  }
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2563eb";
+  }
+  function mutedColor() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim() || "#5b6472";
+  }
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function frame(el, w, h) {
+    var svg = svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img" });
+    el.innerHTML = "";
+    el.appendChild(svg);
+    return svg;
+  }
+
+  // maxOf guards the axis scale: empty values would give -Infinity (truthy,
+  // so "|| 1" can't catch it) and a non-positive max would flip the chart.
+  function maxOf(values) {
+    var m = values.length ? Math.max.apply(null, values) : 0;
+    return m > 0 ? m : 1;
+  }
+
+  // bar(el, {labels:[], values:[], color?, format?}), vertical bar chart.
+  function bar(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 12, plotH = H - padT - padB;
+    var step = plotW / n, bw = Math.min(step * 0.62, 64);
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 12, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    cfg.values.forEach(function (v, i) {
+      var bh = Math.max(0, (v / max) * plotH);
+      var x = padL + i * step + (step - bw) / 2;
+      var y = padT + plotH - bh;
+      var r = svgEl("rect", { x: x, y: y, width: bw, height: bh, rx: 4, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(v);
+      r.appendChild(t);
+      svg.appendChild(r);
+      var tx = svgEl("text", { x: x + bw / 2, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // line(el, {labels:[], values:[], color?, format?}), single-series line.
+  function line(el, cfg) {
+    var W = 640, H = 280, padL = 46, padB = 30, padT = 12;
+    var svg = frame(el, W, H);
+    var max = maxOf(cfg.values);
+    var n = cfg.values.length;
+    var plotW = W - padL - 16, plotH = H - padT - padB;
+    var color = cfg.color || accent();
+    var f = coerceFormat(cfg.format);
+    for (var g = 0; g <= 4; g++) {
+      var gy = padT + plotH - (plotH * g) / 4;
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - 16, y2: gy, stroke: "currentColor", "stroke-opacity": 0.08 }));
+      var lbl = svgEl("text", { x: padL - 8, y: gy + 4, "text-anchor": "end", "font-size": 10, fill: mutedColor() });
+      lbl.textContent = axisFmt((max * g) / 4);
+      svg.appendChild(lbl);
+    }
+    var pts = cfg.values.map(function (v, i) {
+      var x = padL + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1));
+      var y = padT + plotH - (v / max) * plotH;
+      return [x, y];
+    });
+    var d = pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(svgEl("path", { d: d, fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round" }));
+    pts.forEach(function (p, i) {
+      var c = svgEl("circle", { cx: p[0], cy: p[1], r: 3.5, fill: color });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + f(cfg.values[i]);
+      c.appendChild(t);
+      svg.appendChild(c);
+      var tx = svgEl("text", { x: p[0], y: H - 10, "text-anchor": "middle", "font-size": 11, fill: mutedColor() });
+      tx.textContent = cfg.labels[i];
+      svg.appendChild(tx);
+    });
+  }
+
+  // donut(el, {labels:[], values:[], colors?}), donut with center total.
+  function donut(el, cfg) {
+    var W = 320, H = 280, cx = W / 2, cy = H / 2, R = 92, r = 58;
+    var svg = frame(el, W, H);
+    var total = cfg.values.reduce(function (a, b) { return a + b; }, 0) || 1;
+    var palette = cfg.colors || [accent(), "#1baf7a", "#eda100", "#e34948", "#4a3aa7", "#e87ba4"];
+    var a0 = -Math.PI / 2;
+    cfg.values.forEach(function (v, i) {
+      var a1 = a0 + (v / total) * Math.PI * 2;
+      var large = a1 - a0 > Math.PI ? 1 : 0;
+      var p = ["M", cx + R * Math.cos(a0), cy + R * Math.sin(a0),
+        "A", R, R, 0, large, 1, cx + R * Math.cos(a1), cy + R * Math.sin(a1),
+        "L", cx + r * Math.cos(a1), cy + r * Math.sin(a1),
+        "A", r, r, 0, large, 0, cx + r * Math.cos(a0), cy + r * Math.sin(a0), "Z"].join(" ");
+      var path = svgEl("path", { d: p, fill: palette[i % palette.length] });
+      var t = svgEl("title", {});
+      t.textContent = cfg.labels[i] + ": " + fmt.num(v) + " (" + fmt.pct(v / total) + ")";
+      path.appendChild(t);
+      svg.appendChild(path);
+      a0 = a1;
+    });
+    var center = svgEl("text", { x: cx, y: cy + 5, "text-anchor": "middle", "font-size": 20, "font-weight": 650, fill: "currentColor" });
+    center.textContent = fmt.num(total);
+    svg.appendChild(center);
+  }
+
+  window.skipShell = { fmt: fmt };
+  window.skipChart = { bar: bar, line: line, donut: donut };
+})();
+
+</script>
+</body>
+</html>

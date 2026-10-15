@@ -173,6 +173,25 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
       font-weight: 600;
     }
 
+    /* Faixa de topo: Raio-X */
+    .raiox-bar {
+      background: var(--gold-gradient);
+      color: #0c182c;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .raiox-bar a {
+      color: #0c182c;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .raiox-bar a:hover { color: #060d19; }
+
     /* Navigation */
     .site-nav {
       position: sticky;
@@ -1910,6 +1929,8 @@ table.shell-table tbody tr:hover { background: color-mix(in srgb, var(--accent) 
 <body>
 
   <!-- FIXED HEADER / NAVIGATION -->
+  <div class="raiox-bar">Descubra em 3 minutos quanto a energia da sua empresa pode render. <a href="/raio-x/">Fazer Raio-X</a></div>
+
   <header class="site-nav">
     <div class="nav-container">
       <a href="#inicio" class="brand-logo" aria-label="JSE Energy Advisor Início">
